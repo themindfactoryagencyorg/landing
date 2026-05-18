@@ -1,0 +1,41 @@
+name: Deploy landing
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-landing
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure SSH
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.TMF_VPS_SSH_KEY }}" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
+          ssh-keyscan -H "${{ secrets.TMF_VPS_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Ensure target dir exists
+        run: |
+          ssh -i ~/.ssh/key "${{ secrets.TMF_VPS_USER }}@${{ secrets.TMF_VPS_HOST }}" \
+            "mkdir -p /home/tmf/apps/tmf-prod/tmf-landing"
+
+      - name: Deploy
+        run: |
+          set -euo pipefail
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.gitignore' \
+            --exclude='README.md' \
+            -e "ssh -i ~/.ssh/key" \
+            ./ \
+            "${{ secrets.TMF_VPS_USER }}@${{ secrets.TMF_VPS_HOST }}:/home/tmf/apps/tmf-prod/tmf-landing/"
