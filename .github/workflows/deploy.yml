@@ -36,6 +36,7 @@ jobs:
             --exclude='.github' \
             --exclude='.gitignore' \
             --exclude='README.md' \
+            --exclude='AGENTS.md' \
             -e "ssh -i ~/.ssh/key" \
             ./ \
             "${{ secrets.TMF_VPS_USER }}@${{ secrets.TMF_VPS_HOST }}:/home/tmf/apps/tmf-prod/tmf-landing/"

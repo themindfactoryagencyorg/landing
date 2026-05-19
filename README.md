@@ -1,33 +1,31 @@
 # landing
 
-Static landing page for The Mind Factory Agency.
+Landing page de The Mind Factory Agency. Ahora mismo es un placeholder
+en plan "waiting for the real web" — cuando llegue la web real, este repo
+se reescribe o se sustituye.
 
-Served at the apex of `themindfactory.es`. The web app (`tmf-webapp`) lives
-under `https://themindfactory.es/app/` — see `tmf-infra/Caddyfile` for the
-full routing.
+Sirve directamente en `themindfactory.es`.
 
 ## Stack
 
-Plain HTML + CSS. No framework, no build step. Whatever sits in the repo
-root is what gets served, byte for byte.
+HTML + CSS + JS planos. Sin framework, sin build, sin dependencias de
+desarrollo. Lo que hay en la raíz del repo es exactamente lo que se sirve.
 
-## Deploy
+## Despliegue
 
-Single branch, `main`. Push to `main` triggers `.github/workflows/deploy.yml`,
-which rsyncs the repo to `/home/tmf/apps/tmf-prod/tmf-landing/` on the VPS via
-the shared org secrets `TMF_VPS_SSH_KEY`, `TMF_VPS_HOST`, `TMF_VPS_USER`.
+Rama única `main`. Cada push a `main` dispara `.github/workflows/deploy.yml`
+y queda publicado en pocos segundos.
 
-To deploy manually: `gh workflow run "Deploy landing"`.
+Trigger manual: `gh workflow run "Deploy landing"`.
 
-## Adding content
+## Cómo modificar
 
-Edit `index.html` / `style.css` and push. Keep paths absolute (`/foo.css`,
-`/img/bar.svg`) so they resolve from the apex root.
+Edita `index.html` (y cualquier otro asset que metas), commit, push a `main`.
 
-## Routing context
+Si añades imágenes o CSS aparte, referéncialos con paths absolutos
+(`/foo.png`, `/styles/bar.css`) — se sirven desde la raíz del dominio.
 
-| URL | Served by | Where |
-|---|---|---|
-| `themindfactory.es/` | this repo | `/home/tmf/apps/tmf-prod/tmf-landing/` |
-| `themindfactory.es/app/*` | `tmf-webapp` SPA | `/home/tmf/apps/tmf-prod/tmf-webapp-dist/` |
-| `themindfactory.es/auth/callback` | Caddy 302 → `/app/auth/callback` | (temporary, see Caddyfile) |
+Para verlo en local: abre `index.html` en el navegador, o levanta un
+servidor estático rápido con `python3 -m http.server 8000`.
+
+Más detalles para agentes (Claude / Cursor / etc.): ver [AGENTS.md](./AGENTS.md).
