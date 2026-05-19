@@ -1,16 +1,24 @@
 const { useEffect, useState, useRef, useMemo } = React;
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "variant": "whispers",
+  "variant": "network",
   "tint": "ink",
-  "showSubscribe": true,
-  "phraseSet": "cryptic",
+  "showSubscribe": false,
+  "phraseSet": "minds",
   "tempo": 8500
 }/*EDITMODE-END*/;
 
 /* ─────────────────────────── content ─────────────────────────── */
 
 const PHRASE_SETS = {
+  minds: [
+    "Una mente piensa. Cien minds resuelven.",
+    "Cada conexión te acerca a la respuesta.",
+    "Donde tú ves un problema, la red ve un camino.",
+    "Las ideas viajan más rápido cuando se cruzan.",
+    "No buscamos respuestas. Las orquestamos.",
+    "La fábrica está despertando.",
+  ],
   cryptic: [
     "Hay una palabra que aún no existe.",
     "Si has llegado hasta aquí, no fue por casualidad.",
@@ -35,6 +43,7 @@ const PHRASE_SETS = {
     "Primavera 2026.",
   ],
 };
+window.PHRASE_SETS = PHRASE_SETS;
 
 const SIGNAL_LINES = [
   { t: "[ 00:00:01 ]", body: "Encendiendo nodo…", cls: "muted" },
@@ -122,6 +131,7 @@ function TopBar({ now }) {
 function BottomBar({ tweaks, setTweak }) {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const minds = useMindsCounter(247);
 
   const submit = (e) => {
     e.preventDefault();
@@ -133,9 +143,11 @@ function BottomBar({ tweaks, setTweak }) {
     <div className="footer">
       <div className="status">
         <span className="dot"></span>
-        <span>EN CONSTRUCCIÓN</span>
+        <span>EN LÍNEA</span>
         <span className="hairline" style={{ display: "inline-block", width: 18, height: 1, background: "var(--ink-faint)" }}></span>
-        <span>VOL. 01 · TRANSMISIÓN ABIERTA</span>
+        <span><span style={{ color: "var(--ink)" }}>{String(minds).padStart(4, "0")}</span> MINDS ACTIVAS</span>
+        <span className="hairline" style={{ display: "inline-block", width: 18, height: 1, background: "var(--ink-faint)" }}></span>
+        <span>VOL. 01 · ACCESO ANTICIPADO</span>
       </div>
 
       {tweaks.showSubscribe && (
@@ -305,7 +317,9 @@ function App() {
   }, [tweaks.tint]);
 
   let Stage = null;
-  if (tweaks.variant === "whispers") Stage = <Whispers tweaks={tweaks} />;
+  if (tweaks.variant === "network") Stage = <Network tweaks={tweaks} />;
+  else if (tweaks.variant === "synapse") Stage = <Synapse />;
+  else if (tweaks.variant === "whispers") Stage = <Whispers tweaks={tweaks} />;
   else if (tweaks.variant === "signal") Stage = <Signal />;
   else if (tweaks.variant === "countdown") Stage = <Countdown />;
   else if (tweaks.variant === "manifesto") Stage = <Manifesto tweaks={tweaks} />;
@@ -325,6 +339,8 @@ function App() {
             value={tweaks.variant}
             onChange={(v) => setTweak("variant", v)}
             options={[
+              { value: "network", label: "Red neuronal (minds vivas)" },
+              { value: "synapse", label: "Synapse log (intercambios)" },
               { value: "whispers", label: "Susurros (se difuminan)" },
               { value: "signal", label: "Señal (log de transmisión)" },
               { value: "countdown", label: "Contador (ignición)" },
@@ -347,26 +363,29 @@ function App() {
           />
         </TweakSection>
 
-        {tweaks.variant === "whispers" && (
-          <TweakSection label="Susurros">
-            <TweakRadio
-              label="Frases"
+        {(tweaks.variant === "whispers" || tweaks.variant === "network") && (
+          <TweakSection label={tweaks.variant === "network" ? "Frases sobre la red" : "Susurros"}>
+            <TweakSelect
+              label="Set"
               value={tweaks.phraseSet}
               onChange={(v) => setTweak("phraseSet", v)}
               options={[
-                { value: "cryptic", label: "Cripticas" },
+                { value: "minds", label: "Minds (sobre la red)" },
+                { value: "cryptic", label: "Crípticas" },
                 { value: "poetic", label: "Poéticas" },
                 { value: "literal", label: "Literales" },
               ]}
             />
-            <TweakSlider
-              label="Tempo (ms por frase)"
-              value={tweaks.tempo}
-              onChange={(v) => setTweak("tempo", v)}
-              min={5500}
-              max={14000}
-              step={500}
-            />
+            {tweaks.variant === "whispers" && (
+              <TweakSlider
+                label="Tempo (ms por frase)"
+                value={tweaks.tempo}
+                onChange={(v) => setTweak("tempo", v)}
+                min={5500}
+                max={14000}
+                step={500}
+              />
+            )}
           </TweakSection>
         )}
 
