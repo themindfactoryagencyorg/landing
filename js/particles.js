@@ -88,6 +88,115 @@ export function initParticles(canvasEl) {
     });
   }
 
+  // --- Synaptic pulses: particles that travel between logo and orbital particles ---
+  const SYNAPSE_COUNT = isMobile ? 2 : 5;
+  const LOGO_RADIUS = isMobile ? 80 : 130; // visual radius of the logo
+  const synapses = [];
+
+  function spawnSynapse() {
+    const target = particles[Math.floor(Math.random() * particles.length)];
+    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    const outbound = Math.random() > 0.4; // 60% outbound, 40% inbound
+    synapses.push({
+      target,
+      color,
+      progress: 0,                         // 0→1 travel progress
+      speed: 0.008 + Math.random() * 0.012, // vary travel time
+      outbound,                             // true = logo→particle, false = particle→logo
+      opacity: 0,
+      size: 2.5 + Math.random() * 2,
+      trail: [],
+    });
+  }
+
+  // Stagger initial spawns
+  for (let i = 0; i < SYNAPSE_COUNT; i++) {
+    setTimeout(() => spawnSynapse(), i * 600);
+  }
+
+  function updateSynapses() {
+    for (let i = synapses.length - 1; i >= 0; i--) {
+      const s = synapses[i];
+      s.progress += s.speed;
+
+      // Fade in/out
+      if (s.progress < 0.15) {
+        s.opacity = s.progress / 0.15;
+      } else if (s.progress > 0.85) {
+        s.opacity = (1 - s.progress) / 0.15;
+      } else {
+        s.opacity = 1;
+      }
+
+      // Calculate current position along the path
+      const t = s.outbound ? s.progress : 1 - s.progress;
+      // Start at logo edge, end at target particle
+      const angle = Math.atan2(s.target.y - cy, s.target.x - cx);
+      const startX = cx + Math.cos(angle) * LOGO_RADIUS;
+      const startY = cy + Math.sin(angle) * LOGO_RADIUS;
+      s.x = startX + (s.target.x - startX) * t;
+      s.y = startY + (s.target.y - startY) * t;
+
+      // Store trail positions
+      s.trail.push({ x: s.x, y: s.y, opacity: s.opacity });
+      if (s.trail.length > 12) s.trail.shift();
+
+      // Remove when done, respawn
+      if (s.progress >= 1) {
+        synapses.splice(i, 1);
+        setTimeout(spawnSynapse, 800 + Math.random() * 2000);
+      }
+    }
+  }
+
+  function drawSynapses() {
+    synapses.forEach(s => {
+      const { r, g, b } = s.color;
+
+      // Draw trail
+      for (let i = 0; i < s.trail.length; i++) {
+        const tp = s.trail[i];
+        const trailAlpha = (i / s.trail.length) * tp.opacity * 0.55;
+        const trailSize = s.size * (0.3 + 0.7 * (i / s.trail.length));
+        ctx.beginPath();
+        ctx.arc(tp.x, tp.y, trailSize, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${trailAlpha})`;
+        ctx.fill();
+      }
+
+      // Draw connection line from logo edge to current position
+      const angle = Math.atan2(s.target.y - cy, s.target.x - cx);
+      const edgeX = cx + Math.cos(angle) * LOGO_RADIUS;
+      const edgeY = cy + Math.sin(angle) * LOGO_RADIUS;
+      const lineAlpha = s.opacity * 0.35;
+      const grad = ctx.createLinearGradient(edgeX, edgeY, s.x, s.y);
+      grad.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${lineAlpha * 0.3})`);
+      grad.addColorStop(0.4, `rgba(${r}, ${g}, ${b}, ${lineAlpha})`);
+      grad.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${lineAlpha * 0.6})`);
+      ctx.beginPath();
+      ctx.moveTo(edgeX, edgeY);
+      ctx.lineTo(s.x, s.y);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      // Draw pulse dot (glow + core)
+      const glowGrad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.size * 6);
+      glowGrad.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${s.opacity * 0.8})`);
+      glowGrad.addColorStop(0.4, `rgba(${r}, ${g}, ${b}, ${s.opacity * 0.3})`);
+      glowGrad.addColorStop(1, 'transparent');
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.size * 6, 0, Math.PI * 2);
+      ctx.fillStyle = glowGrad;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${s.opacity})`;
+      ctx.fill();
+    });
+  }
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function updateParticles() {
@@ -178,7 +287,9 @@ export function initParticles(canvasEl) {
     ctx.clearRect(0, 0, W, H);
     updateLogoCenter();
     updateParticles();
+    updateSynapses();
     drawConnections();
+    drawSynapses();
     drawParticles();
   }
 

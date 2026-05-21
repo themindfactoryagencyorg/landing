@@ -2,10 +2,13 @@
 import { initI18n } from './i18n.js';
 import { initParticles } from './particles.js';
 import { initMinds } from './minds.js';
+import { initTsParticles } from './tsparticles-config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initI18n();
   initHamburger();
+  // tsParticles full-page background
+  initTsParticles();
   // Store cleanup refs for potential re-init (WR-06)
   window.__tmfCleanupParticles = initParticles(document.getElementById('hero-canvas'));
   window.__tmfCleanupMinds = initMinds(document.getElementById('minds-canvas'));

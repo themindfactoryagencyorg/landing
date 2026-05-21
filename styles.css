@@ -54,72 +54,13 @@ a {
 }
 
 /* ===========================
-   ATMOSPHERIC BACKGROUND ORBS
+   TSPARTICLES BACKGROUND
    =========================== */
-.bg-atmosphere {
+#tsparticles {
   position: fixed;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
   pointer-events: none;
-}
-
-.bg-atmosphere__orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  animation: orbFloat 20s ease-in-out infinite alternate;
-}
-
-.bg-atmosphere__orb--cyan {
-  width: 500px;
-  height: 500px;
-  background: rgba(0, 212, 255, 0.07);
-  top: 10%;
-  left: 15%;
-}
-
-.bg-atmosphere__orb--violet {
-  width: 600px;
-  height: 600px;
-  background: rgba(123, 47, 190, 0.06);
-  top: 30%;
-  right: 10%;
-  animation-delay: -7s;
-}
-
-.bg-atmosphere__orb--magenta {
-  width: 450px;
-  height: 450px;
-  background: rgba(255, 45, 138, 0.05);
-  bottom: 20%;
-  left: 40%;
-  animation-delay: -13s;
-}
-
-.bg-atmosphere__orb--amber {
-  width: 400px;
-  height: 400px;
-  background: rgba(255, 160, 50, 0.04);
-  bottom: 10%;
-  right: 20%;
-  animation-delay: -3s;
-}
-
-.bg-atmosphere__orb--blue {
-  width: 550px;
-  height: 550px;
-  background: rgba(65, 105, 225, 0.05);
-  top: 60%;
-  left: 5%;
-  animation-delay: -10s;
-}
-
-@keyframes orbFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.05); }
-  66% { transform: translate(-20px, 15px) scale(0.95); }
-  100% { transform: translate(10px, -10px) scale(1.02); }
 }
 
 /* ===========================
