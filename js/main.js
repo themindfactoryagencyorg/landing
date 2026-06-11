@@ -133,7 +133,7 @@ function initHeroTimeline() {
 function initSectionReveals() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const sections = ['.marquee', '.services', '.minds', '.verticals', '.process', '.cta-final', '.footer'];
+  const sections = ['.marquee', '.services', '.minds', '.verticals', '.tmf-qs', '.process', '.cta-final', '.footer'];
 
   try {
     sections.forEach(sel => {
@@ -154,7 +154,7 @@ function initSectionReveals() {
       });
 
       // Stagger children — 150ms between items (D-15)
-      const children = el.querySelectorAll('.service-card, .process__step, .vertical-pill, .minds__stage-card');
+      const children = el.querySelectorAll('.service-card, .process__step, .vertical-pill, .minds__stage-card, .tmf-qs__card');
       if (children.length > 0) {
         gsap.from(children, {
           opacity: 0,

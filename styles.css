@@ -201,6 +201,17 @@ section {
   padding: 6rem 0;
 }
 
+.marquee,
+.services,
+.minds,
+.verticals,
+.tmf-qs,
+.process,
+.cta-final,
+.footer {
+  border-top: 1px solid var(--border-subtle);
+}
+
 /* ===========================
    GRAIN TEXTURE OVERLAY
    =========================== */
@@ -1150,6 +1161,111 @@ body::after {
   width: 1.5em;
   height: 1.5em;
   color: #00D4FF;
+}
+
+/* ===========================
+   QUIENES SOMOS
+   =========================== */
+.tmf-qs {
+  position: relative;
+  padding: 6rem 0;
+  background: linear-gradient(180deg, rgba(18, 18, 26, 0.56), rgba(10, 10, 15, 0.2));
+}
+
+.tmf-qs__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tmf-qs__title {
+  max-width: 820px;
+}
+
+.tmf-qs__lead {
+  max-width: 760px;
+}
+
+.tmf-qs__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.tmf-qs__card {
+  position: relative;
+  overflow: hidden;
+  min-height: 270px;
+  padding: 2rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.tmf-qs__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+}
+
+.tmf-qs__card--tech::before {
+  background: var(--violet);
+}
+
+.tmf-qs__card--biz::before {
+  background: var(--cyan);
+}
+
+.tmf-qs__card-title {
+  margin-bottom: 0.875rem;
+  font-size: 1.3rem;
+}
+
+.tmf-qs__card-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.tmf-qs__principle {
+  max-width: 860px;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--violet);
+  color: var(--text-primary);
+  font-size: clamp(1.125rem, 2vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.tmf-qs__principle em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: var(--cyan);
+}
+
+@media (max-width: 767px) {
+  .tmf-qs {
+    padding: 4rem 0;
+  }
+
+  .tmf-qs__grid {
+    grid-template-columns: 1fr;
+    margin: 2rem 0;
+  }
+
+  .tmf-qs__card {
+    min-height: 0;
+    padding: 1.5rem;
+  }
 }
 
 /* Reduced motion: disable all animations (D-22) */
