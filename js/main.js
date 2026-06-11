@@ -1,7 +1,7 @@
 // main.js — Init entry point
 import { initI18n } from './i18n.js';
 import { initParticles } from './particles.js';
-import { initMinds } from './minds.js';
+import { initMinds } from './minds.js?v=20260611-neural-minds-3';
 import { initTsParticles } from './tsparticles-config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -154,7 +154,7 @@ function initSectionReveals() {
       });
 
       // Stagger children — 150ms between items (D-15)
-      const children = el.querySelectorAll('.service-card, .process__step, .vertical-pill, .minds__stage-card, .tmf-qs__card');
+      const children = el.querySelectorAll('.service-card, .process__step, .vertical-pill, .tmf-qs__card');
       if (children.length > 0) {
         gsap.from(children, {
           opacity: 0,
