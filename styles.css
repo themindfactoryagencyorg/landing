@@ -287,6 +287,21 @@ body::after {
   color: var(--text-primary);
 }
 
+/* "Acceso" — entrada a la app vía /app/ (relativo: cada entorno —prod/dev—
+   redirige a su propia app). Pill sutil, secundario al CTA con gradiente. */
+.nav__links a.nav__login {
+  color: var(--text-primary);
+  border: 1px solid var(--border-hover);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  transition: border-color 0.3s, background 0.3s, color 0.3s;
+}
+
+.nav__links a.nav__login:hover {
+  border-color: var(--cyan);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .nav__actions {
   display: flex;
   align-items: center;
