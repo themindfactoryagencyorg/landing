@@ -1,31 +1,58 @@
-# landing
+# TheMindFactory · Landing
 
-Landing page de The Mind Factory Agency. Ahora mismo es un placeholder
-en plan "waiting for the real web" — cuando llegue la web real, este repo
-se reescribe o se sustituye.
+Web institucional de TMF: software a medida con inteligencia integrada para pymes.
+HTML, CSS y módulos JavaScript, sin compilación ni dependencias de desarrollo.
 
-Sirve directamente en `themindfactory.es`.
+## Rediseño en revisión local
 
-## Stack
+La rama `redesign/connected-minds` contiene la propuesta nueva. No está publicada.
+Mantiene el logo original y el acceso a la aplicación de producción.
 
-HTML + CSS + JS planos. Sin framework, sin build, sin dependencias de
-desarrollo. Lo que hay en la raíz del repo es exactamente lo que se sirve.
+```sh
+python3 -m http.server 8018 --bind 127.0.0.1
+# http://127.0.0.1:8018
+```
 
-## Despliegue
+Hay que servirla por HTTP: los módulos JavaScript y las rutas absolutas no están
+pensados para abrir `index.html` mediante `file://`.
 
-Rama única `main`. Cada push a `main` dispara `.github/workflows/deploy.yml`
-y queda publicado en pocos segundos.
+## Estructura
 
-Trigger manual: `gh workflow run "Deploy landing"`.
+- `index.html`: contenido ES/EN, navegación, casos y contacto.
+- `styles.css`: identidad visual, layouts y adaptación responsive.
+- `js/main.js`: explorador de Minds, demo local de venta, navegación y transiciones.
+- `js/i18n.js`: idioma, metadatos y preferencia local `tmf-lang`.
+- `js/network.js`: diagrama de red proyectado en 3D sobre Canvas 2D.
+- `assets/logo-white.png`: logo original, sin modificaciones.
+- `assets/vendor/`: GSAP 3.12.5 y ScrollTrigger 3.12.5, servidos localmente.
 
-## Cómo modificar
+Las fuentes DM Sans e IBM Plex Mono se cargan desde Google Fonts con fuentes de
+respaldo. La página permanece legible si las fuentes o GSAP no están disponibles.
+El Canvas se pausa fuera de pantalla y respeta `prefers-reduced-motion`.
+La escena central se fija al scroll solo en pantallas de al menos 901 × 820 px;
+en móvil y movimiento reducido, los controles cambian sus tres etapas.
 
-Edita `index.html` (y cualquier otro asset que metas), commit, push a `main`.
+Los datos de los paneles son ilustrativos. La simulación modifica únicamente el
+DOM local: no contacta con APIs ni registra ventas. El contacto abre el programa
+de correo del visitante, sin enviar nada automáticamente.
 
-Si añades imágenes o CSS aparte, referéncialos con paths absolutos
-(`/foo.png`, `/styles/bar.css`) — se sirven desde la raíz del dominio.
+## Publicación existente
 
-Para verlo en local: abre `index.html` en el navegador, o levanta un
-servidor estático rápido con `python3 -m http.server 8000`.
+`main` es la rama publicada. Un push a `main` dispara `.github/workflows/deploy.yml`.
+GitHub Actions copia los archivos por SSH/rsync a
+`/home/tmf/apps/tmf-prod/tmf-landing`. Caddy sirve la raíz de `themindfactory.es`.
+La configuración de Caddy pertenece a `tmf-infra`; `/app/` redirige a Qrema.
 
-Más detalles para agentes (Claude / Cursor / etc.): ver [AGENTS.md](./AGENTS.md).
+**Este rediseño requiere la aprobación del usuario antes de integrarlo en `main`
+o de publicar.** El workflow existente no se ha modificado.
+
+## Decisiones editoriales para la revisión
+
+- Casos anonimizados, basados en el brief recibido. Las próximas fases están
+  separadas de las funciones ya descritas como entregadas.
+- No se publican estadísticas de mercado, comparaciones de precios o plazos
+  garantizados sin respaldo adicional.
+- Se mantiene `hola@themindfactory.es`, presente en producción; el brief indica
+  `info@themindfactory.es`. Confirmar la dirección elegida antes de publicar.
+- Se omiten cifras de fundadores y empleadores mientras existan diferencias
+  entre el brief y la web anterior.
