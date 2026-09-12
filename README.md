@@ -62,3 +62,7 @@ El workflow existente no se ha modificado.
 - Dirección de contacto confirmada: `info@themindfactory.es`.
 - Se omiten cifras de fundadores y empleadores mientras existan diferencias
   entre el brief y la web anterior.
+
+Los CSS y módulos JS incluyen una versión en la URL para evitar mezclar archivos
+antiguos en navegadores que ya visitaron la web. Al modificarlos, actualizar la
+versión tanto en `index.html` como en los imports de `js/main.js`.
