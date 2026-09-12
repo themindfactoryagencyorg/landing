@@ -9,14 +9,32 @@
       content="Software a medida para conectar ventas, stock, proyectos y equipo. Construimos la mente operativa de tu negocio."
     />
     <meta name="theme-color" content="#0b0e10" />
-    <link rel="icon" href="/assets/logo-white.png" type="image/png" />
+    <link
+      rel="icon"
+      href="/assets/brand/tmf-b1-favicon-oscuro.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      href="/assets/brand/tmf-b1-favicon-oscuro.ico"
+      sizes="16x16 24x24 32x32 48x48 64x64"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/assets/brand/tmf-b1-app-oscuro-180.png"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" href="/assets/logo-white.png" as="image" />
+    <link
+      rel="preload"
+      href="/assets/brand/tmf-b1-vertical-menta.svg"
+      as="image"
+      type="image/svg+xml"
+    />
     <link rel="stylesheet" href="/styles.css" />
     <script defer src="/assets/vendor/gsap.min.js"></script>
     <script defer src="/assets/vendor/ScrollTrigger.min.js"></script>
@@ -30,11 +48,15 @@
     >
     <div class="reading-progress" aria-hidden="true"></div>
     <header class="nav" id="nav">
-      <a class="brand" href="#hero" aria-label="TheMindFactory — inicio"
-        ><img src="/assets/logo-white.png" width="72" height="48" alt="" /><span
-          >TheMindFactory</span
-        ></a
-      >
+      <a class="brand" href="#hero" aria-label="TheMindFactory — inicio">
+        <img
+          src="/assets/brand/tmf-b1-horizontal-menta.svg"
+          width="905"
+          height="151"
+          alt="TheMindFactory"
+        />
+        <span class="brand-tagline" lang="en">When AI meets humanity.</span>
+      </a>
       <nav class="nav-links" id="nav-links" aria-label="Principal">
         <a href="#sistema"
           ><span data-es="El sistema" data-en="The system">El sistema</span></a
@@ -70,17 +92,18 @@
     <main id="main">
       <section class="hero" id="hero">
         <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-network" aria-hidden="true">
-          <canvas id="network-canvas"></canvas>
+        <div class="hero-network">
+          <canvas id="network-canvas" aria-hidden="true"></canvas>
           <div class="network-center">
             <img
-              src="/assets/logo-white.png"
-              width="1536"
-              height="1024"
-              alt=""
+              src="/assets/brand/tmf-b1-vertical-menta.svg"
+              width="821"
+              height="526"
+              alt="TheMindFactory"
             />
+            <p class="brand-tagline" lang="en">When AI meets humanity.</p>
           </div>
-          <div class="network-caption">
+          <div class="network-caption" aria-hidden="true">
             <span class="tiny-cross">+</span> THE MIND FACTORY
             <span>CONNECTED INTELLIGENCE</span>
           </div>
@@ -979,12 +1002,16 @@
               >
             </h2>
             <div class="about-signature">
-              <img
-                src="/assets/logo-white.png"
-                width="240"
-                height="160"
-                alt="The Mind Factory"
-              /><span>MADRID, ESPAÑA<br />THE MIND FACTORY</span>
+              <div class="about-brand">
+                <img
+                  src="/assets/brand/tmf-b1-horizontal-menta.svg"
+                  width="905"
+                  height="151"
+                  alt="TheMindFactory"
+                />
+                <p class="brand-tagline" lang="en">When AI meets humanity.</p>
+              </div>
+              <span>MADRID, ESPAÑA</span>
             </div>
           </div>
           <div class="about-copy">
@@ -1070,8 +1097,16 @@
     </main>
     <footer class="footer">
       <a href="#hero" class="footer-wordmark" aria-label="Volver al inicio"
-        >TheMindFactory<span>↗</span></a
+        ><img
+          src="/assets/brand/tmf-b1-logotipo-menta.svg"
+          width="789"
+          height="143"
+          alt="TheMindFactory"
+        /><span aria-hidden="true">↗</span></a
       >
+      <p class="brand-tagline footer-tagline" lang="en">
+        When AI meets humanity.
+      </p>
       <div class="footer-bottom">
         <span>© 2026 TheMindFactory</span
         ><span

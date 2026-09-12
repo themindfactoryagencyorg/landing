@@ -6,7 +6,8 @@ HTML, CSS y módulos JavaScript, sin compilación ni dependencias de desarrollo.
 ## Rediseño en revisión local
 
 La rama `redesign/connected-minds` contiene la propuesta nueva. No está publicada.
-Mantiene el logo original y el acceso a la aplicación de producción.
+Incorpora el logo vectorial B1 y el lema «When AI meets humanity.», fijo en ambos
+idiomas. Mantiene el acceso a la aplicación de producción.
 
 ```sh
 python3 -m http.server 8018 --bind 127.0.0.1
@@ -23,7 +24,8 @@ pensados para abrir `index.html` mediante `file://`.
 - `js/main.js`: explorador de Minds, demo local de venta, navegación y transiciones.
 - `js/i18n.js`: idioma, metadatos y preferencia local `tmf-lang`.
 - `js/network.js`: diagrama de red proyectado en 3D sobre Canvas 2D.
-- `assets/logo-white.png`: logo original, sin modificaciones.
+- `assets/brand/`: B1 vectorial, favicon SVG/ICO e icono Apple.
+- `assets/logo-white.png`: archivo del logo anterior, conservado pero no utilizado.
 - `assets/vendor/`: GSAP 3.12.5 y ScrollTrigger 3.12.5, servidos localmente.
 
 Las fuentes DM Sans e IBM Plex Mono se cargan desde Google Fonts con fuentes de

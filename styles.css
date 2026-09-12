@@ -134,22 +134,26 @@ em {
 }
 .brand {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.8px;
-  white-space: nowrap;
-  gap: 8px;
+  flex: 0 0 auto;
+  gap: 3px;
 }
 .brand img {
-  width: 48px;
-  height: 40px;
-  object-fit: contain;
+  width: 224px;
+  height: auto;
 }
-.brand-dot {
-  font: 12px var(--mono);
-  vertical-align: top;
-  margin-left: 3px;
+.brand-tagline {
+  margin: 0;
+  color: var(--mint);
+  font-family: var(--font);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.065em;
+  white-space: nowrap;
+}
+.brand .brand-tagline {
+  font-size: 10px;
 }
 .nav-links {
   display: flex;
@@ -338,9 +342,18 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 57%;
-  max-width: 540px;
-  filter: drop-shadow(0 0 55px #654ca12a);
+  width: 44%;
+  max-width: 420px;
+  text-align: center;
+  filter: drop-shadow(0 0 45px #b5f5d71a);
+}
+.network-center img {
+  width: 100%;
+  height: auto;
+}
+.network-center .brand-tagline {
+  font-size: clamp(12px, 1.1vw, 17px);
+  margin-top: 7px;
 }
 .network-caption {
   position: absolute;
@@ -1204,10 +1217,18 @@ h1 {
   margin-top: 45px;
 }
 .about-signature img {
-  width: 130px;
+  width: 260px;
   height: auto;
 }
-.about-signature span {
+.about-brand {
+  flex: 0 0 auto;
+  text-align: center;
+}
+.about-brand .brand-tagline {
+  font-size: 11px;
+  margin-top: 5px;
+}
+.about-signature > span {
   font: 10px/1.8 var(--mono);
   letter-spacing: 0.06em;
   color: #7a8c82;
@@ -1279,6 +1300,14 @@ h1 {
   line-height: 1.2;
   font-weight: 500;
 }
+.footer-wordmark img {
+  width: 86%;
+  height: auto;
+}
+.footer-tagline {
+  font-size: clamp(13px, 1.6vw, 23px);
+  margin: 8px 0 0 3.5%;
+}
 .footer-wordmark > span {
   font-size: 0.8em;
   color: var(--mint);
@@ -1341,7 +1370,7 @@ h1 {
     font-size: 17px;
   }
   .brand img {
-    width: 35px;
+    width: 190px;
   }
   .nav-contact {
     gap: 15px;
@@ -1594,7 +1623,7 @@ h1 {
     gap: 3px;
   }
   .brand img {
-    width: 36px;
+    width: 188px;
   }
   .nav-contact {
     display: none;
@@ -1645,7 +1674,7 @@ h1 {
   }
   .network-center {
     width: 60%;
-    max-width: 390px;
+    max-width: 310px;
   }
   .network-caption {
     bottom: 4%;
@@ -1965,10 +1994,11 @@ h1 {
   }
   .about-signature {
     margin: 27px 0 35px;
-    gap: 25px;
+    flex-wrap: wrap;
+    gap: 18px;
   }
   .about-signature img {
-    width: 110px;
+    width: 220px;
   }
   .about-copy > p {
     font-size: 16px;
@@ -2050,7 +2080,7 @@ h1 {
     right: 0;
   }
   .network-center {
-    width: 88%;
+    width: 76%;
   }
   .mind-tab {
     flex-direction: column;
