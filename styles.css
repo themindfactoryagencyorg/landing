@@ -337,6 +337,46 @@ h1 {
   height: 100%;
   display: block;
 }
+.network-trigger {
+  position: absolute;
+  inset: 12% 13%;
+  border-radius: 50%;
+  padding: 0;
+  background: transparent;
+  pointer-events: auto;
+  cursor: crosshair;
+  touch-action: pan-y pinch-zoom;
+  -webkit-tap-highlight-color: transparent;
+}
+.network-trigger[hidden] {
+  display: none;
+}
+.network-trigger:focus-visible {
+  outline: 1px solid var(--mint);
+  outline-offset: 12px;
+}
+.network-center::before {
+  content: "";
+  position: absolute;
+  inset: -15% -10% 0;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    #b5f5d738,
+    #b5f5d708 48%,
+    transparent 70%
+  );
+  opacity: var(--network-energy, 0);
+  transform: scale(calc(0.9 + var(--network-energy, 0) * 0.15));
+}
+.network-center img {
+  filter: drop-shadow(0 0 calc(var(--network-energy, 0) * 22px) #b5f5d7a0);
+}
+.network-caption .network-hint,
+.network-caption .network-hint span {
+  color: #a0cbb8;
+}
 .network-center {
   position: absolute;
   top: 50%;

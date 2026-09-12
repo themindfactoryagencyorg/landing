@@ -3,6 +3,16 @@ export function initNetwork(canvas) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const surface = canvas.parentElement;
+  const trigger = surface.querySelector(".network-trigger");
+  const core = surface.querySelector(".network-center");
+  const pointer = { x: 0, y: 0, active: false };
+  let projected = [],
+    pulses = [],
+    energy = 0,
+    lastPulse = -Infinity;
+  let feedbackTimer;
+  const focus = { x: 0, y: 0 };
   let width = 1,
     height = 1,
     visible = true,
@@ -23,16 +33,24 @@ export function initNetwork(canvas) {
     ];
   });
   const edges = [];
+  const neighbours = nodes.map(() => []);
+  const motion = nodes.map(() => ({ x: 0, y: 0, heat: 0 }));
   nodes.forEach((a, i) =>
     nodes.forEach((b, j) => {
       if (j > i && Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]) < 0.32)
         edges.push([i, j]);
     }),
   );
+  edges.forEach(([a, b]) => {
+    neighbours[a].push(b);
+    neighbours[b].push(a);
+  });
   function resize() {
-    const r = canvas.getBoundingClientRect();
-    width = r.width;
-    height = r.height;
+    width = canvas.clientWidth;
+    height = canvas.clientHeight;
+    const logo = core.querySelector("img");
+    focus.x = width / 2;
+    focus.y = height / 2 - core.offsetHeight / 2 + logo.clientHeight * 0.394;
     const dpr = Math.min(devicePixelRatio || 1, 2);
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
@@ -53,7 +71,7 @@ export function initNetwork(canvas) {
       z: zz,
     };
   }
-  function draw() {
+  function draw(delta = 0) {
     ctx.clearRect(0, 0, width, height);
     const radius = Math.min(width * (width < 550 ? 0.34 : 0.39), height * 0.42);
     const glow = ctx.createRadialGradient(
@@ -69,13 +87,30 @@ export function initNetwork(canvas) {
     glow.addColorStop(1, "rgba(104,157,131,0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, width, height);
-    const pts = nodes.map((v) => project(v, radius));
+    const reach = Math.max(90, Math.min(180, radius * 0.65));
+    const settle = 1 - Math.exp(-delta * 9);
+    const pts = nodes.map((v, i) => {
+      const pt = project(v, radius),
+        m = motion[i];
+      const distance = Math.hypot(pointer.x - pt.x, pointer.y - pt.y);
+      const influence =
+        pointer.active && !reduced.matches
+          ? Math.max(0, 1 - distance / reach) ** 2
+          : 0;
+      const attraction = influence * 0.55;
+      m.x += ((pointer.x - pt.x) * attraction - m.x) * settle;
+      m.y += ((pointer.y - pt.y) * attraction - m.y) * settle;
+      m.heat += (influence - m.heat) * settle;
+      return { x: pt.x + m.x, y: pt.y + m.y, z: pt.z, heat: m.heat };
+    });
+    projected = pts;
     edges.forEach(([a, b], i) => {
       const u = pts[a],
         v = pts[b];
-      const opacity = 0.035 + Math.max(0, (u.z + v.z) / 2) * 0.12;
+      const heat = Math.max(u.heat, v.heat);
+      const opacity = 0.035 + Math.max(0, (u.z + v.z) / 2) * 0.12 + heat * 0.48;
       ctx.strokeStyle = `rgba(157,204,183,${opacity})`;
-      ctx.lineWidth = 0.65;
+      ctx.lineWidth = 0.65 + heat * 0.8;
       ctx.beginPath();
       ctx.moveTo(u.x, u.y);
       ctx.lineTo(v.x, v.y);
@@ -95,12 +130,13 @@ export function initNetwork(canvas) {
       }
     });
     pts.forEach((pt, i) => {
-      const a = 0.13 + (pt.z + 1) * 0.26;
+      const a = Math.min(1, 0.13 + (pt.z + 1) * 0.26 + pt.heat * 0.65);
       ctx.fillStyle = `rgba(177,225,202,${a})`;
       ctx.beginPath();
-      ctx.arc(pt.x, pt.y, i % 13 === 0 ? 2 : 1, 0, Math.PI * 2);
+      ctx.arc(pt.x, pt.y, (i % 13 === 0 ? 2 : 1) + pt.heat * 2, 0, Math.PI * 2);
       ctx.fill();
     });
+    drawPulses(pts, delta);
     ctx.save();
     ctx.translate(width / 2, height / 2);
     ctx.rotate(-0.33);
@@ -140,6 +176,167 @@ export function initNetwork(canvas) {
       ctx.fillRect(px - 2, py - 2, 3, 3);
     });
   }
+  // Route each signal through actual network edges, favouring the visible hemisphere.
+  function route(source, target) {
+    const distance = nodes.map(() => Infinity),
+      previous = nodes.map(() => -1);
+    const visited = new Set();
+    distance[source] = 0;
+    for (let k = 0; k < nodes.length; k++) {
+      let current = -1;
+      distance.forEach((d, i) => {
+        if (!visited.has(i) && (current < 0 || d < distance[current]))
+          current = i;
+      });
+      if (
+        current < 0 ||
+        !Number.isFinite(distance[current]) ||
+        current === target
+      )
+        break;
+      visited.add(current);
+      neighbours[current].forEach((next) => {
+        const a = projected[current],
+          b = projected[next];
+        const cost =
+          Math.hypot(a.x - b.x, a.y - b.y) + 35 + Math.max(0, -b.z) * 90;
+        if (distance[current] + cost < distance[next]) {
+          distance[next] = distance[current] + cost;
+          previous[next] = current;
+        }
+      });
+    }
+    const result = [target];
+    while (result[0] !== source && previous[result[0]] >= 0)
+      result.unshift(previous[result[0]]);
+    return result;
+  }
+  function drawPulses(pts, delta) {
+    energy *= Math.exp(-delta * 3.8);
+    pulses.forEach((pulse) => {
+      const age = time - pulse.start,
+        progress = Math.min(1, age / pulse.duration);
+      const path = pulse.path.map((i) => pts[i]).concat(focus);
+      const lengths = path
+        .slice(1)
+        .map((p, i) => Math.hypot(p.x - path[i].x, p.y - path[i].y));
+      const length = lengths.reduce((sum, n) => sum + n, 0);
+      const head = progress * length;
+      let travelled = 0;
+      ctx.save();
+      ctx.lineCap = "round";
+      lengths.forEach((len, i) => {
+        const a = path[i],
+          b = path[i + 1];
+        const start = Math.max(0, (head - 100 - travelled) / (len || 1));
+        const end = Math.min(1, (head - travelled) / (len || 1));
+        if (end > start && start < 1 && end > 0) {
+          ctx.strokeStyle = `rgba(181,245,215,${0.8 * (1 - Math.max(0, age - pulse.duration) / 0.3)})`;
+          ctx.lineWidth = 1.8;
+          ctx.shadowColor = "#b5f5d7";
+          ctx.shadowBlur = 9;
+          ctx.beginPath();
+          ctx.moveTo(a.x + (b.x - a.x) * start, a.y + (b.y - a.y) * start);
+          ctx.lineTo(a.x + (b.x - a.x) * end, a.y + (b.y - a.y) * end);
+          ctx.stroke();
+          if (head >= travelled && head <= travelled + len) {
+            ctx.fillStyle = "#effff6";
+            ctx.beginPath();
+            ctx.arc(
+              a.x + (b.x - a.x) * end,
+              a.y + (b.y - a.y) * end,
+              2.8,
+              0,
+              Math.PI * 2,
+            );
+            ctx.fill();
+          }
+        }
+        travelled += len;
+      });
+      const origin = pts[pulse.path[0]];
+      if (age < 0.65) {
+        ctx.shadowBlur = 0;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(181,245,215,${(1 - age / 0.65) * 0.5})`;
+        ctx.beginPath();
+        ctx.arc(origin.x, origin.y, 5 + age * 65, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      ctx.restore();
+      if (progress === 1 && !pulse.arrived) {
+        pulse.arrived = true;
+        energy = Math.min(1, energy + 0.85);
+      }
+    });
+    pulses = pulses.filter((p) => time - p.start < p.duration + 0.3);
+    core.style.setProperty("--network-energy", energy.toFixed(3));
+  }
+  function localPoint(e) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: ((e.clientX - rect.left) * width) / rect.width,
+      y: ((e.clientY - rect.top) * height) / rect.height,
+    };
+  }
+  function activate(e) {
+    const now = performance.now();
+    if (now - lastPulse < 400 || !visible || document.hidden) return;
+    lastPulse = now;
+    if (reduced.matches) {
+      core.style.setProperty("--network-energy", ".35");
+      clearTimeout(feedbackTimer);
+      feedbackTimer = setTimeout(
+        () => core.style.setProperty("--network-energy", "0"),
+        650,
+      );
+      return;
+    }
+    if (!projected.length) return;
+    const point =
+      e.detail === 0 ? { x: width * 0.77, y: height * 0.57 } : localPoint(e);
+    let source = 0,
+      target = 0,
+      near = Infinity,
+      central = Infinity;
+    projected.forEach((pt, i) => {
+      const d =
+        Math.hypot(pt.x - point.x, pt.y - point.y) + Math.max(0, -pt.z) * 30;
+      const c =
+        Math.hypot(pt.x - focus.x, pt.y - focus.y) + Math.max(0, -pt.z) * 100;
+      if (d < near) {
+        source = i;
+        near = d;
+      }
+      if (c < central) {
+        target = i;
+        central = c;
+      }
+    });
+    const path = route(source, target);
+    pulses.push({
+      path,
+      start: time,
+      duration: Math.min(1.6, 0.65 + path.length * 0.075),
+      arrived: false,
+    });
+    if (pulses.length > 3) pulses.shift();
+    start();
+  }
+  function release() {
+    pointer.active = false;
+    mx = my = 0;
+  }
+  function clearInteraction() {
+    release();
+    pulses = [];
+    energy = 0;
+    motion.forEach((m) => {
+      m.x = m.y = m.heat = 0;
+    });
+    clearTimeout(feedbackTimer);
+    core.style.setProperty("--network-energy", "0");
+  }
   function tick(now) {
     frame = 0;
     if (!visible || document.hidden || reduced.matches) return;
@@ -148,7 +345,7 @@ export function initNetwork(canvas) {
     time += delta;
     rx += (mx - rx) * 0.025;
     ry += (my - ry) * 0.025;
-    draw();
+    draw(delta);
     frame = requestAnimationFrame(tick);
   }
   function start() {
@@ -164,6 +361,7 @@ export function initNetwork(canvas) {
       else {
         cancelAnimationFrame(frame);
         frame = 0;
+        clearInteraction();
       }
     },
     { rootMargin: "100px" },
@@ -171,21 +369,45 @@ export function initNetwork(canvas) {
   io.observe(canvas);
   const ro = new ResizeObserver(resize);
   ro.observe(canvas);
-  window.addEventListener(
+  trigger.hidden = false;
+  trigger.addEventListener(
     "pointermove",
     (e) => {
-      mx = (e.clientX / innerWidth - 0.5) * 0.3;
-      my = (e.clientY / innerHeight - 0.5) * 0.18;
+      if (e.pointerType === "touch" || reduced.matches) return;
+      Object.assign(pointer, localPoint(e), { active: true });
+      mx = (pointer.x / width - 0.5) * 0.2;
+      my = (pointer.y / height - 0.5) * 0.12;
     },
     { passive: true },
   );
-  document.addEventListener("visibilitychange", start);
-  document.addEventListener("tmf:language", draw);
+  trigger.addEventListener("pointerleave", release);
+  trigger.addEventListener("pointercancel", release);
+  trigger.addEventListener("click", activate);
+  window.addEventListener("blur", clearInteraction);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      clearInteraction();
+    } else start();
+  });
+  function language() {
+    trigger.setAttribute(
+      "aria-label",
+      document.documentElement.lang === "en"
+        ? "Send a pulse to the TMF brain"
+        : "Enviar un impulso al cerebro de TMF",
+    );
+    draw();
+  }
+  document.addEventListener("tmf:language", language);
   reduced.addEventListener("change", () => {
     cancelAnimationFrame(frame);
     frame = 0;
+    clearInteraction();
     start();
   });
+  language();
   resize();
   start();
 }

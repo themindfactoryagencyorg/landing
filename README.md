@@ -31,6 +31,10 @@ pensados para abrir `index.html` mediante `file://`.
 Las fuentes DM Sans e IBM Plex Mono se cargan desde Google Fonts con fuentes de
 respaldo. La página permanece legible si las fuentes o GSAP no están disponibles.
 El Canvas se pausa fuera de pantalla y respeta `prefers-reduced-motion`.
+La red atrae e ilumina nodos próximos al cursor. Un clic, toque o activación por
+teclado envía un impulso por sus conexiones hasta B1, que responde con luz.
+Los gestos verticales y el zoom siguen disponibles en móvil; con movimiento
+reducido, la respuesta es una iluminación estática breve, sin recorrido animado.
 La escena central se fija al scroll solo en pantallas de al menos 901 × 820 px;
 en móvil y movimiento reducido, los controles cambian sus tres etapas.
 
