@@ -19,7 +19,7 @@ pensados para abrir `index.html` mediante `file://`.
 
 ## Estructura
 
-- `index.html`: contenido ES/EN, navegación, casos y contacto.
+- `index.html`: contenido ES/EN, navegación, soluciones y contacto.
 - `styles.css`: identidad visual, layouts y adaptación responsive.
 - `js/main.js`: explorador de Minds, demo local de venta, navegación y transiciones.
 - `js/i18n.js`: idioma, metadatos y preferencia local `tmf-lang`.
@@ -54,8 +54,9 @@ o de publicar.** El workflow existente no se ha modificado.
 
 ## Decisiones editoriales para la revisión
 
-- Casos anonimizados, basados en el brief recibido. Las próximas fases están
-  separadas de las funciones ya descritas como entregadas.
+- La sección 03 presenta soluciones por necesidad (ventas y gestión, proyectos
+  y coordinación, equipos y operaciones). No identifica clientes ni sectores
+  concretos ni presenta estas posibilidades como casos de éxito entregados.
 - No se publican estadísticas de mercado, comparaciones de precios o plazos
   garantizados sin respaldo adicional.
 - Se mantiene `hola@themindfactory.es`, presente en producción; el brief indica
