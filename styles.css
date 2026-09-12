@@ -2158,3 +2158,16 @@ h1 {
     font-size: 22px;
   }
 }
+
+/* Fixed vector shapes prevent mobile fonts from substituting color emoji. */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.12em;
+  flex: 0 0 auto;
+  pointer-events: none;
+}
+.title-asterisk .icon {
+  display: block;
+}
