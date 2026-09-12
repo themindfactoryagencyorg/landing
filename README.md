@@ -3,9 +3,9 @@
 Web institucional de TMF: software a medida con inteligencia integrada para pymes.
 HTML, CSS y módulos JavaScript, sin compilación ni dependencias de desarrollo.
 
-## Rediseño en revisión local
+## Rediseño aprobado
 
-La rama `redesign/connected-minds` contiene la propuesta nueva. No está publicada.
+Rediseño aprobado para publicación el 12 de septiembre de 2026.
 Incorpora el logo vectorial B1 y el lema «When AI meets humanity.», fijo en ambos
 idiomas. Mantiene el acceso a la aplicación de producción.
 
@@ -49,8 +49,8 @@ GitHub Actions copia los archivos por SSH/rsync a
 `/home/tmf/apps/tmf-prod/tmf-landing`. Caddy sirve la raíz de `themindfactory.es`.
 La configuración de Caddy pertenece a `tmf-infra`; `/app/` redirige a Qrema.
 
-**Este rediseño requiere la aprobación del usuario antes de integrarlo en `main`
-o de publicar.** El workflow existente no se ha modificado.
+El usuario ha autorizado integrar este rediseño en `main` y publicarlo.
+El workflow existente no se ha modificado.
 
 ## Decisiones editoriales para la revisión
 
@@ -59,7 +59,6 @@ o de publicar.** El workflow existente no se ha modificado.
   concretos ni presenta estas posibilidades como casos de éxito entregados.
 - No se publican estadísticas de mercado, comparaciones de precios o plazos
   garantizados sin respaldo adicional.
-- Se mantiene `hola@themindfactory.es`, presente en producción; el brief indica
-  `info@themindfactory.es`. Confirmar la dirección elegida antes de publicar.
+- Dirección de contacto confirmada: `info@themindfactory.es`.
 - Se omiten cifras de fundadores y empleadores mientras existan diferencias
   entre el brief y la web anterior.
