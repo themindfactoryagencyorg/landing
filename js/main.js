@@ -1,5 +1,5 @@
-import { initI18n, translate as tr } from "./i18n.js?v=local-feedback-20260914";
-import { initNetwork } from "./network.js?v=local-feedback-20260914";
+import { initI18n, translate as tr } from "./i18n.js?v=20260914-feedback";
+import { initNetwork } from "./network.js?v=20260914-feedback";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
