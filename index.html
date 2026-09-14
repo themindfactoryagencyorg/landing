@@ -35,13 +35,16 @@
       as="image"
       type="image/svg+xml"
     />
-    <link rel="stylesheet" href="/styles.css?v=20260912-icons2" />
-    <script defer src="/assets/vendor/gsap.min.js?v=20260912-icons2"></script>
+    <link rel="stylesheet" href="/styles.css?v=local-feedback-20260914" />
     <script
       defer
-      src="/assets/vendor/ScrollTrigger.min.js?v=20260912-icons2"
+      src="/assets/vendor/gsap.min.js?v=local-feedback-20260914"
     ></script>
-    <script type="module" src="/js/main.js?v=20260912-icons2"></script>
+    <script
+      defer
+      src="/assets/vendor/ScrollTrigger.min.js?v=local-feedback-20260914"
+    ></script>
+    <script type="module" src="/js/main.js?v=local-feedback-20260914"></script>
   </head>
   <body>
     <a href="#main" class="skip-link"
@@ -95,6 +98,9 @@
           >
             <path d="M5 19 19 5M5 5h14v14" /></svg
         ></a>
+        <a class="mobile-contact-link" href="#contacto"
+          ><span data-es="Hablemos" data-en="Let’s talk">Hablemos</span></a
+        >
       </nav>
       <div class="nav-actions">
         <button id="lang-toggle" class="language" aria-label="Cambiar idioma">
@@ -203,32 +209,46 @@
             ></span>
           </h1>
           <p
-            class="hero-copy"
-            data-es="Software a medida para tu pyme. Conecta ventas, stock y equipo con inteligencia para llegar más lejos."
-            data-en="Custom software for your business. Connect sales, stock and people with intelligence to go further."
+            class="hero-promise"
+            data-es="Conectamos tu negocio. Automatizamos tu día a día."
+            data-en="We connect your business. We automate everyday work."
           >
-            Software a medida para tu pyme. Conecta ventas, stock y equipo con
-            inteligencia para llegar más lejos.
+            Conectamos tu negocio. Automatizamos tu día a día.
           </p>
-          <a href="#sistema" class="button button-light"
-            ><span
-              data-es="Descubre lo que es posible"
-              data-en="Discover what’s possible"
-              >Descubre lo que es posible</span
-            ><span aria-hidden="true"
-              ><svg
-                class="icon icon-arrow"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
+          <p
+            class="hero-copy"
+            data-es="Creamos software a medida, conectamos tus herramientas y automatizamos tareas para que tu negocio funcione mejor."
+            data-en="We build custom software, connect your tools and automate tasks so your business runs better."
+          >
+            Creamos software a medida, conectamos tus herramientas y
+            automatizamos tareas para que tu negocio funcione mejor.
+          </p>
+          <div class="hero-actions">
+            <a href="#conexion" class="button button-light"
+              ><span data-es="Mira cómo funciona" data-en="See how it works"
+                >Mira cómo funciona</span
+              ><span aria-hidden="true"
+                ><svg
+                  class="icon icon-arrow"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span></a
+            ><a class="hero-contact-link" href="#contacto"
+              ><span
+                data-es="Hablemos de tu negocio"
+                data-en="Let’s talk about your business"
+                >Hablemos de tu negocio</span
               >
-                <path d="M5 19 19 5M5 5h14v14" /></svg></span
-          ></a>
+              <span aria-hidden="true">→</span></a
+            >
+          </div>
         </div>
         <div class="hero-bottom">
           <div>
@@ -289,19 +309,60 @@
             >
           </h2>
           <div class="manifesto-foot">
-            <p
-              data-es="Pedidos por WhatsApp. Stock en Excel. Información que depende de preguntar a la persona correcta. ¿Te suena?"
-              data-en="Orders on WhatsApp. Stock in spreadsheets. Information that depends on asking the right person. Sound familiar?"
-            >
-              Pedidos por WhatsApp. Stock en Excel. Información que depende de
-              preguntar a la persona correcta. ¿Te suena?
-            </p>
-            <p
-              data-es="El siguiente paso es un sistema que trabaje como un equipo."
-              data-en="The next step is a system that works as a team."
-            >
-              El siguiente paso es un sistema que trabaje como un equipo.
-            </p>
+            <div class="problem-block">
+              <h3
+                data-es="¿SIGUES TRABAJANDO ASÍ?"
+                data-en="STILL WORKING THIS WAY?"
+              >
+                ¿SIGUES TRABAJANDO ASÍ?
+              </h3>
+              <ul>
+                <li>
+                  <span
+                    data-es="Pedidos gestionados manualmente por WhatsApp."
+                    data-en="Orders managed manually through WhatsApp."
+                    >Pedidos gestionados manualmente por WhatsApp.</span
+                  >
+                </li>
+                <li>
+                  <span
+                    data-es="Stock controlado en Excel."
+                    data-en="Stock tracked in spreadsheets."
+                    >Stock controlado en Excel.</span
+                  >
+                </li>
+                <li>
+                  <span
+                    data-es="Información que depende de preguntar a la persona correcta."
+                    data-en="Information that depends on asking the right person."
+                    >Información que depende de preguntar a la persona
+                    correcta.</span
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="solution-block">
+              <span
+                class="eyebrow"
+                data-es="ASÍ PODEMOS AYUDARTE"
+                data-en="HOW WE CAN HELP"
+                >ASÍ PODEMOS AYUDARTE</span
+              >
+              <h3
+                data-es="Conectamos tus herramientas y automatizamos las tareas manuales."
+                data-en="We connect your tools and automate manual tasks."
+              >
+                Conectamos tus herramientas y automatizamos las tareas manuales.
+              </h3>
+              <p
+                data-es="Tu equipo trabaja con información actualizada y compartida. Tú ganas visibilidad para decidir y tiempo para hacer crecer tu negocio."
+                data-en="Your team works with current, shared information. You gain clarity to make decisions and time to grow your business."
+              >
+                Tu equipo trabaja con información actualizada y compartida. Tú
+                ganas visibilidad para decidir y tiempo para hacer crecer tu
+                negocio.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -338,7 +399,44 @@
               >
             </p>
           </div>
-          <div class="system-stage" data-stage="0">
+          <div class="stage-controls" aria-label="Etapas de la conexión">
+            <button class="stage-button" data-step="0" aria-pressed="false">
+              <span>01</span
+              ><span
+                data-es="Antes: procesos dispersos"
+                data-en="Before: scattered processes"
+                >Antes: procesos dispersos</span
+              ></button
+            ><button
+              class="stage-button is-active"
+              data-step="1"
+              aria-pressed="true"
+            >
+              <span>02</span
+              ><span
+                data-es="Después: procesos conectados"
+                data-en="After: connected processes"
+                >Después: procesos conectados</span
+              ></button
+            ><button class="stage-button" data-step="2" aria-pressed="false">
+              <span>03</span
+              ><span
+                data-es="Con IA: procesos inteligentes"
+                data-en="With AI: intelligent processes"
+                >Con IA: procesos inteligentes</span
+              >
+            </button>
+          </div>
+          <p class="mindhub-definition">
+            <span
+              data-es="MindHub es la base de software de TMF: reúne los módulos que adaptamos a tu negocio y conecta las herramientas que ya utilizas."
+              data-en="MindHub is TMF’s software foundation: it brings together the modules we tailor to your business and connects the tools you already use."
+              >MindHub es la base de software de TMF: reúne los módulos que
+              adaptamos a tu negocio y conecta las herramientas que ya
+              utilizas.</span
+            >
+          </p>
+          <div class="system-stage" data-stage="1">
             <svg
               class="system-wires"
               viewBox="0 0 1000 420"
@@ -542,41 +640,19 @@
               ></span>
               <div>
                 <strong
-                  data-es="El siguiente paso, antes de que lo pidas."
-                  data-en="The next step, before you ask."
-                  >El siguiente paso, antes de que lo pidas.</strong
+                  data-es="IA para anticipar. Tú decides."
+                  data-en="AI to anticipate. You decide."
+                  >IA para anticipar. Tú decides.</strong
                 ><span
-                  data-es="Un Mind detecta el nivel de stock y propone la reposición."
-                  data-en="A Mind detects the stock level and suggests replenishment."
-                  >Un Mind detecta el nivel de stock y propone la
-                  reposición.</span
+                  data-es="Ejemplo: analizar ventas y estacionalidad para estimar demanda y proponer una compra que tu equipo revisa."
+                  data-en="Example: analyse sales and seasonality to estimate demand and suggest a purchase for your team to review."
+                  >Ejemplo: analizar ventas y estacionalidad para estimar
+                  demanda y proponer una compra que tu equipo revisa.</span
                 >
               </div>
             </div>
           </div>
           <div class="connection-bottom">
-            <div class="stage-controls" aria-label="Etapas de la conexión">
-              <button
-                class="stage-button is-active"
-                data-step="0"
-                aria-pressed="true"
-              >
-                <span>01</span
-                ><span data-es="Disperso" data-en="Scattered"
-                  >Disperso</span
-                ></button
-              ><button class="stage-button" data-step="1" aria-pressed="false">
-                <span>02</span
-                ><span data-es="Conectado" data-en="Connected"
-                  >Conectado</span
-                ></button
-              ><button class="stage-button" data-step="2" aria-pressed="false">
-                <span>03</span
-                ><span data-es="Inteligente" data-en="Intelligent"
-                  >Inteligente</span
-                >
-              </button>
-            </div>
             <span class="demo-caption"
               ><span
                 data-es="EJEMPLO ILUSTRATIVO · VENTA → STOCK → FACTURA"
@@ -614,6 +690,23 @@
           >
             Módulos especializados, conectados entre sí. Elegimos los que
             necesitas y los adaptamos a cómo trabaja tu empresa.
+          </p>
+        </div>
+        <div class="offer-definition">
+          <span
+            class="eyebrow"
+            data-es="UN PROYECTO ADAPTADO A TU EMPRESA"
+            data-en="A PROJECT TAILORED TO YOUR BUSINESS"
+            >UN PROYECTO ADAPTADO A TU EMPRESA</span
+          >
+          <p
+            data-es="Contratas una solución a medida. Partimos de componentes propios —los Minds— y desarrollamos e integramos lo que tu operativa necesita. Acordamos el alcance contigo, con una implantación inicial y acompañamiento continuo."
+            data-en="You commission a tailored solution. We start with our own components — Minds — and build and integrate what your operations need. We agree the scope with you, with an initial implementation and ongoing support."
+          >
+            Contratas una solución a medida. Partimos de componentes propios
+            —los Minds— y desarrollamos e integramos lo que tu operativa
+            necesita. Acordamos el alcance contigo, con una implantación inicial
+            y acompañamiento continuo.
           </p>
         </div>
         <div class="minds-explorer">
@@ -1303,6 +1396,13 @@
             </div>
           </div>
           <div class="about-copy">
+            <h3
+              class="team-promise"
+              data-es="Hablas con quienes construyen tu solución."
+              data-en="You talk directly to the people building your solution."
+            >
+              Hablas con quienes construyen tu solución.
+            </h3>
             <p
               data-es="Somos un equipo de perfiles técnicos y de negocio que trabaja directamente contigo. Entendemos lo que necesitas cambiar y lo convertimos en un sistema que tu equipo puede usar."
               data-en="We are a team of technical and business specialists working directly with you. We understand what you need to change and turn it into a system your team can use."
@@ -1385,6 +1485,14 @@
                 <path d="M5 19 19 5M5 5h14v14" /></svg></span
           ></a>
         </div>
+        <p class="contact-explainer">
+          <span
+            data-es="El botón abre tu aplicación de correo. También puedes copiar nuestra dirección y escribirnos cuando te venga bien."
+            data-en="The button opens your email app. You can also copy our address and write whenever it suits you."
+            >El botón abre tu aplicación de correo. También puedes copiar
+            nuestra dirección y escribirnos cuando te venga bien.</span
+          >
+        </p>
         <div class="contact-email">
           <a href="mailto:info@themindfactory.es">info@themindfactory.es</a
           ><span

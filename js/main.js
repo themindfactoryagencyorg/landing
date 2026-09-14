@@ -1,10 +1,10 @@
-import { initI18n, translate as tr } from "./i18n.js?v=20260912-icons2";
-import { initNetwork } from "./network.js?v=20260912-icons2";
+import { initI18n, translate as tr } from "./i18n.js?v=local-feedback-20260914";
+import { initNetwork } from "./network.js?v=local-feedback-20260914";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 let selectedMind = "sales";
-let stageIndex = 0;
+let stageIndex = 1;
 let connectionTrigger;
 let renderGeneration = 0;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)");
@@ -18,8 +18,8 @@ const stageCopy = [
     "One sale. Stock updates. The invoice is prepared. The whole team sees it.",
   ],
   [
-    "Ahora el sistema puede avisar, detectar lo que falta y proponer el siguiente paso.",
-    "Now the system can alert you, spot what is missing and suggest the next step.",
+    "La automatización ejecuta reglas. La IA puede analizar patrones y proponer decisiones que tu equipo valida.",
+    "Automation follows rules. AI can analyse patterns and suggest decisions for your team to validate.",
   ],
 ];
 const titles = {
@@ -153,7 +153,7 @@ function panelUI() {
       .join(
         "",
       )}<p class="panel-intro" style="margin-top:24px">${tr("Foto + ubicación + prioridad. La información acompaña a cada incidencia.", "Photo + location + priority. Information accompanies every incident.")}</p>`;
-  return `<div class="ui-toolbar"><span>${tr("Señales para actuar", "Signals to act on")}</span><span class="ui-tag">${tr("TU DECISIÓN", "YOUR DECISION")}</span></div><div class="bar-chart" role="img" aria-label="${tr("Ejemplo ilustrativo: actividad semanal creciente", "Illustrative example: increasing weekly activity")}">${[35, 51, 42, 68, 58, 86, 96].map((h) => `<div style="height:${h}%"></div>`).join("")}</div><div class="chart-labels">${tr("<span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>", "<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>")}</div><div class="project-row"><span aria-hidden="true"></span><span>${tr("Un cliente lleva tiempo sin pedir", "A customer has not ordered recently")}</span><small>${tr("Revisar", "Review")}</small></div>`;
+  return `<div class="ui-toolbar"><span>${tr("Previsión de demanda", "Demand forecast")}</span><span class="ui-tag">${tr("EJEMPLO DE IA", "AI EXAMPLE")}</span></div><div class="bar-chart" role="img" aria-label="${tr("Ejemplo ilustrativo: actividad semanal creciente", "Illustrative example: increasing weekly activity")}">${[35, 51, 42, 68, 58, 86, 96].map((h) => `<div style="height:${h}%"></div>`).join("")}</div><div class="chart-labels">${tr("<span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>", "<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>")}</div><div class="project-row"><span aria-hidden="true"></span><span>${tr("Estimar demanda a partir de ventas y estacionalidad", "Estimate demand from sales and seasonality")}</span><small>${tr("Revisar", "Review")}</small></div>`;
 }
 function renderPanel(animate = false) {
   renderGeneration++;
@@ -454,47 +454,7 @@ function initMotion() {
       clearProps: "all",
     });
   });
-  mm.add(
-    "(min-width:901px) and (min-height:820px) and (prefers-reduced-motion: no-preference)",
-    () => {
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".connection",
-          start: "top 76px",
-          end: "+=1350",
-          pin: ".connection-sticky",
-          scrub: 0.8,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) =>
-            setStage(self.progress < 0.3 ? 0 : self.progress < 0.73 ? 1 : 2),
-        },
-      });
-      connectionTrigger = timeline.scrollTrigger;
-      timeline
-        .fromTo(
-          ".system-card",
-          {
-            x: (i) => [70, -75, 90, -65][i],
-            y: (i) => [-5, 30, -10, 15][i],
-            rotation: (i) => [-13, 11, 7, -9][i],
-          },
-          { x: 0, y: 0, rotation: 0, duration: 0.42, ease: "power2.inOut" },
-          0.08,
-        )
-        .to(
-          ".system-core",
-          { scale: 1.08, duration: 0.3, ease: "power2.out" },
-          0.3,
-        )
-        .to(".system-wires", { strokeDashoffset: -70, duration: 0.5 }, 0.42)
-        .to({}, { duration: 0.18 });
-      return () => {
-        connectionTrigger = undefined;
-        setStage(stageIndex, true);
-      };
-    },
-  );
+  // Local proposal: the reader chooses the comparison; scrolling never changes it.
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
   $$(".case").forEach((el) =>
     el.addEventListener("toggle", () => ScrollTrigger.refresh()),
@@ -543,6 +503,7 @@ function init() {
   initTabs();
   initNetwork($("#network-canvas"));
   initMotion();
+  setStage(1, true);
   window.addEventListener("resize", updateLabels, { passive: true });
 }
 if (document.readyState === "loading")

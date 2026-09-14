@@ -1,21 +1,16 @@
-# TheMindFactory · Landing
+# Propuesta local · Feedback del equipo · 14 septiembre 2026
 
-Web institucional de TMF: software a medida con inteligencia integrada para pymes.
-HTML, CSS y módulos JavaScript, sin compilación ni dependencias de desarrollo.
+Esta rama `proposal/team-feedback-local` es una propuesta NO aprobada para publicar.
+No hacer push ni desplegar sin nueva autorización del usuario.
 
-## Rediseño aprobado
+Cambios: oferta concreta y contacto en portada, problemas separados de solución,
+selector antes del diagrama y estado Conectado inicial, comparación manual sin pin
+al scroll, explicación propuesta de MindHub y del servicio a medida, ejemplo
+ilustrativo de IA, contacto móvil y ajustes de lectura.
 
-Rediseño aprobado para publicación el 12 de septiembre de 2026.
-Incorpora el logo vectorial B1 y el lema «When AI meets humanity.», fijo en ambos
-idiomas. Mantiene el acceso a la aplicación de producción.
-
-```sh
-python3 -m http.server 8018 --bind 127.0.0.1
-# http://127.0.0.1:8018
-```
-
-Hay que servirla por HTTP: los módulos JavaScript y las rutas absolutas no están
-pensados para abrir `index.html` mediante `file://`.
+Pendiente de validación editorial: definición comercial de MindHub y ejemplo de IA.
+No se han añadido casos reales, resultados, fotos ni nombres del equipo sin material
+validado. WhatsApp pendiente de número y forma de atención.
 
 ## Estructura
 
@@ -35,8 +30,8 @@ La red atrae e ilumina nodos próximos al cursor. Un clic, toque o activación p
 teclado envía un impulso por sus conexiones hasta B1, que responde con luz.
 Los gestos verticales y el zoom siguen disponibles en móvil; con movimiento
 reducido, la respuesta es una iluminación estática breve, sin recorrido animado.
-La escena central se fija al scroll solo en pantallas de al menos 901 × 820 px;
-en móvil y movimiento reducido, los controles cambian sus tres etapas.
+En esta propuesta, el selector cambia las tres etapas directamente en todas las
+pantallas. La escena no se fija al scroll y empieza en Conectado.
 
 Los datos de los paneles son ilustrativos. La simulación modifica únicamente el
 DOM local: no contacta con APIs ni registra ventas. El contacto abre el programa
@@ -49,7 +44,8 @@ GitHub Actions copia los archivos por SSH/rsync a
 `/home/tmf/apps/tmf-prod/tmf-landing`. Caddy sirve la raíz de `themindfactory.es`.
 La configuración de Caddy pertenece a `tmf-infra`; `/app/` redirige a Qrema.
 
-El usuario ha autorizado integrar este rediseño en `main` y publicarlo.
+La autorización anterior correspondía al rediseño ya publicado. Esta propuesta
+local necesita una nueva aprobación antes de integrarse en `main`.
 El workflow existente no se ha modificado.
 
 ## Decisiones editoriales para la revisión
