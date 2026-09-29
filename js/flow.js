@@ -112,8 +112,8 @@ export function initFlow() {
     .filter(([, el]) => el);
   const mobile = matchMedia("(max-width: 700px)");
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  // Seda, solo menta, intensidad 0,5 (elegidos en la revisión del 29/09/2026).
-  const settings = { mode: 0, tint: 0, intensity: 0.5 };
+  // Aurora, solo menta, intensidad 0,5 (elegidos en la revisión del 29/09/2026).
+  const settings = { mode: 1, tint: 0, intensity: 0.5 };
 
   const cur = { ...KEYS.hero };
   const mouse = [0, 0];

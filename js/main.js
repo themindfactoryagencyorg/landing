@@ -1,6 +1,6 @@
 import { initI18n, translate as tr } from "./i18n.js?v=20260914-feedback";
 import { initNetwork } from "./network.js?v=20260914-feedback";
-import { initFlow } from "./flow.js?v=20260929-fluido";
+import { initFlow } from "./flow.js?v=20260929-aurora";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
