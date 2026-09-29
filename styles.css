@@ -2477,3 +2477,72 @@ h1 {
     transform: translate(-50%, 24px);
   }
 }
+
+/* Fondo fluido (js/flow.js) */
+.flow-canvas,
+.flow-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.flow-fallback {
+  background:
+    radial-gradient(60% 40% at 78% 30%, #b5f5d726, transparent 70%),
+    radial-gradient(50% 50% at 20% 90%, #10211ce6, transparent 70%);
+}
+.flow-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 200;
+  display: grid;
+  gap: 10px;
+  width: 260px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #0b0e10e6;
+  backdrop-filter: blur(16px);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.flow-panel-title {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+.flow-seg {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+.flow-seg button {
+  padding: 6px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+.flow-seg button[aria-pressed="true"] {
+  background: var(--mint);
+  color: var(--bg);
+  font-weight: 600;
+}
+.flow-panel label {
+  display: grid;
+  gap: 6px;
+}
+.flow-panel input {
+  accent-color: var(--mint);
+}

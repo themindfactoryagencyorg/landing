@@ -1,5 +1,6 @@
 import { initI18n, translate as tr } from "./i18n.js?v=20260914-feedback";
 import { initNetwork } from "./network.js?v=20260914-feedback";
+import { initFlow } from "./flow.js?v=20260929-fluido";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -501,6 +502,7 @@ function init() {
   initI18n();
   initNavigation();
   initTabs();
+  initFlow();
   initNetwork($("#network-canvas"));
   initMotion();
   setStage(1, true);
