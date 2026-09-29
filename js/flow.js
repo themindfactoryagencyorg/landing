@@ -1,7 +1,6 @@
 // Fondo fluido: cinta de filamentos menta dibujada en un único shader WebGL,
 // fija detrás de la página. Cada sección oscura define dónde cruza la cinta;
 // con el scroll se interpola entre ellas. Las secciones claras la tapan.
-// Ajustes de prueba: añadir ?ajustes a la URL.
 
 const VERT = "attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
 
@@ -113,7 +112,8 @@ export function initFlow() {
     .filter(([, el]) => el);
   const mobile = matchMedia("(max-width: 700px)");
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const settings = { mode: 0, tint: 0, intensity: 1 };
+  // Seda, solo menta, intensidad 0,5 (elegidos en la revisión del 29/09/2026).
+  const settings = { mode: 0, tint: 0, intensity: 0.5 };
 
   const cur = { ...KEYS.hero };
   const mouse = [0, 0];
@@ -212,26 +212,4 @@ export function initFlow() {
   }
   requestAnimationFrame(frame);
 
-  if (new URLSearchParams(location.search).has("ajustes")) mountPanel(settings);
-}
-
-// Panel solo para revisar la propuesta (?ajustes). No forma parte de la web final.
-function mountPanel(settings) {
-  const panel = document.createElement("div");
-  panel.className = "flow-panel";
-  panel.innerHTML = `
-    <p class="flow-panel-title">Fondo fluido · ajustes</p>
-    <div class="flow-seg" data-key="mode"><button type="button" data-v="0" aria-pressed="true">Seda</button><button type="button" data-v="1" aria-pressed="false">Aurora</button></div>
-    <div class="flow-seg" data-key="tint"><button type="button" data-v="0" aria-pressed="true">Solo menta</button><button type="button" data-v="1" aria-pressed="false">Menta + azul</button></div>
-    <label>Intensidad <input type="range" min="0.3" max="1.6" step="0.05" value="1" /></label>`;
-  panel.querySelectorAll(".flow-seg").forEach((seg) =>
-    seg.addEventListener("click", (e) => {
-      const btn = e.target.closest("button");
-      if (!btn) return;
-      settings[seg.dataset.key] = Number(btn.dataset.v);
-      seg.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-    }),
-  );
-  panel.querySelector("input").addEventListener("input", (e) => (settings.intensity = Number(e.target.value)));
-  document.body.append(panel);
 }
