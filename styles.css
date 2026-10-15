@@ -1327,6 +1327,50 @@ h1 {
   font-size: 17px;
   color: var(--dark);
 }
+.contact-social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+  margin-top: 18px;
+  color: #365f48;
+  font-size: 13px;
+}
+.contact-social a {
+  color: var(--dark);
+  border-bottom: 1px solid #10211c40;
+}
+.contact-social a:hover {
+  border-bottom-color: var(--dark);
+}
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 22px;
+  margin-top: 30px;
+  font: 11px var(--mono);
+}
+.footer-social a {
+  color: #c4d3ca;
+}
+.footer-social a:hover {
+  color: var(--mint);
+}
+.footer-social + .footer-bottom {
+  margin-top: 16px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
 .footer {
   padding: 45px 6% 25px;
   overflow: hidden;
