@@ -67,11 +67,19 @@ python3 -m http.server 8000
 ```
 
 <!-- TMF SKILL ROUTING START -->
-## Skills y mensajes de TMF
+## Arranque y entrega común de TMF
 
-En cualquier repositorio de TMF, empieza por `tmf-skill-catalog` para elegir y leer la guía compartida.
-Para preparar mensajes al equipo, aplica `tmf-team-comms`: allí se decide el grupo de la comunidad y el formato del borrador para copiar y pegar manualmente.
-Fuente canónica: [catálogo](https://github.com/themindfactoryagencyorg/tmf-skills/blob/main/tmf-skill-catalog/SKILL.md) y [mensajes](https://github.com/themindfactoryagencyorg/tmf-skills/blob/main/tmf-team-comms/SKILL.md).
-Sin descubrimiento nativo de skills, usa el lector CLI/MCP de `tmf-skill-catalog`; en este Mac: `python3 ~/.agents/skills/tmf-skill-catalog/scripts/skills.py show tmf-team-comms --body`.
-No copies las guías ni mantengas otro reparto de grupos en el repo. Las releases y los espejos son copias de lectura; los borradores no autorizan envíos.
+Orden de Víctor, 15/10/2026. En cualquier trabajo TMF, la **primera acción de proyecto es refrescar el baúl completo**: desde el wrapper, `bash vault/scripts/vault-refresh.sh`, sin flags parciales. El refresco descubre los repos activos nuevos de la organización GitHub, los clona y actualiza los existentes mediante pull seguro (fetch + fast-forward a su upstream), usando la cuenta personal del miembro; conserva y enumera WIP/divergencias o ramas que no puede actualizar. Si falta, usa el onboarding existente de `tmf-vault` para montarlo y refrescarlo; no trabajes suponiendo que está actualizado. Revisa exit code, frescura, WIP/divergencias y `vault/_refresh/state.json`; informa de fuentes degradadas y avanza solo lo independiente. Drive queda fuera. El bootstrap de sesión exigido por el host conserva su precedencia.
+
+Después lee `tmf-dev-workflow`: es la [fuente canónica del arranque y los gates](https://github.com/themindfactoryagencyorg/tmf-skills/blob/main/tmf-dev-workflow/SKILL.md), y prevalece sobre textos TMF antiguos sobre orden de arranque y alcance de pruebas. Usa `tmf-skill-catalog` para elegir las guías; consulta `docs/PROJECT_INDEX.md`, `tmf-projects.json` y los índices/instrucciones de todos los repos afectados. Acceso con las credenciales y permisos de cada miembro; un repo/catálogo inaccesible es una dependencia explícita.
+
+**GitHub: la cuenta personal de cada miembro**, nunca la compartida `TheMindFactoryAgency`. Antes de usar `gh`, verifica la cuenta activa con `gh auth status`; antes de commit/push verifica autor/email y ruta de credenciales. `VMRam95` corresponde únicamente al Mac de Víctor; no lo impongas al resto del equipo.
+
+**Entrega local:** PR a `develop` o base real documentada (`dev` en billing; `main` en tooling y repos con esa base). En un lote, cada worker prueba el flujo real y el 100% de los tests nuevos, modificados y existentes directamente afectados (unitarios, API/integración, E2E con/sin navegador y responsive según el alcance), adjunta IDs y capturas inspeccionadas y cierra su carril. La integración pasa toda la batería local del producto, casos existentes más nuevos, y prepara un solo despliegue coordinado. Una entrega individual fuera de lote también pasa toda esa batería local. `check.py` filtrado nunca acredita FULL ni toda la cobertura afectada por sí solo.
+
+**Escalera:** LOCAL → DEV → PRELIVE → PROD. DEV y PRELIVE pasan cada uno la matriz completa del producto y todos sus modos obligatorios (`app` y `app-bypass` en Qrema), sobre la versión correspondiente. 100% de casos esperados descubiertos/ejecutados/aprobados, sin fallos, errores, flaky, skips ni omisiones; conserva versión, inventario, runid, recuentos y exit codes. Un modo sin soporte es un gate pendiente. Capturas reales del stack en `artifacts/<tarea>/`, inspeccionadas y adjuntas; Qrema móvil primero. PROD promueve la versión aceptada en PRELIVE con autorización y verificación del despliegue según su runbook.
+
+Aislamiento y limpieza mediante `agent-local-work`, `agent-work` y `tmf-agent-work`; no cambiar perfiles usados por jobs activos. Conserva los gates de revisión, merge y despliegue. Al cerrar, reconcilia fuentes/evidencias y refresca el baúl completo. Tooling interno: solo CAS, sin inventar Jira. **Los avisos de Matrix solo se publican al terminar TODO el encargo y verificar sus gates de aprobación/merge/despliegue. Abrir PR, informar de avance o dejar revisión pendiente no genera aviso.** Un refresco intermedio no crea, edita ni reemite avisos.
+
+Sin descubrimiento nativo de skills, usa el lector CLI/MCP del catálogo: `python3 ~/.agents/skills/tmf-skill-catalog/scripts/skills.py show tmf-dev-workflow --body` (o la ruta instalada del cliente). Fuente del [catálogo](https://github.com/themindfactoryagencyorg/tmf-skills/blob/main/tmf-skill-catalog/SKILL.md). Para borradores al equipo aplica [tmf-team-comms](https://github.com/themindfactoryagencyorg/tmf-skills/blob/main/tmf-team-comms/SKILL.md); el usuario los envía manualmente. No copies los cuerpos de las skills ni mantengas otro procedimiento independiente.
 <!-- TMF SKILL ROUTING END -->
