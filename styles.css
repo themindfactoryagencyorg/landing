@@ -2429,7 +2429,7 @@ h1 {
     radial-gradient(50% 50% at 20% 90%, #10211ce6, transparent 70%);
 }
 
-/* About us: aligned profiles in three columns. */
+/* About us: three profiles above four profiles. */
 .about {
   overflow: hidden;
 }
@@ -2446,11 +2446,12 @@ h1 {
 }
 .team-people {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 40px 32px;
   margin-top: 48px;
 }
 .person {
+  grid-column: span 4;
   min-width: 0;
   padding: 16px;
   border: 1px solid transparent;
@@ -2458,6 +2459,9 @@ h1 {
   transition:
     background-color 200ms ease,
     border-color 200ms ease;
+}
+.person:nth-child(n + 4) {
+  grid-column: span 3;
 }
 .person-photo {
   width: min(280px, 100%);
@@ -2534,13 +2538,24 @@ h1 {
     filter: brightness(1.05) saturate(1.06);
   }
 }
+@media (max-width: 1100px) {
+  .team-people {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+  .person {
+    grid-column: span 2;
+  }
+  .person:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+}
 @media (max-width: 900px) {
   .team-intro {
     grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
   .team-people {
-    gap: 24px;
     margin-top: 40px;
   }
   .person-name {
@@ -2554,6 +2569,10 @@ h1 {
   .team-people {
     grid-template-columns: minmax(0, 1fr);
     gap: 40px;
+  }
+  .person,
+  .person:nth-child(n + 4) {
+    grid-column: auto;
   }
   .person-photo {
     width: min(220px, 100%);
