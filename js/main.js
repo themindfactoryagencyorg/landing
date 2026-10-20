@@ -493,6 +493,22 @@ function updateLabels() {
     innerWidth <= 650 ? "horizontal" : "vertical",
   );
 }
+function initTeam() {
+  const people = $$(".person");
+  if (!people.length || reduced.matches || !("IntersectionObserver" in window))
+    return;
+  document.documentElement.classList.add("team-motion");
+  const observer = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-awake");
+        observer.unobserve(entry.target);
+      }),
+    { rootMargin: "0px 0px -20% 0px", threshold: 0.3 },
+  );
+  people.forEach((el) => observer.observe(el));
+}
 function init() {
   document.addEventListener("tmf:language", () => {
     renderPanel();
@@ -505,6 +521,7 @@ function init() {
   initFlow();
   initNetwork($("#network-canvas"));
   initMotion();
+  initTeam();
   setStage(1, true);
   window.addEventListener("resize", updateLabels, { passive: true });
 }
