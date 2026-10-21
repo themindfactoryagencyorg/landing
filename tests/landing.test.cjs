@@ -34,3 +34,17 @@ test("the story leads with proof, retains the full team and labels the agent sim
     html.includes("La simulación no emite facturas ni envía mensajes."),
   );
 });
+
+test("the three courtyard portraits use one shared background with fixed alignment", () => {
+  const portraits = [...html.matchAll(/<figure class="person-photo person-photo--patio">\s*<img src="([^"]+)"/g)];
+  assert.deepEqual(portraits.map((m) => m[1].split('?')[0]), [
+    '/assets/team/laura-pereda-cutout.webp',
+    '/assets/team/juan-cutout.webp',
+    '/assets/team/agustin-rosa-cutout.webp',
+  ]);
+  const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+  const sharedRule = css.match(/\.person-photo--patio\s*\{([^}]+)\}/)[1];
+  assert.match(sharedRule, /patio-common\.webp/);
+  assert.match(sharedRule, /0 0\s*\/\s*100% 100% no-repeat/);
+  assert.ok(fs.existsSync(path.join(root, 'assets/team/patio-common.webp')));
+});

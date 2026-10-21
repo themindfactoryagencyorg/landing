@@ -2525,16 +2525,19 @@ h1 {
   order: 1;
   width: min(280px, 100%);
   margin: 0 auto;
+  transition: filter 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.person-photo--patio {
+  background: url("/assets/team/patio-common.webp?v=20261022-patio-comun") 0 0 / 100% 100% no-repeat;
 }
 .person-photo img {
   width: 100%;
   height: auto;
-  transition: filter 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.team-motion .person-photo img {
+.team-motion .person-photo {
   filter: grayscale(1) brightness(0.8);
 }
-.team-motion .person.is-awake .person-photo img {
+.team-motion .person.is-awake .person-photo {
   filter: none;
 }
 .person-content {
@@ -2599,11 +2602,11 @@ h1 {
   .person:hover .person-name em {
     color: var(--mint);
   }
-  .person .person-photo img {
+  .person .person-photo {
     transition: filter 200ms ease;
   }
-  .person:hover .person-photo img,
-  .team-motion .person:hover .person-photo img {
+  .person:hover .person-photo,
+  .team-motion .person:hover .person-photo {
     filter: brightness(1.05) saturate(1.06);
   }
 }

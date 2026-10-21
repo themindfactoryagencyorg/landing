@@ -29,8 +29,8 @@ esta es una propuesta visual local con la suite disponible y flujos comprobados.
 
 | ID | Acceptance criteria | Verification |
 | --- | --- | --- |
-| PHOTO-01 | Laura, Juan y Agustín comparten el nuevo patio; los otros cuatro retratos se conservan. | Revisión visual de las tres ediciones y referencias HTML; originales conservados. |
-| PHOTO-02 | Los nuevos WebP mantienen dimensiones y cargan correctamente. | Comprobación de 1122 × 1402 en los tres archivos; las siete imágenes cargan en navegador. Suite existente: 9/9, sin fallos ni omitidas. |
+| PHOTO-01 | Laura, Juan y Agustín reutilizan exactamente el mismo fondo; los otros cuatro retratos se conservan. | Prueba automática del recurso y clase comunes. Navegador: misma URL, posición 0px 0px y tamaño 100% 100% en los tres. |
+| PHOTO-02 | Los nuevos WebP mantienen dimensiones y transparencia y cargan correctamente. | Comprobación de 1122 × 1402, alpha preservado en los tres recortes; recursos cargados en navegador. Suite: 10/10, sin fallos ni omitidas. |
 
 Evidencia local en `artifacts/team-patio-20261022/`.
 
