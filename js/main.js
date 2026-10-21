@@ -1,6 +1,7 @@
-import { initI18n, translate as tr } from "./i18n.js?v=20260914-feedback";
+import { initI18n, translate as tr } from "./i18n.js?v=20261021-historia-casos";
+import { initAgentDemo } from "./agent.js?v=20261021-historia-casos";
 import { initNetwork } from "./network.js?v=20260914-feedback";
-import { initFlow } from "./flow.js?v=20260929-aurora";
+import { initFlow } from "./flow.js?v=20261021-historia-casos";
 import { initTeamDisclosures } from "./team.js?v=20261021-equipo-cerrado";
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -433,20 +434,6 @@ function initMotion() {
         clearProps: "all",
       }),
     );
-    gsap.fromTo(
-      ".manifesto .muted",
-      { color: "#45524d" },
-      {
-        color: "#f1f2eb",
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".manifesto",
-          start: "top 75%",
-          end: "bottom 70%",
-          scrub: 1,
-        },
-      },
-    );
     gsap.from(".method-steps li", {
       y: 30,
       opacity: 0,
@@ -458,11 +445,14 @@ function initMotion() {
   });
   // Local proposal: the reader chooses the comparison; scrolling never changes it.
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
-  $$(".case").forEach((el) =>
+  $$(".case, .solution-explorer").forEach((el) =>
     el.addEventListener("toggle", () => ScrollTrigger.refresh()),
   );
 }
 function updateLabels() {
+  $(".agent-scenarios").setAttribute(
+    "aria-label", tr("Ejemplos del agente", "Agent examples"),
+  );
   $(".menu-toggle").setAttribute(
     "aria-label",
     $("#nav").classList.contains("nav-open")
@@ -524,6 +514,7 @@ function init() {
   initI18n();
   initNavigation();
   initTabs();
+  initAgentDemo($("#agente"));
   initFlow();
   initNetwork($("#network-canvas"));
   initMotion();

@@ -1,4 +1,31 @@
-# TheMindFactory · Feedback del equipo · 14 septiembre 2026
+# TheMindFactory · Propuesta local · 21 octubre 2026
+
+Rama `codex/landing-historia-casos`, sobre `origin/main` (`582e922`).
+Vista local: `http://127.0.0.1:8088/`. No se ha publicado esta propuesta.
+
+La portada presenta la oferta de software a medida. A continuación muestra
+tres casos del documento de referencia, un agente de IA con tres ejemplos
+ilustrativos y la oferta de aplicaciones, integraciones y automatizaciones.
+MindHub y el explorador existente quedan dentro de un desplegable opcional.
+Se conservan las siete fichas del equipo, ES/EN y las páginas legales.
+El contacto explica diagnóstico, propuesta y estimación de alcance, coste y plazos.
+
+- `story.css`: composición de las nuevas secciones y ajustes responsive.
+- `js/agent.js`: simulación local; no usa APIs ni ejecuta acciones reales.
+- `assets/cases/`: capturas extraídas del HTML v9 facilitado por el usuario.
+- `PRODUCT.md`: contexto de diseño para esta revisión.
+- Pruebas: `node --test tests/*.test.cjs`. Inventario en `docs/test-cases.md`.
+
+Revisión de navegador realizada en Windows a 320, 390, 650, 651, 1100 y 1440 px.
+Evidencias locales en `artifacts/landing-historia-casos/` (fuera del commit).
+No se ha certificado el gate de release: faltan el harness de TMF en este
+equipo, movimiento reducido en navegador, lector de pantalla y dispositivos reales.
+El baúl no está inicializado; el instalador canónico importa `fcntl`, que
+no está disponible en el Python de este Windows. No se ha usado el baúl como fuente.
+DEV, PRELIVE y PROD quedan pendientes y fuera del alcance de esta propuesta local.
+Antes de publicación, revisar la autorización de uso público de nombres y capturas.
+
+## Revisión publicada anterior · 14 septiembre 2026
 
 Propuesta revisada en local y aprobada por el usuario para publicación.
 

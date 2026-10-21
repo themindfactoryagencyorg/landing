@@ -9,6 +9,9 @@
   --dark: #10211c;
   --mono: "IBM Plex Mono", monospace;
   --font: "DM Sans", sans-serif;
+  --case-muted: #405e4e;
+  --case-line: #b7c8bd;
+  --agent-surface: #182620;
 }
 * {
   box-sizing: border-box;

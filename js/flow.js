@@ -125,10 +125,10 @@ export function initFlow() {
   let anchors = [];
 
   const measure = () => {
-    anchors = anchorsEls.map(([k, el]) => {
+    anchors = anchorsEls.filter(([, el]) => el.getClientRects().length).map(([k, el]) => {
       const r = el.getBoundingClientRect();
       return { k, y: r.top + scrollY + r.height / 2 };
-    });
+    }).sort((a, b) => a.y - b.y);
   };
   const target = () => {
     const mid = scrollY + innerHeight / 2;

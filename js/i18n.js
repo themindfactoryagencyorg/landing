@@ -27,12 +27,12 @@ export function initI18n() {
       lang === "es" ? "Switch to English" : "Cambiar a español",
     );
     document.title = translate(
-      "TheMindFactory — El siguiente nivel de tu negocio",
-      "TheMindFactory — Your business. Its next level.",
+      "TheMindFactory · Software a medida para tu negocio",
+      "TheMindFactory · Custom software for your business",
     );
     document.querySelector('meta[name="description"]').content = translate(
-      "Software a medida para conectar ventas, stock, proyectos y equipo. Construimos la mente operativa de tu negocio.",
-      "Custom software to connect sales, stock, projects and people. We build the operational mind of your business.",
+      "Aplicaciones, integraciones y automatizaciones a medida. Descubre casos reales y agentes de IA conectados a tu negocio.",
+      "Custom applications, integrations and automation. Explore real projects and AI agents connected to your business.",
     );
     document.dispatchEvent(
       new CustomEvent("tmf:language", { detail: { lang } }),
