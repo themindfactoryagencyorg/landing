@@ -1,4 +1,4 @@
-import { initI18n, translate as tr } from "./i18n.js?v=20260914-feedback";
+import { initI18n, translate as tr } from "./i18n.js?v=20261021-seo";
 import { initNetwork } from "./network.js?v=20260914-feedback";
 import { initFlow } from "./flow.js?v=20260929-aurora";
 import { initTeamDisclosures } from "./team.js?v=20261021-equipo-cerrado";
