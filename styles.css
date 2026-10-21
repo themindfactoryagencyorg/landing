@@ -2504,6 +2504,8 @@ h1 {
   margin-top: 48px;
 }
 .person {
+  display: flex;
+  flex-direction: column;
   grid-column: span 4;
   min-width: 0;
   padding: 16px;
@@ -2517,6 +2519,7 @@ h1 {
   grid-column: span 3;
 }
 .person-photo {
+  order: 1;
   width: min(280px, 100%);
   margin: 0 auto;
 }
@@ -2531,19 +2534,29 @@ h1 {
 .team-motion .person.is-awake .person-photo img {
   filter: none;
 }
-.person-text {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 20px;
-  min-width: 0;
+.person-content {
+  display: contents;
+}
+.person-content[hidden] {
+  display: none;
 }
 .person-heading {
+  order: 2;
+  position: relative;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
   text-align: center;
+}
+.person-toggle {
+  display: none;
+}
+.person-body {
+  order: 3;
+  margin-top: 16px;
+  min-width: 0;
 }
 .person-meta {
   color: var(--mint);
@@ -2630,7 +2643,7 @@ h1 {
   .person-photo {
     width: min(220px, 100%);
   }
-  .person-text {
+  .person-heading {
     margin-top: 18px;
   }
   .person-name {
@@ -2638,5 +2651,50 @@ h1 {
   }
   .person-meta {
     min-height: 0;
+  }
+  .team-disclosures .team-people {
+    gap: 12px;
+  }
+  .team-disclosures .person {
+    display: block;
+    border-color: var(--line);
+  }
+  .team-disclosures .person-heading {
+    margin-top: 0;
+    padding-inline: 28px;
+  }
+  .team-disclosures .person-name {
+    font-size: 24px;
+  }
+  .team-disclosures .person-content {
+    display: block;
+    margin-top: 20px;
+  }
+  .team-disclosures .person-content[hidden] {
+    display: none;
+  }
+  .team-disclosures .person-toggle {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 44px;
+    padding: 0;
+    background: transparent;
+    color: var(--mint);
+    border-radius: 2px;
+  }
+  .person-toggle svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 200ms ease;
+  }
+  .person.is-expanded .person-toggle svg {
+    transform: rotate(180deg);
+  }
+  .team-disclosures .person.is-expanded {
+    border-color: color-mix(in srgb, var(--mint) 28%, transparent);
   }
 }

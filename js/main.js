@@ -1,6 +1,7 @@
 import { initI18n, translate as tr } from "./i18n.js?v=20260914-feedback";
 import { initNetwork } from "./network.js?v=20260914-feedback";
 import { initFlow } from "./flow.js?v=20260929-aurora";
+import { initTeamDisclosures } from "./team.js?v=20261021-equipo-desplegable";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -495,7 +496,13 @@ function updateLabels() {
 }
 function initTeam() {
   const people = $$(".person");
-  if (!people.length || reduced.matches || !("IntersectionObserver" in window))
+  if (!people.length) return;
+  initTeamDisclosures(people, {
+    media: matchMedia("(max-width: 650px)"),
+    location: window.location,
+    onLayoutChange: () => window.ScrollTrigger?.refresh(),
+  });
+  if (reduced.matches || !("IntersectionObserver" in window))
     return;
   document.documentElement.classList.add("team-motion");
   const observer = new IntersectionObserver(
