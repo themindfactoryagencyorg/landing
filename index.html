@@ -37,7 +37,7 @@
       as="image"
       type="image/svg+xml"
     />
-    <link rel="stylesheet" href="/styles.css?v=20261016-redes" />
+    <link rel="stylesheet" href="/styles.css?v=20261021-equipo-desplegable" />
     <script
       defer
       src="/assets/vendor/gsap.min.js?v=20260914-feedback"
@@ -46,7 +46,7 @@
       defer
       src="/assets/vendor/ScrollTrigger.min.js?v=20260914-feedback"
     ></script>
-    <script type="module" src="/js/main.js?v=20260929-aurora"></script>
+    <script type="module" src="/js/main.js?v=20261021-equipo-cerrado"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -1380,75 +1380,145 @@
           </div>
         </div>
       </section>
-      <section class="about section-pad" id="equipo">
+      <section class="about section-pad" id="equipo" aria-labelledby="team-heading">
         <div class="section-kicker">
-          05 /
-          <span data-es="LAS PERSONAS DETRÁS" data-en="THE PEOPLE BEHIND IT"
-            >LAS PERSONAS DETRÁS</span
-          >
+          05 / <span data-es="NOSOTROS" data-en="ABOUT US">NOSOTROS</span>
         </div>
-        <div class="about-grid">
-          <div>
-            <h2>
-              <span data-es="Pensamos en negocio." data-en="We think business."
-                >Pensamos en negocio.</span
-              ><br /><em
-                ><span
-                  data-es="Construimos tecnología."
-                  data-en="We build technology."
-                  >Construimos tecnología.</span
-                ></em
-              >
-            </h2>
-            <div class="about-signature">
-              <div class="about-brand">
-                <img
-                  src="/assets/brand/tmf-b1-horizontal-menta.svg"
-                  width="905"
-                  height="151"
-                  alt="TheMindFactory"
-                />
-                <p class="brand-tagline" lang="en">Where AI meets humanity.</p>
+        <div class="team-intro">
+          <h2 id="team-heading">
+            <span data-es="Hablas con quienes" data-en="You talk to the people">Hablas con quienes</span><br /><em><span data-es="construyen tu solución." data-en="building your solution.">construyen tu solución.</span></em>
+          </h2>
+          <div class="team-intro-copy">
+            <p data-es="Trabajamos directamente contigo, desde la primera conversación hasta que la solución funciona en tu día a día. Así puedes conocernos y saber qué aporta cada uno." data-en="We work directly with you, from the first conversation until the solution is part of your day-to-day. Get to know us and what each of us brings.">Trabajamos directamente contigo, desde la primera conversación hasta que la solución funciona en tu día a día. Así puedes conocernos y saber qué aporta cada uno.</p>
+          </div>
+        </div>
+        <div class="team-people">
+          <article class="person" id="laura-pereda" aria-labelledby="laura-pereda-name">
+            <header class="person-heading">
+              <h3 class="person-name" id="laura-pereda-name">Laura <em>Pereda</em></h3>
+              <p class="person-meta" id="laura-pereda-role"><span data-es="Comercial y relación con clientes" data-en="Sales and client relations">Comercial y relación con clientes</span></p>
+              <button class="person-toggle" type="button" aria-labelledby="laura-pereda-name laura-pereda-role" aria-controls="laura-pereda-details" aria-expanded="true" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+              </button>
+            </header>
+            <div class="person-content" id="laura-pereda-details">
+              <figure class="person-photo">
+                <img src="/assets/team/laura-pereda.webp?v=20261005-equipo" width="1122" height="1402" alt="Laura Pereda" loading="lazy" decoding="async" />
+              </figure>
+              <div class="person-body">
+                <p class="person-lead" data-es="Soy tu primer punto de contacto en The Mind Factory." data-en="I’m your first point of contact at The Mind Factory.">Soy tu primer punto de contacto en The Mind Factory.</p>
+                <p class="person-bio" data-es="Escucho cómo funciona tu negocio, qué te preocupa y qué quieres mejorar. Convierto esas conversaciones en requisitos claros para que el equipo técnico construya una solución que tenga sentido para ti." data-en="I listen to how your business works, what concerns you and what you want to improve. I turn those conversations into clear requirements so our technical team can build a solution that makes sense for you.">Escucho cómo funciona tu negocio, qué te preocupa y qué quieres mejorar. Convierto esas conversaciones en requisitos claros para que el equipo técnico construya una solución que tenga sentido para ti.</p>
               </div>
-              <span>MADRID, ESPAÑA</span>
             </div>
-          </div>
-          <div class="about-copy">
-            <h3
-              class="team-promise"
-              data-es="Hablas con quienes construyen tu solución."
-              data-en="You talk directly to the people building your solution."
-            >
-              Hablas con quienes construyen tu solución.
-            </h3>
-            <p
-              data-es="Somos un equipo de perfiles técnicos y de negocio que trabaja directamente contigo. Entendemos lo que necesitas cambiar y lo convertimos en un sistema que tu equipo puede usar."
-              data-en="We are a team of technical and business specialists working directly with you. We understand what you need to change and turn it into a system your team can use."
-            >
-              Somos un equipo de perfiles técnicos y de negocio que trabaja
-              directamente contigo. Entendemos lo que necesitas cambiar y lo
-              convertimos en un sistema que tu equipo puede usar.
-            </p>
-            <p
-              data-es="Desde Madrid, para empresas de toda España. Con criterio para elegir qué construir, qué conectar y dónde la inteligencia aporta valor."
-              data-en="From Madrid, for companies across Spain. With the judgment to choose what to build, what to connect and where intelligence adds value."
-            >
-              Desde Madrid, para empresas de toda España. Con criterio para
-              elegir qué construir, qué conectar y dónde la inteligencia aporta
-              valor.
-            </p>
-            <div class="about-principle">
-              <span
-                data-es="La tecnología amplifica a tu equipo."
-                data-en="Technology amplifies your team."
-                >La tecnología amplifica a tu equipo.</span
-              ><br /><span
-                data-es="El control sigue siendo vuestro."
-                data-en="You stay in control."
-                >El control sigue siendo vuestro.</span
-              >
+          </article>
+          <article class="person" id="juan-poblete" aria-labelledby="juan-poblete-name">
+            <header class="person-heading">
+              <h3 class="person-name" id="juan-poblete-name">Juan <em>Poblete</em></h3>
+              <p class="person-meta" id="juan-poblete-role"><span data-es="Ingeniero de IA · Negocio y tecnología" data-en="AI engineer · Business and technology">Ingeniero de IA · Negocio y tecnología</span></p>
+              <button class="person-toggle" type="button" aria-labelledby="juan-poblete-name juan-poblete-role" aria-controls="juan-poblete-details" aria-expanded="true" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+              </button>
+            </header>
+            <div class="person-content" id="juan-poblete-details">
+              <figure class="person-photo">
+                <img src="/assets/team/juan.webp?v=20261005-equipo" width="1122" height="1402" alt="Juan Poblete" loading="lazy" decoding="async" />
+              </figure>
+              <div class="person-body">
+                <p class="person-lead" data-es="Hago que negocio y tecnología hablen el mismo idioma." data-en="I help business and technology speak the same language.">Hago que negocio y tecnología hablen el mismo idioma.</p>
+                <p class="person-bio" data-es="Soy ingeniero de IA. En The Mind Factory conecto al equipo comercial con el técnico para que lo que necesitas se entienda bien y se convierta en una solución útil." data-en="I’m an AI engineer. At The Mind Factory, I connect our commercial and technical teams so that your needs are clearly understood and turned into a useful solution.">Soy ingeniero de IA. En The Mind Factory conecto al equipo comercial con el técnico para que lo que necesitas se entienda bien y se convierta en una solución útil.</p>
+              </div>
             </div>
-          </div>
+          </article>
+          <article class="person" id="alejandro-gutierrez-gomez" aria-labelledby="alejandro-gutierrez-gomez-name">
+            <header class="person-heading">
+              <h3 class="person-name" id="alejandro-gutierrez-gomez-name">Alejandro <em>Gutiérrez</em></h3>
+              <p class="person-meta" id="alejandro-gutierrez-gomez-role"><span data-es="Estrategia y desarrollo de negocio" data-en="Strategy and business development">Estrategia y desarrollo de negocio</span></p>
+              <button class="person-toggle" type="button" aria-labelledby="alejandro-gutierrez-gomez-name alejandro-gutierrez-gomez-role" aria-controls="alejandro-gutierrez-gomez-details" aria-expanded="true" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+              </button>
+            </header>
+            <div class="person-content" id="alejandro-gutierrez-gomez-details">
+              <figure class="person-photo">
+                <img src="/assets/team/alejandro-gutierrez-gomez.webp?v=20261020-equipo" width="1122" height="1402" alt="Alejandro Gutiérrez" loading="lazy" decoding="async" />
+              </figure>
+              <div class="person-body">
+                <p class="person-lead" data-es="Antes de construir, me gusta tener claro para quién y para qué." data-en="Before we build, I like to be clear about who it’s for and why it matters.">Antes de construir, me gusta tener claro para quién y para qué.</p>
+                <p class="person-bio" data-es="Me gusta aterrizar las ideas. En The Mind Factory trabajo en la dirección del producto y del negocio: detectar oportunidades, definir propuestas y ponerles números. Acompaño a los clientes y al equipo para que cada proyecto tenga un propósito claro y una forma concreta de llevarlo a la práctica." data-en="I like turning ideas into practical plans. At The Mind Factory, I help shape the product and business direction: spotting opportunities, defining proposals and working out the numbers. I work with clients and the team so each project has a clear purpose and a concrete path to making it happen.">Me gusta aterrizar las ideas. En The Mind Factory trabajo en la dirección del producto y del negocio: detectar oportunidades, definir propuestas y ponerles números. Acompaño a los clientes y al equipo para que cada proyecto tenga un propósito claro y una forma concreta de llevarlo a la práctica.</p>
+              </div>
+            </div>
+          </article>
+          <article class="person" id="agustin-rosa" aria-labelledby="agustin-rosa-name">
+            <header class="person-heading">
+              <h3 class="person-name" id="agustin-rosa-name">Agustin <em>Rosa</em></h3>
+              <p class="person-meta" id="agustin-rosa-role"><span data-es="Ingeniero de IA" data-en="AI engineer">Ingeniero de IA</span></p>
+              <button class="person-toggle" type="button" aria-labelledby="agustin-rosa-name agustin-rosa-role" aria-controls="agustin-rosa-details" aria-expanded="true" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+              </button>
+            </header>
+            <div class="person-content" id="agustin-rosa-details">
+              <figure class="person-photo">
+                <img src="/assets/team/agustin-rosa.webp?v=20261005-equipo" width="1122" height="1402" alt="Agustin Rosa" loading="lazy" decoding="async" />
+              </figure>
+              <div class="person-body">
+                <p class="person-lead" data-es="Convierto los retos de cada negocio en soluciones que funcionan en el día a día." data-en="I turn each business’s challenges into solutions that work day to day.">Convierto los retos de cada negocio en soluciones que funcionan en el día a día.</p>
+                <p class="person-bio" data-es="Disfruto resolviendo lo que parece complicado. En The Mind Factory combino IA e ingeniería para que las buenas ideas se conviertan en herramientas que te hagan el día más fácil." data-en="I enjoy untangling things that seem complicated. At The Mind Factory, I combine AI and engineering to turn good ideas into tools that make your day easier.">Disfruto resolviendo lo que parece complicado. En The Mind Factory combino IA e ingeniería para que las buenas ideas se conviertan en herramientas que te hagan el día más fácil.</p>
+              </div>
+            </div>
+          </article>
+          <article class="person" id="victor-ramirez-marcos" aria-labelledby="victor-ramirez-marcos-name">
+            <header class="person-heading">
+              <h3 class="person-name" id="victor-ramirez-marcos-name">Víctor <em>Ramírez</em></h3>
+              <p class="person-meta" id="victor-ramirez-marcos-role"><span data-es="Desarrollo e infraestructura" data-en="Development and infrastructure">Desarrollo e infraestructura</span></p>
+              <button class="person-toggle" type="button" aria-labelledby="victor-ramirez-marcos-name victor-ramirez-marcos-role" aria-controls="victor-ramirez-marcos-details" aria-expanded="true" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+              </button>
+            </header>
+            <div class="person-content" id="victor-ramirez-marcos-details">
+              <figure class="person-photo">
+                <img src="/assets/team/victor-ramirez-marcos.webp?v=20261005-equipo-completo" width="1122" height="1402" alt="Víctor Manuel Ramírez" loading="lazy" decoding="async" />
+              </figure>
+              <div class="person-body">
+                <p class="person-lead" data-es="Detrás de cada clic, hay unas cuantas piezas que tienen que entenderse." data-en="Behind every click, several moving parts need to work together.">Detrás de cada clic, hay unas cuantas piezas que tienen que entenderse.</p>
+                <p class="person-bio" data-es="Soy consultor de tecnología y desarrollador backend. Mi terreno es lo que ocurre entre bastidores: conectar servicios, preparar la infraestructura y automatizar procesos. Disfruto haciendo que todo encaje para que tú puedas usarlo con tranquilidad." data-en="I’m a technology consultant and backend developer. My work happens behind the scenes: connecting services, setting up infrastructure and automating processes. I enjoy making everything fit together so you can use it with confidence.">Soy consultor de tecnología y desarrollador backend. Mi terreno es lo que ocurre entre bastidores: conectar servicios, preparar la infraestructura y automatizar procesos. Disfruto haciendo que todo encaje para que tú puedas usarlo con tranquilidad.</p>
+              </div>
+            </div>
+          </article>
+          <article class="person" id="nacho-coig-odonnell" aria-labelledby="nacho-coig-odonnell-name">
+            <header class="person-heading">
+              <h3 class="person-name" id="nacho-coig-odonnell-name">Nacho <em>Coig-O'Donnell</em></h3>
+              <p class="person-meta" id="nacho-coig-odonnell-role"><span data-es="Ingeniería de software" data-en="Software engineering">Ingeniería de software</span></p>
+              <button class="person-toggle" type="button" aria-labelledby="nacho-coig-odonnell-name nacho-coig-odonnell-role" aria-controls="nacho-coig-odonnell-details" aria-expanded="true" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+              </button>
+            </header>
+            <div class="person-content" id="nacho-coig-odonnell-details">
+              <figure class="person-photo">
+                <img src="/assets/team/nacho-coig-odonnell.webp?v=20261005-equipo-completo" width="1122" height="1402" alt="José Ignacio Coig-O'Donnell" loading="lazy" decoding="async" />
+              </figure>
+              <div class="person-body">
+                <p class="person-lead" data-es="Si una tarea te hace dar diez vueltas, ahí hay algo que podemos mejorar." data-en="If a task makes you jump through ten hoops, there’s something we can improve.">Si una tarea te hace dar diez vueltas, ahí hay algo que podemos mejorar.</p>
+                <p class="person-bio" data-es="Como ingeniero de software sénior, convierto procesos con demasiados pasos en herramientas más claras. Desde una pantalla hasta una automatización, busco que cada desarrollo te ahorre trabajo y te devuelva tiempo para lo que necesita tu atención." data-en="As a senior software engineer, I turn processes with too many steps into clearer tools. From an interface to an automation, I aim to make every development save you effort and give you back time for what needs your attention.">Como ingeniero de software sénior, convierto procesos con demasiados pasos en herramientas más claras. Desde una pantalla hasta una automatización, busco que cada desarrollo te ahorre trabajo y te devuelva tiempo para lo que necesita tu atención.</p>
+              </div>
+            </div>
+          </article>
+          <article class="person" id="arturo-garcia-jurado" aria-labelledby="arturo-garcia-jurado-name">
+            <header class="person-heading">
+              <h3 class="person-name" id="arturo-garcia-jurado-name">Arturo <em>García</em></h3>
+              <p class="person-meta" id="arturo-garcia-jurado-role"><span data-es="Desarrollo e ingeniería de plataforma" data-en="Development and platform engineering">Desarrollo e ingeniería de plataforma</span></p>
+              <button class="person-toggle" type="button" aria-labelledby="arturo-garcia-jurado-name arturo-garcia-jurado-role" aria-controls="arturo-garcia-jurado-details" aria-expanded="true" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+              </button>
+            </header>
+            <div class="person-content" id="arturo-garcia-jurado-details">
+              <figure class="person-photo">
+                <img src="/assets/team/arturo-garcia-jurado.webp?v=20261005-equipo-completo" width="1122" height="1402" alt="Arturo García" loading="lazy" decoding="async" />
+              </figure>
+              <div class="person-body">
+                <p class="person-lead" data-es="Construir bien también es saber qué hacer primero." data-en="Building well also means knowing what to tackle first.">Construir bien también es saber qué hacer primero.</p>
+                <p class="person-bio" data-es="Liderar equipos de ingeniería me ha enseñado a mirar más allá de la siguiente entrega. En The Mind Factory aporto esa perspectiva al desarrollo: ordenar la complejidad, cuidar las decisiones técnicas y dejar una buena base para que el producto crezca contigo." data-en="Leading engineering teams has taught me to look beyond the next delivery. At The Mind Factory, I bring that perspective to development: making sense of complexity, thinking through technical decisions and laying solid foundations so the product can grow with you.">Liderar equipos de ingeniería me ha enseñado a mirar más allá de la siguiente entrega. En The Mind Factory aporto esa perspectiva al desarrollo: ordenar la complejidad, cuidar las decisiones técnicas y dejar una buena base para que el producto crezca contigo.</p>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
       <section class="contact section-pad" id="contacto">

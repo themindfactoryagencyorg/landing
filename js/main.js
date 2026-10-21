@@ -1,6 +1,7 @@
 import { initI18n, translate as tr } from "./i18n.js?v=20260914-feedback";
 import { initNetwork } from "./network.js?v=20260914-feedback";
 import { initFlow } from "./flow.js?v=20260929-aurora";
+import { initTeamDisclosures } from "./team.js?v=20261021-equipo-cerrado";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -493,6 +494,27 @@ function updateLabels() {
     innerWidth <= 650 ? "horizontal" : "vertical",
   );
 }
+function initTeam() {
+  const people = $$(".person");
+  if (!people.length) return;
+  initTeamDisclosures(people, {
+    media: matchMedia("(max-width: 650px)"),
+    onLayoutChange: () => window.ScrollTrigger?.refresh(),
+  });
+  if (reduced.matches || !("IntersectionObserver" in window))
+    return;
+  document.documentElement.classList.add("team-motion");
+  const observer = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-awake");
+        observer.unobserve(entry.target);
+      }),
+    { rootMargin: "0px 0px -20% 0px", threshold: 0.3 },
+  );
+  people.forEach((el) => observer.observe(el));
+}
 function init() {
   document.addEventListener("tmf:language", () => {
     renderPanel();
@@ -505,6 +527,7 @@ function init() {
   initFlow();
   initNetwork($("#network-canvas"));
   initMotion();
+  initTeam();
   setStage(1, true);
   window.addEventListener("resize", updateLabels, { passive: true });
 }

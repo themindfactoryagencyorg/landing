@@ -1224,11 +1224,6 @@ h1 {
 .about {
   border-top: 1px solid var(--line);
 }
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 12%;
-}
 .about h2 {
   font-size: clamp(37px, 3.5vw, 58px);
   letter-spacing: -0.05em;
@@ -1236,42 +1231,6 @@ h1 {
 }
 .about h2 em {
   color: #78968a;
-}
-.about-copy > p {
-  font-size: 17px;
-  color: #a5b4ab;
-  margin-bottom: 25px;
-}
-.about-principle {
-  border-left: 2px solid var(--mint);
-  padding-left: 22px;
-  color: var(--mint);
-  font-size: 20px;
-  line-height: 1.5;
-  margin-top: 38px;
-}
-.about-signature {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  margin-top: 45px;
-}
-.about-signature img {
-  width: 260px;
-  height: auto;
-}
-.about-brand {
-  flex: 0 0 auto;
-  text-align: center;
-}
-.about-brand .brand-tagline {
-  font-size: 11px;
-  margin-top: 5px;
-}
-.about-signature > span {
-  font: 10px/1.8 var(--mono);
-  letter-spacing: 0.06em;
-  color: #7a8c82;
 }
 .contact {
   background: var(--mint);
@@ -1563,9 +1522,6 @@ h1 {
   .possibility h3 {
     font-size: 29px;
   }
-  .about-grid {
-    gap: 7%;
-  }
   .demo-caption {
     max-width: 225px;
     text-align: right;
@@ -1698,9 +1654,6 @@ h1 {
   }
   .text-link {
     font-size: 12px;
-  }
-  .about-copy > p {
-    font-size: 16px;
   }
 }
 @media (max-width: 650px) {
@@ -2079,26 +2032,8 @@ h1 {
   .possibility p {
     font-size: 14px;
   }
-  .about-grid {
-    display: block;
-  }
   .about h2 {
     font-size: 39px;
-  }
-  .about-signature {
-    margin: 27px 0 35px;
-    flex-wrap: wrap;
-    gap: 18px;
-  }
-  .about-signature img {
-    width: 220px;
-  }
-  .about-copy > p {
-    font-size: 16px;
-  }
-  .about-principle {
-    font-size: 20px;
-    margin-top: 30px;
   }
   .contact-top {
     gap: 15px;
@@ -2545,4 +2480,221 @@ h1 {
   background:
     radial-gradient(60% 40% at 78% 30%, #b5f5d726, transparent 70%),
     radial-gradient(50% 50% at 20% 90%, #10211ce6, transparent 70%);
+}
+
+/* About us: three profiles above four profiles. */
+.about {
+  overflow: hidden;
+}
+.team-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 8%;
+  align-items: end;
+}
+.team-intro-copy p {
+  font-size: 18px;
+  color: #a5b4ab;
+  max-width: 46ch;
+}
+.team-people {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 40px 32px;
+  margin-top: 48px;
+}
+.person {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 4;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+.person:nth-child(n + 4) {
+  grid-column: span 3;
+}
+.person-photo {
+  order: 1;
+  width: min(280px, 100%);
+  margin: 0 auto;
+}
+.person-photo img {
+  width: 100%;
+  height: auto;
+  transition: filter 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.team-motion .person-photo img {
+  filter: grayscale(1) brightness(0.8);
+}
+.team-motion .person.is-awake .person-photo img {
+  filter: none;
+}
+.person-content {
+  display: contents;
+}
+.person-content[hidden] {
+  display: none;
+}
+.person-heading {
+  order: 2;
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.person-toggle {
+  display: none;
+}
+.person-body {
+  order: 3;
+  margin-top: 16px;
+  min-width: 0;
+}
+.person-meta {
+  color: var(--mint);
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 3em;
+}
+.person-name {
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.person-name em {
+  color: #78968a;
+  transition: color 200ms ease;
+}
+.person-lead {
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  max-width: 38ch;
+}
+.person-bio {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #a5b4ab;
+  max-width: 56ch;
+}
+@media (hover: hover) and (pointer: fine) {
+  .person:hover {
+    background-color: color-mix(in srgb, var(--mint) 4%, transparent);
+    border-color: color-mix(in srgb, var(--mint) 28%, transparent);
+  }
+  .person:hover .person-name em {
+    color: var(--mint);
+  }
+  .person .person-photo img {
+    transition: filter 200ms ease;
+  }
+  .person:hover .person-photo img,
+  .team-motion .person:hover .person-photo img {
+    filter: brightness(1.05) saturate(1.06);
+  }
+}
+@media (max-width: 1100px) {
+  .team-people {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+  .person {
+    grid-column: span 2;
+  }
+  .person:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+}
+@media (max-width: 900px) {
+  .team-intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .team-people {
+    margin-top: 40px;
+  }
+  .person-name {
+    font-size: 24px;
+  }
+}
+@media (max-width: 650px) {
+  .team-intro-copy p {
+    font-size: 16px;
+  }
+  .team-people {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+  .person,
+  .person:nth-child(n + 4) {
+    grid-column: auto;
+  }
+  .person-photo {
+    width: min(220px, 100%);
+  }
+  .person-heading {
+    margin-top: 18px;
+  }
+  .person-name {
+    font-size: 28px;
+  }
+  .person-meta {
+    min-height: 0;
+  }
+  .team-disclosures .team-people {
+    gap: 12px;
+  }
+  .team-disclosures .person {
+    display: block;
+    border-color: var(--line);
+  }
+  .team-disclosures .person-heading {
+    margin-top: 0;
+    padding-inline: 28px;
+  }
+  .team-disclosures .person-name {
+    font-size: 24px;
+  }
+  .team-disclosures .person-content {
+    display: block;
+    margin-top: 20px;
+  }
+  .team-disclosures .person-content[hidden] {
+    display: none;
+  }
+  .team-disclosures .person-toggle {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 44px;
+    padding: 0;
+    background: transparent;
+    color: var(--mint);
+    border-radius: 2px;
+  }
+  .person-toggle svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 200ms ease;
+  }
+  .person.is-expanded .person-toggle svg {
+    transform: rotate(180deg);
+  }
+  .team-disclosures .person.is-expanded {
+    border-color: color-mix(in srgb, var(--mint) 28%, transparent);
+  }
 }
