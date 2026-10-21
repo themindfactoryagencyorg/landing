@@ -2,7 +2,7 @@
 
 Rama `codex/landing-historia-casos`, sobre `origin/main` (`582e922`).
 Vista local: `http://127.0.0.1:8088/`. No se ha publicado en el dominio principal.
-La copia privada de revisión está desplegada en Sites (ver más abajo).
+La revisión privada actual usa TMF Auth en el portal de demos (ver más abajo).
 
 La portada presenta la oferta de software a medida. A continuación explica
 aplicaciones, integraciones y automatizaciones, muestra tres casos del documento
@@ -37,7 +37,49 @@ ImageGen prepara el fondo y los recortes; la web reutiliza el mismo recurso.
 Se conservan las fotografías anteriores. Los PNG y prompts de edición se
 guardan en `../output/team-patio-20261022/`.
 
-## Copia privada para revisión · 22 octubre 2026
+## Revisión actual con TMF Auth · 22 octubre 2026
+
+URL: https://demos.themindfactory.es/d/landing-preview/
+
+Reutiliza el login habitual de TMF Auth y el proxy autorizado del portal de demos.
+Los siete miembros activos de Matrix tienen permiso para `landing-preview`;
+no se les han concedido permisos nuevos sobre otras demos. Las dos concesiones
+comodín preexistentes pertenecen también a miembros de ese equipo.
+
+- Portal: `tmf-demos` commit `4e91cbfb483d6eedf12692961b551c9734c37abb`, PR #7 integrada.
+- Copia estática: `9dcac5490a804cb772a65d1fde027e01623a5e98` de esta rama.
+- Servicio privado: `tmf-landing-preview`, sin puertos publicados.
+- Release: `/home/tmf/apps/tmf-landing-preview/releases/20261022-v3/`.
+- `preview/prepare.mjs` copia solo los archivos públicos, adapta HTML/CSS al prefijo protegido, añade noindex y valida recursos. Los JavaScript se conservan byte a byte y pasan comprobación de sintaxis.
+- `preview/compose.yaml` fija la imagen estática por digest y monta los archivos en solo lectura.
+
+Para preparar otra copia, confirma primero los cambios públicos en Git y ejecuta
+`node preview/prepare.mjs <directorio-absoluto-nuevo>/site`. La salida debe ser
+nueva; no sobrescribe snapshots. Copia `preview/Caddyfile` y `preview/compose.yaml`
+al directorio padre de `site` y publica esa release en el mismo servicio privado.
+El portal solo requiere otro despliegue si cambia su catálogo o su código.
+Esta publicación no sincroniza automáticamente cambios futuros de la landing.
+
+Validado: las 10 pruebas de la landing y las 11 del gate HTTP del portal pasan;
+backend/frontend compilan. En remoto, login real completado por Juan, vuelta a
+la landing, ES/EN, casos, confirmación local del agente, detalle MindHub y equipo
+móvil a 390 px; escritorio a 1202 px. Sin errores nuevos en consola ni imágenes
+rotas tras corregir el paquete. Sin sesión, página, foto y script redirigen a
+TMF Auth. No se han probado las cuentas de las otras seis personas.
+Evidencia: `artifacts/landing-tmf-auth-20261022/`.
+
+El despliegue del portal conserva una imagen de rollback y una copia de su fuente
+anterior en el VPS; no incluyen cambios en TMF Auth, Caddy del host ni la landing
+principal. El portal tiene un único entorno; esto no certifica la escalera
+LOCAL/DEV/PRELIVE/PROD de la web principal. El refresco del baúl sigue degradado
+por las fuentes documentadas en la revisión anterior.
+
+El build mostró avisos de dependencias ya presentes en el portal. El audit de
+runtime del backend cuenta 8 (3 moderados, 4 altos, 1 crítico en `proxy-addr`,
+GHSA-jqcg-44mw-7w3h). Los manifests de dependencias y sus locks no se han
+actualizado en esta entrega; esta integración no corrige esos avisos.
+
+## Revisión anterior en Sites · 22 octubre 2026
 
 URL: https://tmf-landing-equipo-20261022.darksky27.chatgpt.site
 

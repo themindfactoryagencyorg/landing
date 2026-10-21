@@ -42,6 +42,21 @@ Navegador: sin avisos ni errores de consola. Evidencia en
 limitaciones de validación indicadas arriba; no se ha ejecutado un test A/B de
 conversión ni se ha publicado la propuesta.
 
+## Revisión con TMF Auth · 22 octubre 2026
+
+| ID | Criterio | Verificación |
+| --- | --- | --- |
+| TMF-REVIEW-01 | La revisión usa la sesión compartida y los permisos del portal de demos. | Login real completado por el usuario; retorno a `/d/landing-preview/`. Siete grants específicos verificados y comodines anteriores sin ampliar. |
+| TMF-REVIEW-02 | Página, imágenes y JS tienen el mismo control de acceso. | Live: las tres rutas sin cookie redirigen a TMF Auth con destino conservado. Fixtures HTTP del portal: sesión inválida, identidad sin grant (403), autorizado (200). |
+| TMF-REVIEW-03 | La adaptación al prefijo no modifica JS ni deja recursos fuera del gate. | Preparador comprueba enlaces de HTML, fondo compartido, igualdad binaria de JS y sintaxis de todos los scripts. Revisión adicional de recursos CSS. |
+| TMF-REVIEW-04 | La copia autenticada conserva comportamiento y presentación. | Navegador: ES/EN, caso Madatuta, agente Proyectos con confirmación deshabilitada tras pulsar, etapas y Operaciones de MindHub, menú y apertura de perfil móvil. 390/1202 px sin desbordamiento ni imágenes rotas; cero errores nuevos tras la última recarga. |
+
+Versión estática `9dcac54`; portal `4e91cbf` (PR tmf-demos #7). Release v3.
+Suite local landing: 10/10. Suite HTTP local del portal: 11/11. Sin omitidas.
+Capturas y logs: `artifacts/landing-tmf-auth-20261022/`.
+No se han usado las otras seis cuentas reales ni certificado entornos que el
+portal no tiene. La web principal no se ha publicado ni modificado.
+
 ## Copia privada de revisión · 22 octubre 2026
 
 | ID | Acceptance criteria | Verification |
