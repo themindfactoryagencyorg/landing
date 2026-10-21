@@ -42,6 +42,19 @@ Navegador: sin avisos ni errores de consola. Evidencia en
 limitaciones de validación indicadas arriba; no se ha ejecutado un test A/B de
 conversión ni se ha publicado la propuesta.
 
+## Copia privada de revisión · 22 octubre 2026
+
+| ID | Acceptance criteria | Verification |
+| --- | --- | --- |
+| PREVIEW-01 | La versión de revisión se publica en un origen independiente sin modificar la web principal. | Sites confirmó despliegue `appgdep_6ad9453b360c8191841227ef85fd9dea`, fuente `9cc8693`, copia de `f48d131`. Workflow y `main` sin cambios. |
+| PREVIEW-02 | Solo el equipo autorizado puede abrirla. | Política `custom` revisión 2: propietario y seis lectores, correspondientes a los siete miembros activos consultados en Matrix. Navegador inicialmente exige login; sesión del propietario verificada. No se han suplantado ni probado las cuentas ajenas. |
+| PREVIEW-03 | La copia mantiene contenido, recursos y navegación. | Navegador autenticado: recursos sin errores, ES/EN, exclusividad de casos, selección y confirmación de Eventos, menú móvil a 390 px. Sin desbordamiento ni avisos de consola. Capturas `desktop.png` y `mobile.png` en `artifacts/landing-private-preview-20261022/`. |
+| PREVIEW-04 | La copia no se indexa y contiene solo archivos públicos de la web. | Comprobación de los 50 archivos estáticos: meta noindex/nofollow en todos los HTML, robots.txt y recursos locales resueltos; sin configuración privada ni documentación del repo en dist. |
+
+La publicación no certifica la escalera de release de la web principal.
+La revisión entre compañeros queda abierta; las próximas modificaciones deben
+copiarse y desplegarse de nuevo en el mismo Site.
+
 ## Retratos · 22 octubre 2026
 
 | ID | Acceptance criteria | Verification |

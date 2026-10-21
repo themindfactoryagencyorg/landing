@@ -1,7 +1,8 @@
 # TheMindFactory · Propuesta local · 22 octubre 2026
 
 Rama `codex/landing-historia-casos`, sobre `origin/main` (`582e922`).
-Vista local: `http://127.0.0.1:8088/`. No se ha publicado esta propuesta.
+Vista local: `http://127.0.0.1:8088/`. No se ha publicado en el dominio principal.
+La copia privada de revisión está desplegada en Sites (ver más abajo).
 
 La portada presenta la oferta de software a medida. A continuación explica
 aplicaciones, integraciones y automatizaciones, muestra tres casos del documento
@@ -35,6 +36,33 @@ transparentes `*-cutout.webp` sobre un único `patio-common.webp`, todos a
 ImageGen prepara el fondo y los recortes; la web reutiliza el mismo recurso.
 Se conservan las fotografías anteriores. Los PNG y prompts de edición se
 guardan en `../output/team-patio-20261022/`.
+
+## Copia privada para revisión · 22 octubre 2026
+
+URL: https://tmf-landing-equipo-20261022.darksky27.chatgpt.site
+
+- Site: `appgprj_6ad944cd7dd88191a85488d8a9f78b21`.
+- Copia de la landing: `f48d131988575301e9bd95d8b0716d501824501a`.
+- Fuente desplegada en Sites: `9cc869319b460e2841c37b431db2bbbfc587d341`.
+- Checkout independiente: `../output/landing-team-preview-20261022/`.
+- Solo HTML/CSS/JS y recursos estáticos; no se copia el repositorio ni sus documentos a la raíz pública.
+- Todos los HTML llevan `noindex, nofollow` y `robots.txt` impide el rastreo.
+- Acceso mediante ChatGPT y lista de personas autorizadas. Los siete miembros activos de Matrix están incluidos: propietario y seis lectores. Cada uno debe entrar con el mismo correo registrado en Matrix.
+
+La publicación y la lista de acceso fueron confirmadas por Sites (política
+`custom`, revisión 2, siete personas y ningún grupo). Se consultó el directorio
+activo de Matrix en modo de solo lectura para resolver los correos autorizados.
+El navegador confirmó el requisito de login y, con la sesión del propietario,
+la carga de la landing, sus recursos, ES/EN, casos, simulación del agente y menú
+móvil a 390 px. Sin desbordamiento ni errores de consola. La landing local
+mantiene las 10 pruebas aprobadas. No se ha entrado con las cuentas del resto
+del equipo. Evidencia en `artifacts/landing-private-preview-20261022/`. El refresco del baúl quedó
+incompleto (Wiki sin API key, Jira sin configuración, WhatsApp sin lector Windows
+y repos con actualizaciones pendientes); esta copia se obtiene del commit indicado.
+
+No modifica DNS, el despliegue de la landing principal ni su rama `main`.
+Es una copia congelada: los siguientes cambios locales requieren actualizarla
+y publicarla de nuevo en el mismo Site. No se habilita sincronización automática.
 
 ## Revisión publicada anterior · 14 septiembre 2026
 
