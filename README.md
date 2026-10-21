@@ -1,14 +1,18 @@
-# TheMindFactory · Propuesta local · 21 octubre 2026
+# TheMindFactory · Propuesta local · 22 octubre 2026
 
 Rama `codex/landing-historia-casos`, sobre `origin/main` (`582e922`).
 Vista local: `http://127.0.0.1:8088/`. No se ha publicado esta propuesta.
 
-La portada presenta la oferta de software a medida. A continuación muestra
-tres casos del documento de referencia, un agente de IA con tres ejemplos
-ilustrativos y la oferta de aplicaciones, integraciones y automatizaciones.
+La portada presenta la oferta de software a medida. A continuación explica
+aplicaciones, integraciones y automatizaciones, muestra tres casos del documento
+de referencia y destaca el agente de IA con tres ejemplos ilustrativos.
 MindHub y el explorador existente quedan dentro de un desplegable opcional.
 Se conservan las siete fichas del equipo, ES/EN y las páginas legales.
 El contacto explica diagnóstico, propuesta y estimación de alcance, coste y plazos.
+
+Se ha contrastado el contenido con la web anterior (`582e922`): recuperamos
+los problemas de WhatsApp, Excel e información dispersa y la oferta para equipos
+en campo. Inventario y decisiones en `docs/content-check-20261022.md`.
 
 - `story.css`: composición de las nuevas secciones y ajustes responsive.
 - `js/agent.js`: simulación local; no usa APIs ni ejecuta acciones reales.

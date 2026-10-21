@@ -21,9 +21,11 @@ test("landing local resources and fragment links resolve without duplicate IDs",
   }
 });
 
-test("the story leads with proof, retains the full team and labels the agent simulation", () => {
-  assert.ok(html.indexOf('id="casos"') < html.indexOf('id="agente"'));
-  assert.ok(html.indexOf('id="agente"') < html.indexOf('id="sistema"'));
+test("the story explains the offer before proof, retains the full team and labels the agent simulation", () => {
+  const story = ['hero', 'sistema', 'casos', 'agente', 'metodo', 'equipo', 'contacto'];
+  for (let i = 1; i < story.length; i++) {
+    assert.ok(html.indexOf(`id="${story[i - 1]}"`) < html.indexOf(`id="${story[i]}"`));
+  }
   assert.equal((html.match(/class="case real-case"/g) || []).length, 3);
   assert.equal((html.match(/class="person-toggle"/g) || []).length, 7);
   assert.equal((html.match(/class="agent-confirm" hidden/g) || []).length, 3);

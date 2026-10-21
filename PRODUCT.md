@@ -23,6 +23,7 @@ Abstract architecture before a clear business benefit; generic AI promises; inve
 ## Design Principles
 
 - Lead with the visitor's work and the problem they recognise.
+- Explain applications, integrations and automation before the three real projects; highlight the AI agent after those projects.
 - Show existing solutions before explaining internal product names.
 - Present illustrative agent interactions explicitly as examples.
 - Explain what happens after the first conversation.

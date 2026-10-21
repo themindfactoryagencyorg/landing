@@ -25,6 +25,23 @@ Movimiento reducido, lector de pantalla y Safari no se han ejecutado.
 No se certifican los gates de release LOCAL/DEV/PRELIVE/PROD de TMF;
 esta es una propuesta visual local con la suite disponible y flujos comprobados.
 
+## Oferta antes de los casos y revisión de contenido · 22 octubre 2026
+
+| ID | Acceptance criteria | Verification |
+| --- | --- | --- |
+| ORDER-01 | La oferta general aparece antes de los casos y el agente va después. Menú, flecha de portada y enlace posterior a los casos llevan al destino correspondiente. | Suite de estructura actualizada; navegador: menú móvil a la oferta y enlace de casos a contacto. |
+| ORDER-02 | Los ejemplos recuperados de la web anterior aparecen en ES/EN. | Navegador en ambos idiomas: WhatsApp, Excel, información compartida y equipos en campo. |
+| ORDER-03 | El cambio de orden conserva casos, agente y detalle opcional. | Navegador: abrir BodaMúsica cierra Qrema; ejemplo Proyectos exige confirmación; desplegable de MindHub abre, etapa IA seleccionable y pestaña Operaciones funcional. |
+| ORDER-04 | El contenido anterior útil tiene ubicación identificada. | Comparación con `582e922`, inventario en `content-check-20261022.md`. Marcado de conexión y Minds idéntico; 25 traducciones de equipo conservadas en cada idioma; páginas legales/acceso y destinos de contacto sin cambios. |
+| ORDER-05 | La oferta adelantada se lee en móvil y escritorio. | Capturas inspeccionadas a 390 y 1202 px. Documento sin desbordamiento a 320, 390 y 1202 px; menú móvil cerrado tras elegir destino y título visible bajo la cabecera. |
+
+Suite: 10/10 aprobadas, sin fallos ni omitidas. `git diff --check`: exit 0.
+Navegador: sin avisos ni errores de consola. Evidencia en
+`artifacts/landing-order-20261022/`: `desktop.png`, `mobile.png`,
+`content-validation.json` y `tests.log`. Se mantiene el alcance local y las
+limitaciones de validación indicadas arriba; no se ha ejecutado un test A/B de
+conversión ni se ha publicado la propuesta.
+
 ## Retratos · 22 octubre 2026
 
 | ID | Acceptance criteria | Verification |
