@@ -16,7 +16,7 @@ for (const file of publicFiles) {
   const target = path.join(destination, file);
   mkdirSync(path.dirname(target), { recursive: true });
   let bytes = readFileSync(path.join(root, file));
-  if (/\.(html|css|js)$/.test(file)) {
+  if (/\.(html|css)$/.test(file)) {
     let text = bytes.toString('utf8').replace(/(["'(])\/(?!\/)/g, `$1${prefix}/`);
     if (file.endsWith('.html')) text = text.replace('<head>', '<head>\n<meta name="robots" content="noindex, nofollow">');
     bytes = Buffer.from(text);
@@ -34,4 +34,8 @@ for (const file of publicFiles.filter(file => file.endsWith('.html'))) {
   }
 }
 assert.ok(readFileSync(path.join(destination, 'styles.css'), 'utf8').includes(`${prefix}/assets/team/patio-common.webp`));
+for (const file of publicFiles.filter(file => file.endsWith('.js'))) {
+  assert.deepEqual(readFileSync(path.join(destination, file)), readFileSync(path.join(root, file)), `JavaScript changed: ${file}`);
+  execFileSync(process.execPath, ['--check', path.join(destination, file)]);
+}
 console.log(JSON.stringify({ source_commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), prefix, files: publicFiles.length + 1, destination }));
