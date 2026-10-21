@@ -1,4 +1,4 @@
-export function initTeamDisclosures(people, { media, location, onLayoutChange }) {
+export function initTeamDisclosures(people, { media, onLayoutChange }) {
   const profiles = people.map((person) => ({
     person,
     button: person.querySelector(".person-toggle"),
@@ -12,13 +12,6 @@ export function initTeamDisclosures(people, { media, location, onLayoutChange })
     profile.button.setAttribute("aria-expanded", String(expanded));
     profile.content.hidden = !expanded;
     profile.person.classList.toggle("is-expanded", media.matches && expanded);
-  }
-
-  function openLinkedProfile() {
-    const linked = profiles.find(({ person }) => `#${person.id}` === location.hash);
-    if (!linked) return;
-    linked.expanded = true;
-    render(linked);
   }
 
   profiles.forEach((profile) => {
@@ -35,12 +28,7 @@ export function initTeamDisclosures(people, { media, location, onLayoutChange })
     onLayoutChange();
   }
 
-  openLinkedProfile();
   syncLayout();
   media.addEventListener("change", syncLayout);
-  window.addEventListener("hashchange", () => {
-    openLinkedProfile();
-    onLayoutChange();
-  });
   document.documentElement.classList.add("team-disclosures");
 }

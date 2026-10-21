@@ -32,10 +32,11 @@ test("team disclosure behavior", async (t) => {
     const media = new EventTarget();
     media.matches = mobile;
     const location = { hash };
+    global.window.location = location;
     const profiles = [profile("laura-pereda"), profile("juan-poblete"), profile("alejandro-gutierrez-gomez")];
     let refreshes = 0;
     initTeamDisclosures(profiles.map(({ person }) => person), {
-      media, location, onLayoutChange: () => refreshes++,
+      media, onLayoutChange: () => refreshes++,
     });
     return { profiles, media, location, refreshes: () => refreshes };
   };
@@ -89,17 +90,26 @@ test("team disclosure behavior", async (t) => {
       assert.equal(profiles[2].button.getAttribute("aria-expanded"), "false");
     });
 
-    await t.test("direct profile links open the right person on load and hash navigation", () => {
+    await t.test("profile hashes never open cards automatically and reload resets all choices", () => {
       const { profiles, location } = setup(true, "#alejandro-gutierrez-gomez");
-      assert.equal(profiles[0].content.hidden, true);
-      assert.equal(profiles[2].content.hidden, false);
+      profiles.forEach(({ content, button }) => {
+        assert.equal(content.hidden, true);
+        assert.equal(button.getAttribute("aria-expanded"), "false");
+      });
       location.hash = "#juan-poblete";
       global.window.dispatchEvent(new Event("hashchange"));
-      assert.equal(profiles[1].content.hidden, false);
-      location.hash = "#contacto";
+      profiles.forEach(({ content }) => assert.equal(content.hidden, true));
+      profiles[0].button.dispatchEvent(new Event("click"));
+      assert.equal(profiles[0].content.hidden, false);
+      location.hash = "#alejandro-gutierrez-gomez";
       global.window.dispatchEvent(new Event("hashchange"));
-      assert.equal(profiles[0].content.hidden, true);
-      assert.equal(profiles[1].content.hidden, false);
+      assert.equal(profiles[0].content.hidden, false);
+      assert.equal(profiles[2].content.hidden, true);
+      const reloaded = setup(true, location.hash);
+      reloaded.profiles.forEach(({ content, button }) => {
+        assert.equal(content.hidden, true);
+        assert.equal(button.getAttribute("aria-expanded"), "false");
+      });
     });
 
     await t.test("language changes preserve state and keep the name and translated role as button labels", () => {
