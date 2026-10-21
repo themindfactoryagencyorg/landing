@@ -17,3 +17,17 @@ These checks cover state and markup; they do not certify browser rendering.
 La revisión manual anterior del usuario corresponde a la presentación anterior;
 no valida este nuevo desplegable. La automatización del navegador permanece pendiente
 por el fallo al verificar permisos de Browser Use para el origen local.
+
+# SEO técnico (seo/minor-fixes-2026-10)
+
+Comprobaciones automáticas: `node --test tests/seo.test.cjs`.
+
+| ID | Criterio de aceptación | Verificación |
+| --- | --- | --- |
+| SEO-01 | `/robots.txt` permite el sitio, bloquea `/docs/`, `/tests/` y `/CLAUDE.md`, deja rastrear `/acceso.html` (para que se lea su `noindex`) y declara el sitemap. | Automática; tras desplegar, `curl -sI https://themindfactory.es/robots.txt` debe dar `text/plain`. |
+| SEO-02 | `/sitemap.xml` contiene exactamente la portada y las tres páginas legales; ninguna lleva `noindex`. | Automática; tras desplegar, `content-type` XML. |
+| SEO-03 | Portada y páginas legales tienen canonical, Open Graph y Twitter Card, con la imagen `og-tmf-1200x630.jpg` existente. | Automática; tras desplegar, inspector de publicaciones de LinkedIn. |
+| SEO-04 | Título y descripción de la portada coinciden entre `index.html` y `js/i18n.js`, incluyen "software a medida" y no usan rayas. | Automática. |
+| SEO-05 | El JSON-LD se analiza sin errores y contiene `Organization` (con zona de servicio, temas, contacto y catálogo de servicios) y `WebSite`; sin `LocalBusiness`. | Automática; Rich Results Test y validator.schema.org pendientes tras desplegar. |
+| SEO-06 | Los siete retratos describen persona y rol; el botón "Hablemos de tu negocio" abre el correo con asunto y preguntas guía (sector, tamaño, gestión de pedidos o partes). | Automática; apertura real en un cliente de correo pendiente. |
+| SEO-07 | `assets/logo-white.png` ya no se publica y ningún retrato supera 250 KB. | Automática. |

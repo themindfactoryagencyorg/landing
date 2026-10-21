@@ -27,12 +27,12 @@ export function initI18n() {
       lang === "es" ? "Switch to English" : "Cambiar a español",
     );
     document.title = translate(
-      "TheMindFactory — El siguiente nivel de tu negocio",
-      "TheMindFactory — Your business. Its next level.",
+      "Software a medida para pymes: pedidos, stock y partes de trabajo | TheMindFactory",
+      "Custom software for SMEs: orders, stock and work reports | TheMindFactory",
     );
     document.querySelector('meta[name="description"]').content = translate(
-      "Software a medida para conectar ventas, stock, proyectos y equipo. Construimos la mente operativa de tu negocio.",
-      "Custom software to connect sales, stock, projects and people. We build the operational mind of your business.",
+      "Conectamos pedidos, stock, facturación y partes de trabajo en un sistema a medida para tu pyme. Automatizamos tareas manuales. Desde Madrid a toda España.",
+      "We connect orders, stock, invoicing and work reports in one custom system for your business. We automate manual tasks. From Madrid to all of Spain.",
     );
     document.dispatchEvent(
       new CustomEvent("tmf:language", { detail: { lang } }),
