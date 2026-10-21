@@ -25,6 +25,15 @@ Movimiento reducido, lector de pantalla y Safari no se han ejecutado.
 No se certifican los gates de release LOCAL/DEV/PRELIVE/PROD de TMF;
 esta es una propuesta visual local con la suite disponible y flujos comprobados.
 
+## Retratos · 22 octubre 2026
+
+| ID | Acceptance criteria | Verification |
+| --- | --- | --- |
+| PHOTO-01 | Laura, Juan y Agustín comparten el nuevo patio; los otros cuatro retratos se conservan. | Revisión visual de las tres ediciones y referencias HTML; originales conservados. |
+| PHOTO-02 | Los nuevos WebP mantienen dimensiones y cargan correctamente. | Comprobación de 1122 × 1402 en los tres archivos; las siete imágenes cargan en navegador. Suite existente: 9/9, sin fallos ni omitidas. |
+
+Evidencia local en `artifacts/team-patio-20261022/`.
+
 ## Team profiles · inventario de la revisión anterior
 
 Automated behavior checks: `node --test tests/team.test.cjs`.

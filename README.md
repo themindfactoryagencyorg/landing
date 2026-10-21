@@ -25,6 +25,11 @@ no está disponible en el Python de este Windows. No se ha usado el baúl como f
 DEV, PRELIVE y PROD quedan pendientes y fuera del alcance de esta propuesta local.
 Antes de publicación, revisar la autorización de uso público de nombres y capturas.
 
+Actualización local del 22 de octubre: Laura, Juan y Agustín usan variantes
+`*-patio.webp`, editadas con ImageGen para compartir un patio de ladrillo y
+vegetación. Se conservan las fotografías anteriores y el encuadre 1122 × 1402.
+Los PNG y prompts de edición se guardan en `../output/team-patio-20261022/`.
+
 ## Revisión publicada anterior · 14 septiembre 2026
 
 Propuesta revisada en local y aprobada por el usuario para publicación.
