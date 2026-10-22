@@ -11,7 +11,7 @@
   --font: "DM Sans", sans-serif;
   --case-muted: #405e4e;
   --case-line: #b7c8bd;
-  --agent-surface: #182620;
+  --agent-surface: #151e2b;
 }
 * {
   box-sizing: border-box;
@@ -116,7 +116,8 @@ em {
 }
 .nav {
   height: 92px;
-  position: absolute;
+  position: fixed;
+  background: #0b0e10ef;
   top: 0;
   left: 0;
   width: 100%;
@@ -194,13 +195,18 @@ em {
 }
 .nav-contact {
   display: flex;
-  gap: 25px;
+  align-items: center;
+  gap: 12px;
   font-size: 13px;
-  border-bottom: 1px solid #a4b2ab;
-  padding: 10px 0;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: var(--mint);
+  color: var(--dark);
+  white-space: nowrap;
 }
 .nav-contact:hover {
-  color: var(--mint);
+  background: var(--ink);
 }
 .menu-toggle {
   display: none;
@@ -1664,21 +1670,32 @@ h1 {
     scroll-padding-top: 90px;
   }
   .nav {
-    padding: 0 5%;
-    gap: 12px;
+    padding: 0 4%;
+    gap: 8px;
   }
   .nav .brand {
     font-size: 17px;
     gap: 3px;
   }
   .brand img {
-    width: 188px;
+    width: clamp(112px, 36vw, 160px);
+  }
+  .nav .brand-tagline {
+    font-size: 8px;
+  }
+  .nav .language {
+    font-size: 10px;
+    gap: 3px;
   }
   .nav-contact {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .nav-contact > span:last-child {
     display: none;
   }
   .nav-actions {
-    gap: 15px;
+    gap: 8px;
   }
   .hero {
     height: auto;
@@ -2594,6 +2611,16 @@ h1 {
   color: #a5b4ab;
   max-width: 56ch;
 }
+.person-linkedin {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 12px;
+  color: var(--mint);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 @media (hover: hover) and (pointer: fine) {
   .person:hover {
     background-color: color-mix(in srgb, var(--mint) 4%, transparent);
@@ -2663,6 +2690,7 @@ h1 {
   }
   .team-disclosures .person {
     display: block;
+    background-color: var(--surface);
     border-color: var(--line);
   }
   .team-disclosures .person-heading {

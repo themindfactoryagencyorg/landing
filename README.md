@@ -4,6 +4,21 @@ Rama `codex/landing-historia-casos`, sobre `origin/main` (`582e922`).
 Vista local: `http://127.0.0.1:8088/`. No se ha publicado en el dominio principal.
 La revisión privada actual usa TMF Auth en el portal de demos (ver más abajo).
 
+## Ajustes del equipo · 22 octubre 2026
+
+- Siete LinkedIn contrastados en los contactos de Juan en Chrome; enlaces personales en cada ficha.
+- Nombre visible: Víctor Manuel Ramírez. Fichas móviles con fondo opaco.
+- Contactar permanece visible en la cabecera fija, también en móvil y con el menú abierto.
+- Capturas en diálogo nativo: ajuste a pantalla, tamaño real con desplazamiento, cierre con botón/Escape y devolución del foco. Sin JavaScript se conserva el enlace al archivo original.
+- La simulación usa tonos azules, mensajes diferenciados y confirmaciones delineadas; el menta identifica los CTA de la web.
+
+Comprobación: 11 pruebas locales aprobadas, sintaxis JS y recursos verificados.
+La política del navegador bloqueó la inspección de la landing en esta sesión;
+no se ha sorteado el bloqueo ni certificado responsive o el visor en navegador.
+El refresco completo del baúl se ejecutó, con fuentes degradadas (Wiki, Jira y
+WhatsApp); estos cambios dependen del código local y de los perfiles confirmados.
+La incidencia de acceso al enlace queda aparcada por indicación de Juan.
+
 La portada presenta la oferta de software a medida. A continuación explica
 aplicaciones, integraciones y automatizaciones, muestra tres casos del documento
 de referencia y destaca el agente de IA con tres ejemplos ilustrativos.

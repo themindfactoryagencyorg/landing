@@ -187,6 +187,9 @@ p {
   max-width: 42ch;
 }
 .agent-demo {
+  --demo-accent: #c4d8ff;
+  --muted: #b2c0cf;
+  --line: #c4d8ff30;
   padding: clamp(20px, 3vw, 36px);
   background: var(--agent-surface);
   border: 1px solid var(--line);
@@ -202,7 +205,7 @@ p {
 .agent-mark {
   font-size: 34px;
   line-height: 1;
-  color: var(--mint);
+  color: var(--demo-accent);
 }
 .agent-demo-top strong {
   font-size: 16px;
@@ -224,32 +227,41 @@ p {
   background: transparent;
   color: var(--ink);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 999px;
   min-height: 44px;
   padding: 8px 13px;
   font-size: 13px;
   transition: background 0.2s;
 }
 .agent-scenarios button[aria-pressed="true"] {
-  background: var(--mint);
-  border-color: var(--mint);
-  color: var(--dark);
+  background: #304766;
+  border-color: var(--demo-accent);
+  color: var(--ink);
+}
+.agent-user-label {
+  margin: 24px 0 8px;
+  text-align: right;
+  color: var(--muted);
+  font-size: 12px;
 }
 .agent-question {
-  background: var(--mint);
-  color: var(--dark);
-  margin: 24px 0 24px 9%;
+  background: #d9e6ff;
+  color: #15243b;
+  margin: 0 0 24px 9%;
   padding: 16px 20px;
   font-size: 16px;
   line-height: 1.5;
   border-radius: 12px 12px 0 12px;
 }
 .agent-answer {
-  padding-right: 8%;
+  background: #1e2c3e;
+  border: 1px solid var(--line);
+  border-radius: 12px 12px 12px 0;
+  padding: 20px;
 }
 .agent-speaker {
   font-size: 12px;
-  color: var(--mint);
+  color: var(--demo-accent);
   margin-bottom: 10px;
 }
 .agent-answer h3 {
@@ -274,16 +286,17 @@ p {
 .agent-data dd {
   margin: 0;
   white-space: nowrap;
-  color: var(--mint);
+  color: var(--demo-accent);
 }
 .agent-prompt {
   font-size: 15px;
   color: var(--ink);
 }
 .agent-confirm {
-  background: var(--mint);
-  color: var(--dark);
-  border-radius: 6px;
+  background: transparent;
+  color: var(--demo-accent);
+  border: 1px solid var(--demo-accent);
+  border-radius: 999px;
   min-height: 44px;
   margin-top: 18px;
   padding: 12px 16px;
@@ -291,14 +304,14 @@ p {
   text-align: left;
 }
 .agent-confirm:hover {
-  background: var(--ink);
+  background: #304766;
 }
 .agent-confirm:disabled {
   opacity: 0.6;
   cursor: default;
 }
 .agent-result p {
-  color: var(--mint);
+  color: var(--demo-accent);
   font-size: 14px;
   margin-top: 16px;
 }
@@ -312,6 +325,63 @@ p {
 }
 .agent-section [hidden] {
   display: none !important;
+}
+
+body.capture-open {
+  overflow: hidden;
+}
+.capture-dialog {
+  width: min(1500px, 96vw);
+  max-width: 96vw;
+  max-height: 94dvh;
+  margin: auto;
+  padding: 16px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.capture-dialog::backdrop {
+  background: #000d;
+}
+.capture-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+}
+.capture-toolbar h2 {
+  flex: 1 1 180px;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+.capture-toolbar button {
+  min-height: 44px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  font-size: 14px;
+}
+.capture-toolbar .capture-close {
+  background: var(--mint);
+  color: var(--dark);
+}
+.capture-stage {
+  overflow: auto;
+  max-height: 70dvh;
+  background: var(--paper);
+}
+.capture-full {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.capture-dialog.is-zoomed .capture-full {
+  width: auto;
+  max-width: none;
 }
 
 .bespoke {
@@ -540,7 +610,7 @@ p {
     font-size: 15px;
   }
   .agent-answer {
-    padding-right: 0;
+    padding: 18px 16px;
   }
   .agent-data {
     font-size: 13px;

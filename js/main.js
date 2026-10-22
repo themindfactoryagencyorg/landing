@@ -3,6 +3,7 @@ import { initAgentDemo } from "./agent.js?v=20261021-historia-casos";
 import { initNetwork } from "./network.js?v=20260914-feedback";
 import { initFlow } from "./flow.js?v=20261021-historia-casos";
 import { initTeamDisclosures } from "./team.js?v=20261021-equipo-cerrado";
+import { initCasePreview } from "./preview.js?v=20261022-feedback";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -512,6 +513,7 @@ function init() {
     updateLabels();
   });
   initI18n();
+  initCasePreview(document, tr);
   initNavigation();
   initTabs();
   initAgentDemo($("#agente"));
