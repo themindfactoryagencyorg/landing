@@ -18,6 +18,10 @@ no se ha sorteado el bloqueo ni certificado responsive o el visor en navegador.
 El refresco completo del baúl se ejecutó, con fuentes degradadas (Wiki, Jira y
 WhatsApp); estos cambios dependen del código local y de los perfiles confirmados.
 La incidencia de acceso al enlace queda aparcada por indicación de Juan.
+La copia privada se ha actualizado desde `54b66f245bb0fef571047889dda0f360688d0481`.
+Los cinco archivos modificados servidos coinciden con el snapshot por SHA-256;
+página, JavaScript y foto siguen redirigiendo a TMF Auth sin sesión.
+Evidencia local: `artifacts/team-feedback-20261022/`.
 
 La portada presenta la oferta de software a medida. A continuación explica
 aplicaciones, integraciones y automatizaciones, muestra tres casos del documento
@@ -62,9 +66,9 @@ no se les han concedido permisos nuevos sobre otras demos. Las dos concesiones
 comodín preexistentes pertenecen también a miembros de ese equipo.
 
 - Portal: `tmf-demos` commit `4e91cbfb483d6eedf12692961b551c9734c37abb`, PR #7 integrada.
-- Copia estática: `9dcac5490a804cb772a65d1fde027e01623a5e98` de esta rama.
+- Copia estática: `54b66f245bb0fef571047889dda0f360688d0481` de esta rama.
 - Servicio privado: `tmf-landing-preview`, sin puertos publicados.
-- Release: `/home/tmf/apps/tmf-landing-preview/releases/20261022-v3/`.
+- Release: `/home/tmf/apps/tmf-landing-preview/releases/20261022-feedback/`.
 - `preview/prepare.mjs` copia solo los archivos públicos, adapta HTML/CSS al prefijo protegido, añade noindex y valida recursos. Los JavaScript se conservan byte a byte y pasan comprobación de sintaxis.
 - `preview/compose.yaml` fija la imagen estática por digest y monta los archivos en solo lectura.
 
@@ -75,7 +79,7 @@ al directorio padre de `site` y publica esa release en el mismo servicio privado
 El portal solo requiere otro despliegue si cambia su catálogo o su código.
 Esta publicación no sincroniza automáticamente cambios futuros de la landing.
 
-Validado: las 10 pruebas de la landing y las 11 del gate HTTP del portal pasan;
+Validación anterior (`20261022-v3`): las 10 pruebas de la landing y las 11 del gate HTTP del portal pasan;
 backend/frontend compilan. En remoto, login real completado por Juan, vuelta a
 la landing, ES/EN, casos, confirmación local del agente, detalle MindHub y equipo
 móvil a 390 px; escritorio a 1202 px. Sin errores nuevos en consola ni imágenes
