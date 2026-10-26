@@ -12,6 +12,11 @@ export function initCasePreview(root, tr) {
       : tr("Tamaño real", "Actual size");
     zoom.setAttribute("aria-pressed", String(dialog.classList.contains("is-zoomed")));
   }
+  function updateCaption() {
+    if (!opener) return;
+    image.alt = opener.querySelector("img").alt;
+    title.textContent = opener.closest(".real-case").querySelector(".case-sector").textContent;
+  }
   root.querySelectorAll(".case-image").forEach((link) => {
     link.setAttribute("aria-haspopup", "dialog");
     const hint = link.querySelector(".visually-hidden");
@@ -23,8 +28,7 @@ export function initCasePreview(root, tr) {
       event.preventDefault();
       opener = link;
       image.src = link.href;
-      image.alt = link.querySelector("img").alt;
-      title.textContent = link.closest(".real-case").querySelector(".case-sector").textContent;
+      updateCaption();
       dialog.classList.remove("is-zoomed");
       updateZoom();
       dialog.showModal();
@@ -35,6 +39,7 @@ export function initCasePreview(root, tr) {
   zoom.addEventListener("click", () => {
     dialog.classList.toggle("is-zoomed");
     updateZoom();
+    dialog.querySelector(".capture-stage").scrollTo(0, 0);
   });
   dialog.querySelector(".capture-close").addEventListener("click", () => dialog.close());
   dialog.addEventListener("close", () => {
@@ -42,5 +47,5 @@ export function initCasePreview(root, tr) {
     image.removeAttribute("src");
     opener?.focus();
   });
-  root.addEventListener("tmf:language", updateZoom);
+  root.addEventListener("tmf:language", () => { updateZoom(); updateCaption(); });
 }

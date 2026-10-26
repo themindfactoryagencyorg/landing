@@ -1,5 +1,12 @@
 # Revisión de contenido · 22 octubre 2026
 
+Actualización del 26 de octubre: el usuario decide retirar el detalle opcional
+de MindHub (diagrama, etapas, seis módulos, simulación y modelo de servicio).
+La oferta, los casos y el agente ya cubren sus beneficios. También se sustituye
+el método independiente por el roadmap breve de contacto, con formación,
+arranque, alojamiento y mantenimiento. El inventario siguiente conserva la
+traza de la revisión original, no describe por completo la propuesta actual.
+
 Comparación con `582e922:index.html`, la última web de `main` usada como base
 antes de esta propuesta. Incluye ambos idiomas. El HTML para David aporta los
 casos reales; esta revisión contrasta además lo que ya ofrecía la web anterior.

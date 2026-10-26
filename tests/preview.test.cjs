@@ -41,9 +41,11 @@ test("capture viewer opens the selected image, zooms, restores focus and preserv
   const links = ["qrema.svg", "bodamusica.svg", "madatuta.webp"].map((file) => {
     const link = element();
     const hint = { dataset: {} };
+    link.image = { alt: file };
+    link.caption = { textContent: file };
     link.href = `https://example.test/d/landing-preview/assets/cases/${file}`;
-    link.querySelector = (selector) => selector === "img" ? { alt: file } : hint;
-    link.closest = () => ({ querySelector: () => ({ textContent: file }) });
+    link.querySelector = (selector) => selector === "img" ? link.image : hint;
+    link.closest = () => ({ querySelector: () => link.caption });
     link.focus = () => { link.focused = true; };
     return link;
   });
@@ -66,8 +68,12 @@ test("capture viewer opens the selected image, zooms, restores focus and preserv
   assert.equal(zoom["aria-pressed"], "true");
   assert.equal(zoom.textContent, "Ajustar a pantalla");
   english = true;
+  links[1].image.alt = "BodaMúsica application";
+  links[1].caption.textContent = "BodaMúsica · Events";
   root.dispatchEvent(new Event("tmf:language"));
   assert.equal(zoom.textContent, "Fit to screen");
+  assert.equal(image.alt, "BodaMúsica application");
+  assert.equal(title.textContent, "BodaMúsica · Events");
   click(close);
   assert.equal(dialog.open, false);
   assert.equal(image.src, undefined);

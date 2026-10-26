@@ -1,4 +1,41 @@
-# TheMindFactory · Propuesta local · 22 octubre 2026
+# TheMindFactory · Revisión local · 26 octubre 2026
+
+## Estado actual
+
+Revisión en un worktree independiente, rama `codex/landing-review-20261026`.
+Parte de `b1780c8` e incluye los nueve archivos con cambios locales de
+`codex/landing-historia-casos`. La copia anterior sigue intacta.
+
+- Revisión: `http://127.0.0.1:8089/`. Versión anterior: `http://127.0.0.1:8088/`.
+- Orden: portada, oferta a medida, tres ejemplos de proyectos, agente, equipo y contacto.
+- Equipo con siete perfiles, retratos circulares, biografías más breves y LinkedIn como icono.
+- Agente dentro de un iPhone con tonos cálidos y reloj local. Los tres ejemplos usan datos ficticios.
+- Un solo roadmap resumido en Contacto, con botón y correo antes de los pasos.
+  Se retiraron el método duplicado y el explorador interno de MindHub.
+- Navegación móvil con teclado y alternativa sin scripts; foco visible en fondos
+  claros, imágenes traducidas y visor ajustado también a pantallas horizontales.
+- Acceso deja de ser una página vacía y orienta al cliente hacia el enlace de su aplicación.
+- El fondo respeta movimiento reducido y queda atenuado tras el texto de las secciones de lectura.
+
+Sin instalación ni build: `node --test tests/*.test.cjs` y un servidor HTTP
+desde la raíz. Inventario y límites de la revisión en `docs/test-cases.md`.
+Evidencia, copia inicial y registro del servidor en `artifacts/review-20261026/`
+(archivos locales excluidos de Git). No se han publicado estos cambios.
+
+El resto de este documento conserva el historial de las revisiones y despliegues
+anteriores. La copia privada con TMF Auth sigue siendo el snapshot del 22 de octubre.
+
+### Preparación de la actualización privada · 26 octubre 2026
+
+Juan ha aprobado la revisión y pedido actualizar la demo existente. Se conserva
+la versión aprobada en esta rama y se prepara el snapshot con `preview/prepare.mjs`.
+La publicación está pendiente del acceso SSH al servidor desde este ordenador;
+GitHub funciona con la cuenta personal, pero no hay configuración ni agente SSH.
+Paquete, manifiesto de hashes y comprobaciones de preparación en
+`artifacts/demos-20261026/` (local, excluido de Git). No se modifica `main`,
+el portal, TMF Auth ni los permisos de la demo.
+
+## Contexto anterior · 22 octubre 2026
 
 **Para continuar en otro ordenador:** [traspaso del 26 de octubre](docs/handoff-20261026.md).
 
@@ -144,22 +181,22 @@ validado. WhatsApp pendiente de número y forma de atención.
 
 - `index.html`: contenido ES/EN, navegación, soluciones y contacto.
 - `styles.css`: identidad visual, layouts y adaptación responsive.
-- `js/main.js`: explorador de Minds, demo local de venta, navegación y transiciones.
+- `js/main.js`: inicialización, reloj, progreso de lectura y transiciones.
+- `js/navigation.js`: menú móvil, teclado y foco al elegir destino.
 - `js/i18n.js`: idioma, metadatos y preferencia local `tmf-lang`.
 - `js/network.js`: diagrama de red proyectado en 3D sobre Canvas 2D.
 - `assets/brand/`: B1 vectorial, favicon SVG/ICO e icono Apple.
 - `assets/logo-white.png`: archivo del logo anterior, conservado pero no utilizado.
 - `assets/vendor/`: GSAP 3.12.5 y ScrollTrigger 3.12.5, servidos localmente.
 
-Las fuentes DM Sans e IBM Plex Mono se cargan desde Google Fonts con fuentes de
-respaldo. La página permanece legible si las fuentes o GSAP no están disponibles.
+Las fuentes DM Sans e IBM Plex Mono se sirven desde `assets/fonts/`, con fuentes
+de respaldo. La página permanece legible si las fuentes o GSAP no están disponibles.
 El Canvas se pausa fuera de pantalla y respeta `prefers-reduced-motion`.
 La red atrae e ilumina nodos próximos al cursor. Un clic, toque o activación por
 teclado envía un impulso por sus conexiones hasta B1, que responde con luz.
 Los gestos verticales y el zoom siguen disponibles en móvil; con movimiento
 reducido, la respuesta es una iluminación estática breve, sin recorrido animado.
-En esta propuesta, el selector cambia las tres etapas directamente en todas las
-pantallas. La escena no se fija al scroll y empieza en Conectado.
+El explorador de etapas se retiró en la revisión del 26 de octubre.
 
 Los datos de los paneles son ilustrativos. La simulación modifica únicamente el
 DOM local: no contacta con APIs ni registra ventas. El contacto abre el programa
@@ -178,9 +215,9 @@ El workflow existente no se ha modificado.
 
 ## Decisiones editoriales para la revisión
 
-- La sección 03 presenta soluciones por necesidad (ventas y gestión, proyectos
-  y coordinación, equipos y operaciones). No identifica clientes ni sectores
-  concretos ni presenta estas posibilidades como casos de éxito entregados.
+- Los casos presentan Qrema, BodaMúsica y Grupo Madatuta como una selección del
+  trabajo, con el material facilitado para la propuesta. El uso público de nombres
+  y capturas mantiene la revisión pendiente documentada en el traspaso.
 - No se publican estadísticas de mercado, comparaciones de precios o plazos
   garantizados sin respaldo adicional.
 - Dirección de contacto confirmada: `info@themindfactory.es`.

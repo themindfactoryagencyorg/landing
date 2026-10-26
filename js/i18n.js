@@ -10,6 +10,9 @@ export function applyTranslations(root = document) {
   root.querySelectorAll("[data-es][data-en]").forEach((el) => {
     el.textContent = el.dataset[lang];
   });
+  root.querySelectorAll("[data-es-alt][data-en-alt]").forEach((el) => {
+    el.alt = el.dataset[`${lang}Alt`];
+  });
 }
 export function initI18n() {
   try {
@@ -46,4 +49,5 @@ export function initI18n() {
     update();
   });
   update();
+  toggle.hidden = false;
 }

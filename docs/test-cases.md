@@ -1,5 +1,215 @@
 # Landing narrative · 21 octubre 2026
 
+## Revisión completa en worktree · 26 octubre 2026
+
+Run ID: `review-20261026`. Rama `codex/landing-review-20261026`, base `b1780c8`
+más los nueve archivos de WIP que había en `codex/landing-historia-casos`.
+El original conserva esos nueve archivos byte a byte. Revisión local en 8089;
+original en 8088. Versión exacta de HTML/CSS/JS en el manifiesto SHA-256
+`artifacts/review-20261026/review-version.json`.
+
+Cambios: textos ES/EN más concretos, biografías resumidas y filas alineadas;
+fondo atenuado tras el texto; contacto antes del roadmap; página de Acceso con
+orientación; menú con teclado y alternativa sin scripts; cabecera ajustada a
+320 px; foco contrastado; alt de capturas traducido; visor que ajusta también
+por altura; fondo estático con movimiento reducido. Se conservan las decisiones
+de diseño, los siete perfiles, los casos y las tres simulaciones.
+
+| ID | Comprobación | Resultado |
+| --- | --- | --- |
+| REVIEW-01 | Suite completa disponible, sintaxis de los nueve JS y whitespace del diff. | 16/16 tests aprobados, 0 fallos/errores/omisiones; comandos con exit 0. |
+| REVIEW-02 | Navegación, Contactar y contenido a 320, 390, 650, 651, 900, 902, 1024, 1100 y 1440 px, ES/EN. | 18 combinaciones sin desbordamiento ni controles recortados. 901 solicitado corresponde a 902 px efectivos en el navegador. |
+| REVIEW-03 | Menú móvil: Tab/Shift+Tab, Escape, página inerte al abrir, navegación a Contacto y cambio a escritorio. | Foco y desplazamiento restaurados; Contactar accesible con el menú abierto. Regresiones automáticas y navegador. |
+| REVIEW-04 | Siete fichas con Enter/Espacio, foto, biografía y LinkedIn independiente; cambio móvil/escritorio. | Comportamiento conservado. Subgrid alinea el cuerpo de las fichas por fila sin altura fija; fallback flex. |
+| REVIEW-05 | Tres casos y tres capturas: abrir, exclusividad, zoom, ajuste y Escape. | Visor probado a 844×390; las imágenes caben también por altura y el foco vuelve al enlace. |
+| REVIEW-06 | Alimentación, Proyectos y Eventos; confirmación, cambio de escenario e idioma. | Ninguna acción confirmada inicialmente; las tres confirmaciones locales se conservan en ES/EN. Hora coincidente con el reloj local. |
+| REVIEW-07 | Fallback sin JavaScript. | Copia del HTML sin scripts: navegación visible, siete perfiles y tres conversaciones disponibles, confirmaciones ocultas y casos nativos. |
+| REVIEW-08 | Movimiento reducido. | Test del scheduler: sin bucle continuo, sin respuesta animada al ratón, reanudación controlada. Fixture en navegador con preferencia forzada y CSS equivalente: scroll inmediato y desplegable sin transición. No sustituye una prueba de la preferencia nativa del SO. |
+| REVIEW-09 | Acceso, aviso legal, privacidad y cookies, ES/EN. | Contenido visible y enlaces locales resueltos. Acceso ya no tiene un main vacío. No se modificó el texto legal. |
+| REVIEW-10 | Recursos, consola y preservación. | 43 rutas locales revisadas; sin errores/avisos nuevos en la pestaña principal. Original conservado por SHA-256. |
+
+Evidencia local: `artifacts/review-20261026/`, con logs de comandos, JSON de
+responsive, páginas, consola, interacciones y capturas inspeccionadas de equipo,
+contacto, agente y fixture estática. El primer sondeo de tamaños con otra pestaña
+activa queda identificado como `responsive-inactive-tab.json`; no cuenta como
+validación. `responsive.json` verifica el tamaño efectivo de cada muestra.
+
+LOCAL: pruebas disponibles y revisión de navegador completadas; no se certifica
+el gate completo de release TMF. No se ha probado Safari, un lector de pantalla
+ni dispositivos físicos. DEV / PRELIVE / PROD: no ejecutados, fuera de esta
+revisión local. Al cerrar la revisión aún no había commit, push, merge ni despliegue
+nuevos. La preparación posterior de la demo privada se recoge en `README.md`.
+
+Baúl: refresco completo al inicio y al cierre, exit 1 por fuentes internas no
+disponibles. Wiki, Jira local, Flow y Kanban fallan; WhatsApp carece de lector
+Windows; el log de Matrix falla por DNS aunque el recolector lo marca como ok.
+No se usan esos estados como información fresca ni se publican avisos.
+
+El worktree y el servidor 8089 se conservan para revisión con el usuario;
+registro y cierre por identidad de sesión en `local-resources.json`. Los registros
+históricos de abajo describen sus versiones; los casos del explorador retirado
+ya no forman parte del producto actual.
+
+## Retirada del explorador «Por dentro» · 26 octubre 2026
+
+Por decisión del usuario, se retira el desplegable completo (diagrama, etapas,
+catálogo de Minds, simulación de venta y bloque del modelo de servicio).
+La oferta, los casos, el agente y el roadmap ya explican el valor y el proceso.
+El agente enlaza visualmente con el equipo. Se elimina su lógica exclusiva
+de main.js y sus reglas del desplegable en story.css; URLs versionadas.
+
+Navegador: ausencia del desplegable y continuidad agente→equipo verificadas,
+reloj activo, ES/EN y confirmación de Proyectos funcionales. Recarga sin nuevos
+avisos o errores. Menú móvil a Equipo cierra al navegar, sin desbordamiento a
+390 px. Suite 11/11, sin fallos ni omitidas, sintaxis JS y diff check limpios.
+Alcance local, sin publicación.
+
+## Paleta cálida del iPhone · 26 octubre 2026
+
+Se sustituye el azul por fondo crema, mensaje en piedra, respuesta marfil y
+acentos tostados. Tokens específicos del agente; menta de la web conservado.
+Contraste calculado de texto principal, secundario y acentos sobre sus fondos:
+10,40:1, 5,29:1, 6,71:1 y 5,13:1. Escritorio y 390 px inspeccionados;
+sin desbordamiento, confirmación de Proyectos funcional. Suite 11/11 y diff
+check limpio. Evidencia `artifacts/warm-phone-20261026/desktop.png`, `mobile.png`.
+Solo revisión local.
+
+## Un solo roadmap e iconos del equipo · 26 octubre 2026
+
+Se retira la sección de método repetida; formación, alojamiento y mantenimiento
+quedan en el último paso del roadmap. El bloque del modelo de servicio se
+conserva dentro del detalle opcional de MindHub. Se elimina la animación GSAP
+asociada a los pasos retirados. Orden de contenido actualizado en la prueba.
+
+Los siete LinkedIn se muestran como iconos al lado del nombre, con nombre
+accesible y destinos conservados. No quedan enlaces separados al pie de cada
+biografía. Se retira la altura mínima del rol y se acorta la frase de Alejandro
+a «Primero, entender el propósito.» en ES y su equivalente EN.
+
+Revisión a 320/390/650/651/1440 px sin desbordamiento. A 1440 px la frase de
+Alejandro ocupa una línea; a 390 px su ficha abre y el icono recibe el clic
+sin interferencia del desplegable (hit test DOM). EN verificado; bloque del
+modelo visible al abrir MindHub. Recarga final sin nuevos avisos ni errores.
+Suite 11/11, sin fallos ni omitidas; diff check limpio. Evidencia local:
+`artifacts/team-icons-20261026/desktop.png`, `mobile.png`. Sin publicación.
+
+## Roadmap resumido en contacto · 26 octubre 2026
+
+Por indicación del usuario, se simplifica la propuesta anterior: cinco pasos
+breves, conectados horizontalmente en escritorio y en vertical en móvil.
+Se retiran condiciones de pago, descuentos y preguntas entre fases; se conserva
+la decisión del cliente de avanzar. ES/EN. Revisión a 320/390/900/1440 px sin
+desbordamiento; suite 11/11 aprobada, sin omitidas. Captura local en
+`artifacts/roadmap-short-20261026/desktop.png`. Sin publicación.
+
+## Recorrido comercial en contacto · 26 octubre 2026
+
+La sección «Tu siguiente paso empieza aquí» sustituye diagnóstico/propuesta/
+estimación por cinco pasos en ES/EN, a partir de la referencia del usuario:
+vídeo sin coste; demo pagada con requisitos y una ronda de ajustes (precio y
+estimación previa, descontable del desarrollo); presupuesto cerrado por escrito;
+desarrollo con validación y pagos por hitos; puesta en marcha y mantenimiento
+por TMF o el equipo IT del cliente. Cada transición depende de la decisión del
+cliente. Se conserva el contacto por correo.
+
+CONTACT-JOURNEY-01: cinco pasos presentes en navegador en ambos idiomas.
+CONTACT-JOURNEY-02: 320/390/650/651/1440 px sin desbordamiento; composición
+de escritorio ES y tarjetas móviles EN inspeccionadas. Sin errores de consola.
+Suite existente 11/11 aprobada, sin fallos ni omitidas; diff check limpio.
+Evidencia: `artifacts/contact-journey-20261026/desktop-es.png`, `mobile-en.png`.
+Alcance local, sin publicación ni certificación de release.
+
+## Equipo más compacto · 26 octubre 2026
+
+Separación de fichas reducida a 24 × 20 px en escritorio y 8 px en móvil;
+menor espacio interior y entre retrato, nombre, biografía y LinkedIn.
+Revisión a 1440 y 390 px sin desbordamiento; apertura móvil de Laura funcional.
+Suite existente 11/11, sin fallos ni omitidas. Evidencia local:
+`artifacts/compact-team-20261026/desktop.png`. Sin despliegue.
+
+## Qremoso completo en la captura · 26 octubre 2026
+
+Se retira la animación del SVG incrustado en `assets/cases/qrema.svg`:
+el render anidado retenía el primer fotograma y ocultaba la crema.
+La mascota conserva su dibujo completo en estado estático. URL versionada
+en enlace e imagen. Navegador: visor Qrema inspeccionado con crema y terrina
+visibles. Evidencia `artifacts/qremoso-20261026/qremoso-complete.png`.
+Suite existente 11/11 aprobada, sin fallos ni omitidas. Solo cambios locales.
+
+## Revisión del marco de iPhone · 26 octubre 2026
+
+Propuesta local sobre los cambios de dispositivo anteriores. Marco de proporción
+393:852, bisel, isla frontal, barra de estado, botones laterales y barra inferior.
+La conversación se desplaza dentro de la pantalla y no modifica la proporción.
+Validación en navegador a 320/390/650/651/1440 px: sin desbordamiento del
+documento, proporción medida estable (0,4613). Confirmación de Proyectos
+conservada al cambiar a EN y confirmación de Eventos comprobada; consola sin
+errores ni avisos. Suite existente 11/11, sin fallos ni omitidas; diff check limpio.
+Evidencia: `artifacts/iphone-20261026/desktop.png`.
+No cambia el alcance local ni los gates de release pendientes.
+
+## Propuesta local de dispositivo y retratos · 26 octubre 2026
+
+Sobre `b1780c8`, cambios locales en HTML/CSS, sin despliegue.
+Run `device-team-20261026`: suite existente 11/11, sin fallos ni omitidas.
+Dispositivo simulado en CSS con marca TMF; conserva los tres escenarios y
+sus confirmaciones locales. Retratos circulares de 112 px en escritorio y
+88 px en móvil, sin filtros de color o brillo al entrar o pasar el cursor.
+Se conservan las imágenes existentes, las siete biografías y sus enlaces;
+esto no sustituye la selección pendiente de fotografías reales de TMF-51.
+
+- DEVICE-01: navegador a 320/390/650/651/1440 px, sin desbordamiento horizontal.
+- DEVICE-02: Proyectos y Eventos confirmados; estado conservado al pasar a EN.
+  Cabecera del dispositivo traducida; cero errores o avisos en consola.
+- PORTRAIT-01: composición de escritorio y ficha de Laura abierta a 390 px
+  inspeccionadas; retrato circular y desplegable conservados.
+
+Capturas en `artifacts/device-team-20261026/`: `team-desktop.png`,
+`team-mobile.png`, `agent-device-desktop.png`. Sigue siendo revisión local;
+no certifica la matriz completa de release ni DEV/PRELIVE/PROD.
+
+## Continuación local en Windows · 26 octubre 2026
+
+Versión comprobada: `b1780c8fe05b9875305b0ec5a7aa8ac864c00f3d`, rama
+`codex/landing-historia-casos`. Sin cambios funcionales ni despliegue.
+Run: `local-20261026`. Node 24.11.0: 11 descubiertas, ejecutadas y aprobadas,
+0 fallos, 0 omitidas; `node --test tests/*.test.cjs`, exit 0.
+`git diff --check`, exit 0.
+
+Navegador integrado de Codex, servidor estático en `127.0.0.1:8088`:
+
+- FEEDBACK-02: 320/390/650/651/1440 px, sin desbordamiento horizontal;
+  Contactar dentro de la cabecera en todos esos anchos. Menú móvil a Equipo
+  cierra al navegar; ficha de Laura con fondo opaco inspeccionada a 390 px.
+- TEAM-M02/M03: las siete fichas responden a Enter/Espacio. Laura conserva
+  su selección al pasar por 651 px (contenido visible y control deshabilitado)
+  y volver a 390 px; cambio ES/EN conserva el estado.
+- FEEDBACK-03: los tres casos abren su imagen en diálogo, permiten tamaño
+  real y cierre; exclusividad de casos y devolución de foco verificadas.
+  Qrema permite volver a ajustar y cerrar con Escape; Madatuta muestra
+  barras de desplazamiento y responde a desplazamiento horizontal por teclado.
+- FEEDBACK-04/STORY-03/04: los tres escenarios se seleccionan; confirmaciones
+  realizadas en EN quedan deshabilitadas y traducidas al volver a ES.
+  Mensajes azules y controles inspeccionados en móvil.
+- STORY-05: tres etapas y seis pestañas activadas, venta ilustrativa iniciada.
+  Consola consultada: cero errores o avisos. Ninguna imagen con URL asignada
+  rota; el img vacío del visor cerrado no es un recurso fallido.
+
+Evidencias locales, excluidas mediante `.git/info/exclude`, en
+`artifacts/local-20261026/`: `mobile-es.png`, `desktop-en.png`,
+`viewer-mobile.png`, `landing-local.png` y capturas auxiliares.
+No se ha repetido toda la matriz histórica sin JS, movimiento reducido,
+lector de pantalla ni dispositivos físicos. No se certifica LOCAL completo,
+DEV, PRELIVE o PROD. No se ha modificado la revisión privada.
+
+Arranque TMF: instalador canónico falla por `fcntl` en Windows. Refresco
+completo ejecutado desde el checkout canónico con Python explícito: exit 1.
+Wiki sin clave, Jira sin configuración, Flow sin datos, Kanban sin servidor,
+WhatsApp sin lector Windows; descubrimiento GitHub limitado por falta de gh.
+Matrix informa fallo SSH de `tmf-internal` aunque el colector lo etiqueta ok;
+no se considera fresco. Estado en `../vault/_refresh/state.json`.
+La revisión independiente usa únicamente los archivos de esta rama.
+
 ## Última versión funcional · ajustes del equipo del 22 de octubre
 
 Versión: `54b66f245bb0fef571047889dda0f360688d0481`.

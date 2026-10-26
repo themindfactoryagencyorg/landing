@@ -28,7 +28,17 @@ Abstract architecture before a clear business benefit; generic AI promises; inve
 - Present illustrative agent interactions explicitly as examples.
 - Explain what happens after the first conversation.
 - Preserve all seven team profiles and both languages.
+- Keep one short process roadmap in the contact section. Training, launch,
+  hosting and maintenance remain explicit. The internal MindHub/Minds explorer
+  is omitted: offer, cases and the agent already explain the customer value.
+  Team LinkedIn links use accessible icons beside names.
+- Keep claims specific to the supplied examples. Avoid blanket promises such as
+  “the system does the rest”. Explain the team's roles in concise, concrete bios.
+- Put the contact action and email before the roadmap. A visitor ready to talk
+  should not have to read every step first.
 
 ## Accessibility & Inclusion
 
 Keep the existing keyboard, language, reduced motion and no-JavaScript fallbacks. Use native disclosures for optional detail and readable contrast in both dark and light sections.
+Dim the moving background behind reading sections. Mobile navigation must remain
+usable without scripts, while enhanced navigation manages focus and page inertness.
