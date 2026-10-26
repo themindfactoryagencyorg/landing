@@ -1,4 +1,4 @@
-# TheMindFactory · Revisión y demo privada · 26 octubre 2026
+# TheMindFactory · Revisión y demo privada · 27 octubre 2026
 
 ## Estado actual
 
@@ -16,6 +16,10 @@ Parte de `b1780c8` e incluye los nueve archivos con cambios locales de
   claros, imágenes traducidas y visor ajustado también a pantallas horizontales.
 - Acceso deja de ser una página vacía y orienta al cliente hacia el enlace de su aplicación.
 - El fondo respeta movimiento reducido y queda atenuado tras el texto de las secciones de lectura.
+- Capturas con lupa: en móvil se abren ocupando la altura disponible y se recorren
+  lateralmente; en horizontal aprovechan el ancho. Cierre fijo, vista completa
+  opcional y arrastre con ratón en escritorio. Los gestos táctiles desplazan la
+  página; la ampliación de capturas se controla en el visor.
 
 Sin instalación ni build: `node --test tests/*.test.cjs` y un servidor HTTP
 desde la raíz. Inventario y límites de la revisión en `docs/test-cases.md`.
@@ -26,13 +30,14 @@ en la demo privada, como se detalla a continuación.
 El resto de este documento conserva el historial de las revisiones y despliegues
 anteriores; sus referencias de versión describen aquel momento.
 
-### Actualización privada aprobada · 26 octubre 2026
+### Actualización privada · 27 octubre 2026
 
 Publicada, por petición de Juan, en https://demos.themindfactory.es/d/landing-preview/.
-Fuente: `6d3f96f68359385dac9457fa5e54c04b1bfbb3b0`, preparada con
+Incluye la revisión aprobada y la corrección de gestos y capturas solicitada.
+Fuente: `fc965352448f58e5ce6c7d61d7865e5b695a9233`, preparada con
 `preview/prepare.mjs`. Release privada:
-`/home/tmf/apps/tmf-landing-preview/releases/20261026-review-6d3f96f/`.
-Se conserva `20261022-feedback` para revertir con el mismo proyecto Compose
+`/home/tmf/apps/tmf-landing-preview/releases/20261027-captures-fc96535/`.
+Se conserva `20261026-review-6d3f96f` para revertir con el mismo proyecto Compose
 `tmf-landing-preview` y su `compose.yaml`.
 
 Los 52 archivos servidos coinciden por SHA-256 con el paquete aprobado.
@@ -45,7 +50,10 @@ queda pendiente comprobar visualmente esta publicación con una sesión autentic
 La revisión funcional y responsive local corresponde a los mismos archivos fuente.
 
 Paquete, manifiesto, estado anterior, hashes servidos y comprobaciones HTTP en
-`artifacts/demos-20261026/` (local, excluido de Git). Esto actualiza la demo de
+`artifacts/capture-20261027/` (local, excluido de Git). Suite 19/19 y 24 combinaciones
+del visor ES/EN comprobadas. El gesto nativo de doble toque en un iPhone físico
+queda pendiente; no se confunde con dobles clics en el navegador de escritorio.
+Esto actualiza la demo de
 revisión; no acredita los gates DEV/PRELIVE/PROD de una publicación principal.
 
 ## Contexto anterior · 22 octubre 2026

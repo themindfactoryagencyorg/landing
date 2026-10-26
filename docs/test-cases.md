@@ -4,6 +4,10 @@
 
 Run ID: `capture-20261027`. Corrección sobre la revisión publicada `6d3f96f`.
 Se conserva el worktree de revisión y la copia de trabajo original.
+Publicada en Demos desde `fc965352448f58e5ce6c7d61d7865e5b695a9233`, release
+`20261027-captures-fc96535`. Sus 52 archivos servidos coinciden por SHA-256;
+página, JS y foto siguen redirigiendo a TMF Auth sin sesión. Se conserva la
+release anterior, sin cambios en main ni en el HTML de la web principal.
 
 | ID | Comprobación | Resultado |
 | --- | --- | --- |

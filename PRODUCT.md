@@ -36,6 +36,11 @@ Abstract architecture before a clear business benefit; generic AI promises; inve
   “the system does the rest”. Explain the team's roles in concise, concrete bios.
 - Put the contact action and email before the roadmap. A visitor ready to talk
   should not have to read every step first.
+- On phones, open screenshots at a readable scale filling the viewing area,
+  with native panning, a fixed close button and an optional full view. Desktop
+  starts with the full view and offers actual-size detail with mouse dragging.
+  Use a magnifier icon, not an external-link arrow. Touch gestures on the landing
+  scroll instead of zooming; leave browser and OS accessibility zoom controls intact.
 
 ## Accessibility & Inclusion
 
