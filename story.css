@@ -112,12 +112,16 @@ p {
 .image-link {
   position: absolute;
   right: 20px;
-  bottom: 14px;
+  bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
   font-size: 13px;
   color: var(--dark);
-  border-bottom: 1px solid currentColor;
-  padding: 4px;
+  padding: 8px 4px;
 }
+.image-link svg { width: 20px; height: 20px; flex: none; }
 .case-image:focus-visible,
 .case-bridge a:focus-visible {
   outline-color: var(--dark);
@@ -451,13 +455,19 @@ body.capture-open {
 .capture-dialog {
   width: min(1500px, 96vw);
   max-width: 96vw;
+  height: min(960px, 94dvh);
   max-height: 94dvh;
   margin: auto;
-  padding: 16px;
+  padding: 0;
+  overflow: hidden;
   color: var(--ink);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
+}
+.capture-dialog[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
 }
 .capture-dialog::backdrop {
   background: #000d;
@@ -465,45 +475,85 @@ body.capture-open {
 .capture-toolbar {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  margin-bottom: 12px;
+  gap: 16px;
+  padding: 10px 16px;
 }
 .capture-toolbar h2 {
-  flex: 1 1 180px;
-  font-size: 18px;
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
   letter-spacing: 0;
 }
-.capture-toolbar button {
+.capture-dialog button {
   min-height: 44px;
-  padding: 8px 14px;
+  padding: 8px 12px;
   background: transparent;
   border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--ink);
   font-size: 14px;
 }
-.capture-toolbar .capture-close {
+.capture-close {
+  flex: none;
+  width: 44px;
   background: var(--mint);
   color: var(--dark);
 }
+.capture-dialog .capture-close { background: var(--mint); color: var(--dark); }
+.capture-dialog button:focus-visible { outline-offset: 2px; }
+.capture-dialog button svg { width: 20px; height: 20px; flex: none; }
 .capture-stage {
+  min-height: 0;
   overflow: auto;
-  max-height: min(70dvh, calc(94dvh - 140px));
+  overscroll-behavior: contain;
+  touch-action: pan-x pan-y;
   background: var(--paper);
+}
+.capture-stage:focus-visible { outline-offset: -3px; outline-color: var(--dark); }
+.capture-canvas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-width: 100%;
+  min-height: 100%;
 }
 .capture-full {
   display: block;
-  width: auto;
-  max-width: 100%;
-  max-height: min(70dvh, calc(94dvh - 140px));
-  height: auto;
-  margin-inline: auto;
-}
-.capture-dialog.is-zoomed .capture-full {
-  width: auto;
+  flex: none;
   max-width: none;
   max-height: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.capture-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 10px 16px;
+}
+.capture-zoom { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex: none; }
+.capture-hint { color: var(--muted); font-size: 13px; line-height: 1.35; text-align: right; }
+.capture-dialog .capture-icon-fit,
+.capture-dialog.is-zoomed .capture-icon-zoom { display: none; }
+.capture-dialog.is-zoomed .capture-icon-fit { display: block; }
+.capture-dialog.is-zoomed .capture-stage { cursor: grab; }
+.capture-dialog[data-pan="x"] .capture-stage { overflow-y: hidden; }
+.capture-dialog[data-pan="y"] .capture-stage { overflow-x: hidden; }
+.capture-dialog .capture-stage.is-dragging { cursor: grabbing; }
+@media (max-width: 700px), (max-height: 500px) {
+  .capture-dialog {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+  }
+  .capture-toolbar { padding: max(8px, env(safe-area-inset-top)) 12px 8px; }
+  .capture-footer { padding: 8px 12px max(8px, env(safe-area-inset-bottom)); }
 }
 
 .bespoke {

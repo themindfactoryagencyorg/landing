@@ -4,7 +4,7 @@ import { initAgentDemo } from "./agent.js?v=20261021-historia-casos";
 import { initNetwork } from "./network.js?v=20260914-feedback";
 import { initFlow } from "./flow.js?v=20261026-review";
 import { initTeamDisclosures } from "./team.js?v=20261021-equipo-cerrado";
-import { initCasePreview } from "./preview.js?v=20261026-review";
+import { initCasePreview } from "./preview.js?v=20261027-captures";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];

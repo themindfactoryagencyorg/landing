@@ -1,5 +1,28 @@
 # Landing narrative · 21 octubre 2026
 
+## Gestos y visor de capturas · 27 octubre 2026
+
+Run ID: `capture-20261027`. Corrección sobre la revisión publicada `6d3f96f`.
+Se conserva el worktree de revisión y la copia de trabajo original.
+
+| ID | Comprobación | Resultado |
+| --- | --- | --- |
+| CAPTURE-01 | Suite completa, incluida geometría, giro, arrastre de ratón y gestos táctiles sin interceptar. | 19/19 tests, 0 fallos, cancelados u omitidos; sintaxis de los nueve JS y diff check correctos. |
+| CAPTURE-02 | Tres casos, ES/EN, 320×640, 390×844, 844×390 y 1440×900. | 24 combinaciones: captura cargada, cierre y controles dentro de la pantalla, vista completa ajustada y sin desbordamiento de la página. |
+| CAPTURE-03 | Detalle móvil y giro. | Inicio ampliado a la altura disponible en vertical, desplazamiento lateral; en horizontal aprovecha el ancho y permite desplazamiento vertical. Un solo eje de desplazamiento en móvil. |
+| CAPTURE-04 | Cierre por botón/Escape, bloqueo de fondo y devolución de foco. | Foco en el enlace original, fondo desbloqueado y posición de lectura conservada. Gutter estable evita saltos por la barra de scroll de escritorio. |
+| CAPTURE-05 | Doble clic repetido en siete perfiles y tres casos. | Controles operativos, escala del viewport 1; política táctil de la página `pan-x pan-y`, sin bloqueo de zoom en el meta viewport. |
+| CAPTURE-06 | Ampliación y arrastre de escritorio. | Vista completa inicial, tamaño real bajo demanda y arrastre en los dos ejes con el ratón; cierre siempre disponible. |
+
+Evidencia: `artifacts/capture-20261027/` (local y excluido de Git), matriz JSON,
+logs y capturas inspeccionadas. El navegador de escritorio comprueba tamaños
+y dobles clics; no reproduce el gesto nativo de Safari en un iPhone físico.
+La verificación final del doble toque en ese dispositivo sigue pendiente.
+La matriz espera explícitamente la liberación del fondo tras el evento nativo
+`close`, evitando medir el estado intermedio de su entrega asíncrona.
+LOCAL: pruebas disponibles anteriores. DEV/PRELIVE/PROD principal: no ejecutados;
+estos cambios continúan el alcance autorizado de la demo privada.
+
 ## Actualización de Demos aprobada · 26 octubre 2026
 
 Run ID: `demos-20261026`. Fuente `6d3f96f68359385dac9457fa5e54c04b1bfbb3b0`.

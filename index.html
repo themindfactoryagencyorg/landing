@@ -37,14 +37,14 @@
       as="image"
       type="image/svg+xml"
     />
-    <link rel="stylesheet" href="/styles.css?v=20261026-review" />
-    <link rel="stylesheet" href="/story.css?v=20261026-review" />
+    <link rel="stylesheet" href="/styles.css?v=20261027-captures" />
+    <link rel="stylesheet" href="/story.css?v=20261027-captures" />
     <script defer src="/assets/vendor/gsap.min.js?v=20260914-feedback"></script>
     <script
       defer
       src="/assets/vendor/ScrollTrigger.min.js?v=20260914-feedback"
     ></script>
-    <script type="module" src="/js/main.js?v=20261026-review"></script>
+    <script type="module" src="/js/main.js?v=20261027-captures"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -431,11 +431,7 @@
                 height="1195"
                 loading="lazy"
                 alt="Aplicación de Qrema y su asistente Qremoso" data-es-alt="Aplicación de Qrema y su asistente Qremoso" data-en-alt="Qrema application and its Qremoso assistant"
-              /><span
-                class="image-link"
-                data-es="Ampliar captura ↗"
-                data-en="Enlarge screenshot ↗"
-                >Ampliar captura ↗</span
+              /><span class="image-link"><svg class="capture-icon-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M10.5 7.5v6M7.5 10.5h6"/></svg><span data-es="Ampliar captura" data-en="Enlarge screenshot">Ampliar captura</span></span
               ><span
                 class="visually-hidden"
                 data-es=" (se abre en otra pestaña)"
@@ -511,11 +507,7 @@
                 height="1195"
                 loading="lazy"
                 alt="Aplicación de BodaMúsica y su asistente Lito" data-es-alt="Aplicación de BodaMúsica y su asistente Lito" data-en-alt="BodaMúsica application and its Lito assistant"
-              /><span
-                class="image-link"
-                data-es="Ampliar captura ↗"
-                data-en="Enlarge screenshot ↗"
-                >Ampliar captura ↗</span
+              /><span class="image-link"><svg class="capture-icon-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M10.5 7.5v6M7.5 10.5h6"/></svg><span data-es="Ampliar captura" data-en="Enlarge screenshot">Ampliar captura</span></span
               ><span
                 class="visually-hidden"
                 data-es=" (se abre en otra pestaña)"
@@ -593,11 +585,7 @@
                 height="1195"
                 loading="lazy"
                 alt="Gestión de tareas y proyectos de Grupo Madatuta" data-es-alt="Gestión de tareas y proyectos de Grupo Madatuta" data-en-alt="Task and project management for Grupo Madatuta"
-              /><span
-                class="image-link"
-                data-es="Ampliar captura ↗"
-                data-en="Enlarge screenshot ↗"
-                >Ampliar captura ↗</span
+              /><span class="image-link"><svg class="capture-icon-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M10.5 7.5v6M7.5 10.5h6"/></svg><span data-es="Ampliar captura" data-en="Enlarge screenshot">Ampliar captura</span></span
               ><span
                 class="visually-hidden"
                 data-es=" (se abre en otra pestaña)"
@@ -1298,11 +1286,21 @@
     <dialog id="capture-preview" class="capture-dialog" aria-labelledby="capture-title">
       <div class="capture-toolbar">
         <h2 id="capture-title"></h2>
-        <button type="button" class="capture-zoom" aria-pressed="false">Tamaño real</button>
-        <button type="button" class="capture-close" autofocus><span data-es="Cerrar" data-en="Close">Cerrar</span> <span aria-hidden="true">×</span></button>
+        <button type="button" class="capture-close" autofocus>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          <span class="visually-hidden" data-es="Cerrar" data-en="Close">Cerrar</span>
+        </button>
       </div>
-      <div class="capture-stage" tabindex="0" role="region" aria-labelledby="capture-title">
-        <img class="capture-full" alt="" />
+      <div class="capture-stage" tabindex="0" role="region" aria-labelledby="capture-title" aria-describedby="capture-hint">
+        <div class="capture-canvas"><img class="capture-full" alt="" draggable="false" /></div>
+      </div>
+      <div class="capture-footer">
+        <button type="button" class="capture-zoom" aria-pressed="false">
+          <svg class="capture-icon-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M10.5 7.5v6M7.5 10.5h6"/></svg>
+          <svg class="capture-icon-fit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 3v6H3m12-6v6h6M3 15h6v6m6 0v-6h6"/></svg>
+          <span class="capture-zoom-label">Ver detalle</span>
+        </button>
+        <p id="capture-hint" class="capture-hint"></p>
       </div>
     </dialog>
   </body>
