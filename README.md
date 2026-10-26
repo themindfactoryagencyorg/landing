@@ -1,5 +1,7 @@
 # TheMindFactory · Propuesta local · 22 octubre 2026
 
+**Para continuar en otro ordenador:** [traspaso del 26 de octubre](docs/handoff-20261026.md).
+
 Rama `codex/landing-historia-casos`, sobre `origin/main` (`582e922`).
 Vista local: `http://127.0.0.1:8088/`. No se ha publicado en el dominio principal.
 La revisión privada actual usa TMF Auth en el portal de demos (ver más abajo).
@@ -170,7 +172,8 @@ GitHub Actions copia los archivos por SSH/rsync a
 `/home/tmf/apps/tmf-prod/tmf-landing`. Caddy sirve la raíz de `themindfactory.es`.
 La configuración de Caddy pertenece a `tmf-infra`; `/app/` redirige a Qrema.
 
-El usuario ha aprobado esta revisión para integrarla en `main` y publicarla.
+La propuesta actual sigue en `codex/landing-historia-casos`. El traspaso no
+autoriza integrarla en `main` ni publicarla en el dominio principal.
 El workflow existente no se ha modificado.
 
 ## Decisiones editoriales para la revisión

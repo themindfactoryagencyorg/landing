@@ -1,5 +1,24 @@
 # Landing narrative · 21 octubre 2026
 
+## Última versión funcional · ajustes del equipo del 22 de octubre
+
+Versión: `54b66f245bb0fef571047889dda0f360688d0481`.
+Suite disponible: 11/11 aprobadas, 0 fallos, 0 omitidas. Los resultados históricos
+que aparecen después corresponden a sus versiones, no al render de esta última.
+
+| ID | Criterio | Verificación de esta versión |
+| --- | --- | --- |
+| FEEDBACK-01 | Los siete LinkedIn corresponden a las personas del equipo; aparece Víctor Manuel. | Perfiles confirmados entre contactos de Juan; revisión del HTML. |
+| FEEDBACK-02 | Contactar siempre visible y fichas móviles con fondo opaco. | CSS revisado; render en navegador pendiente a 320/390/650/651/1440 px. |
+| FEEDBACK-03 | El visor abre la imagen correcta, conserva el prefijo de la copia privada, amplía, cambia idioma, cierra y devuelve el foco; clic modificado conserva el enlace. | `tests/preview.test.cjs` aprobado. Diálogo, Escape, zoom y desplazamiento nativos pendientes en navegador. |
+| FEEDBACK-04 | La demo se distingue de los CTA y separa visualmente pregunta y respuesta. | Colores y contraste revisados; render e interacción en navegador pendientes. |
+| FEEDBACK-05 | Los flujos anteriores conservan estado, recursos, orden y fondo compartido. | Suite completa disponible aprobada; regresión visual pendiente para los últimos cambios. |
+
+La política del navegador bloqueó la inspección local. No se ha certificado el
+gate completo de release. Pasos para continuar: `handoff-20261026.md`.
+
+## Registro histórico
+
 Run ID: `landing-story-20261021-local`. Base: `582e922`.
 Suite completa existente y nueva: `node --test tests/*.test.cjs`,
 9 pruebas aprobadas, 0 fallos y 0 omitidas. `git diff --check`: exit 0.
