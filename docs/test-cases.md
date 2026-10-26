@@ -1,5 +1,31 @@
 # Landing narrative · 21 octubre 2026
 
+## Actualización de Demos aprobada · 26 octubre 2026
+
+Run ID: `demos-20261026`. Fuente `6d3f96f68359385dac9457fa5e54c04b1bfbb3b0`.
+Release `20261026-review-6d3f96f`; rollback conservado: `20261022-feedback`.
+Autorización de Juan para actualizar exclusivamente la demo privada existente.
+
+| ID | Comprobación | Resultado |
+| --- | --- | --- |
+| DEMOS-01 | Paquete preparado desde el commit aprobado y manifiesto SHA-256. | Preparador exit 0, 52 archivos públicos; JS conservado y sintaxis validada. |
+| DEMOS-02 | Identidad SSH, servicio previo y configuración de la nueva release. | Host contrastado con clave pública facilitada por conexión confiable; mismo proyecto e imagen. Compose/Caddy iguales salvo finales de línea Windows/Linux. |
+| DEMOS-03 | Activación y contenido servido por HTTP desde el contenedor. | Compose exit 0; contenedor en ejecución; 52/52 respuestas coinciden con sus hashes. |
+| DEMOS-04 | Aislamiento y cabeceras. | Sin puertos publicados, red privada existente, montajes y raíz de solo lectura; noindex y private/no-store. |
+| DEMOS-05 | Gate HTTP externo, antes y después. | Página, nuevo JS de navegación y foto devuelven 302 a TMF Auth, sin sesión. Navegador también llega al login. |
+| DEMOS-06 | Preservación de la web principal. | HTML público con idéntico SHA-256 antes y después; sin cambios en main, portal o autorización. |
+
+Evidencia local: `artifacts/demos-20261026/`. El primer preflight detuvo la
+activación por diferencias CRLF/LF en la configuración; se comprobó igualdad
+del texto normalizando solo los finales de línea y se ejecutó Compose después.
+No se modificó el servicio durante ese primer intento.
+
+La suite y el navegador locales de la sección siguiente validan los archivos
+fuente publicados. No hay sesión TMF Auth en el navegador actual: la revisión
+visual autenticada de esta publicación queda pendiente. No se ha creado una
+sesión ni cambiado permisos para probarla. LOCAL: validación disponible
+documentada abajo; DEV/PRELIVE/PROD de la web principal: no ejecutados.
+
 ## Revisión completa en worktree · 26 octubre 2026
 
 Run ID: `review-20261026`. Rama `codex/landing-review-20261026`, base `b1780c8`

@@ -1,4 +1,4 @@
-# TheMindFactory · Revisión local · 26 octubre 2026
+# TheMindFactory · Revisión y demo privada · 26 octubre 2026
 
 ## Estado actual
 
@@ -20,20 +20,33 @@ Parte de `b1780c8` e incluye los nueve archivos con cambios locales de
 Sin instalación ni build: `node --test tests/*.test.cjs` y un servidor HTTP
 desde la raíz. Inventario y límites de la revisión en `docs/test-cases.md`.
 Evidencia, copia inicial y registro del servidor en `artifacts/review-20261026/`
-(archivos locales excluidos de Git). No se han publicado estos cambios.
+(archivos locales excluidos de Git). La versión aprobada está publicada únicamente
+en la demo privada, como se detalla a continuación.
 
 El resto de este documento conserva el historial de las revisiones y despliegues
-anteriores. La copia privada con TMF Auth sigue siendo el snapshot del 22 de octubre.
+anteriores; sus referencias de versión describen aquel momento.
 
-### Preparación de la actualización privada · 26 octubre 2026
+### Actualización privada aprobada · 26 octubre 2026
 
-Juan ha aprobado la revisión y pedido actualizar la demo existente. Se conserva
-la versión aprobada en esta rama y se prepara el snapshot con `preview/prepare.mjs`.
-La publicación está pendiente del acceso SSH al servidor desde este ordenador;
-GitHub funciona con la cuenta personal, pero no hay configuración ni agente SSH.
-Paquete, manifiesto de hashes y comprobaciones de preparación en
-`artifacts/demos-20261026/` (local, excluido de Git). No se modifica `main`,
-el portal, TMF Auth ni los permisos de la demo.
+Publicada, por petición de Juan, en https://demos.themindfactory.es/d/landing-preview/.
+Fuente: `6d3f96f68359385dac9457fa5e54c04b1bfbb3b0`, preparada con
+`preview/prepare.mjs`. Release privada:
+`/home/tmf/apps/tmf-landing-preview/releases/20261026-review-6d3f96f/`.
+Se conserva `20261022-feedback` para revertir con el mismo proyecto Compose
+`tmf-landing-preview` y su `compose.yaml`.
+
+Los 52 archivos servidos coinciden por SHA-256 con el paquete aprobado.
+El contenedor mantiene montajes de solo lectura, la red `tmf-prod-network`,
+ningún puerto publicado y cabeceras `noindex, nofollow` y `private, no-store`.
+Sin sesión, página, JavaScript y foto redirigen a TMF Auth. La landing pública
+conserva el mismo SHA-256 antes y después; no se modifica `main`, el portal,
+TMF Auth ni sus permisos. El navegador de este ordenador llega al login:
+queda pendiente comprobar visualmente esta publicación con una sesión autenticada.
+La revisión funcional y responsive local corresponde a los mismos archivos fuente.
+
+Paquete, manifiesto, estado anterior, hashes servidos y comprobaciones HTTP en
+`artifacts/demos-20261026/` (local, excluido de Git). Esto actualiza la demo de
+revisión; no acredita los gates DEV/PRELIVE/PROD de una publicación principal.
 
 ## Contexto anterior · 22 octubre 2026
 
