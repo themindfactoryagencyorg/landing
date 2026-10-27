@@ -3,6 +3,10 @@
 ## Nombres del equipo en móvil · 27 octubre 2026
 
 Run ID: `team-names-20261027`. Cambio de CSS sobre el visor ya publicado.
+Publicado en Demos desde `a7339737aed508e605216510c5df97219f291190`, release
+`20261027-team-names-a733973`; rollback `20261027-captures-fc96535` conservado.
+52/52 archivos servidos coinciden por SHA-256. Página, JS y foto siguen
+redirigiendo a TMF Auth sin sesión; HTML de la web principal sin cambios.
 Los nombres mantienen su texto completo en una fila; LinkedIn pasa a la fila
 inferior, junto al cargo. El botón conserva toda la cabecera como zona pulsable,
 con LinkedIn independiente y una superficie de 44×44 px.

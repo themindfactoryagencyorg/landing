@@ -9,6 +9,8 @@ Parte de `b1780c8` e incluye los nueve archivos con cambios locales de
 - Revisión: `http://127.0.0.1:8089/`. Versión anterior: `http://127.0.0.1:8088/`.
 - Orden: portada, oferta a medida, tres ejemplos de proyectos, agente, equipo y contacto.
 - Equipo con siete perfiles, retratos circulares, biografías más breves y LinkedIn como icono.
+- En móvil, los siete nombres completos ocupan una línea. LinkedIn pasa a la
+  fila del cargo y las tarjetas cerradas mantienen la misma altura desde 320 px.
 - Agente dentro de un iPhone con tonos cálidos y reloj local. Los tres ejemplos usan datos ficticios.
 - Un solo roadmap resumido en Contacto, con botón y correo antes de los pasos.
   Se retiraron el método duplicado y el explorador interno de MindHub.
@@ -33,11 +35,11 @@ anteriores; sus referencias de versión describen aquel momento.
 ### Actualización privada · 27 octubre 2026
 
 Publicada, por petición de Juan, en https://demos.themindfactory.es/d/landing-preview/.
-Incluye la revisión aprobada y la corrección de gestos y capturas solicitada.
-Fuente: `fc965352448f58e5ce6c7d61d7865e5b695a9233`, preparada con
+Incluye la revisión aprobada, el nuevo visor y los nombres del equipo en una fila móvil.
+Fuente: `a7339737aed508e605216510c5df97219f291190`, preparada con
 `preview/prepare.mjs`. Release privada:
-`/home/tmf/apps/tmf-landing-preview/releases/20261027-captures-fc96535/`.
-Se conserva `20261026-review-6d3f96f` para revertir con el mismo proyecto Compose
+`/home/tmf/apps/tmf-landing-preview/releases/20261027-team-names-a733973/`.
+Se conserva `20261027-captures-fc96535` para revertir con el mismo proyecto Compose
 `tmf-landing-preview` y su `compose.yaml`.
 
 Los 52 archivos servidos coinciden por SHA-256 con el paquete aprobado.
@@ -50,8 +52,9 @@ queda pendiente comprobar visualmente esta publicación con una sesión autentic
 La revisión funcional y responsive local corresponde a los mismos archivos fuente.
 
 Paquete, manifiesto, estado anterior, hashes servidos y comprobaciones HTTP en
-`artifacts/capture-20261027/` (local, excluido de Git). Suite 19/19 y 24 combinaciones
-del visor ES/EN comprobadas. El gesto nativo de doble toque en un iPhone físico
+`artifacts/team-names-20261027/` (local, excluido de Git). Suite 19/19 y 84
+comprobaciones de nombres en seis anchos y ES/EN. La evidencia del visor anterior
+se conserva en `artifacts/capture-20261027/`. El gesto nativo de doble toque en un iPhone físico
 queda pendiente; no se confunde con dobles clics en el navegador de escritorio.
 Esto actualiza la demo de
 revisión; no acredita los gates DEV/PRELIVE/PROD de una publicación principal.
