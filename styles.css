@@ -9,6 +9,21 @@
   --dark: #10211c;
   --mono: "IBM Plex Mono", monospace;
   --font: "DM Sans", sans-serif;
+  --case-muted: #405e4e;
+  --case-line: #b7c8bd;
+  --agent-surface: #f3f0e7;
+  --agent-ink: #292e29;
+  --agent-muted: #626459;
+  --agent-line: #d4d1c5;
+  --agent-accent: #795238;
+  --agent-question: #e5dfce;
+  --agent-answer: #fffdf7;
+  --phone-metal: #777b80;
+  --phone-edge: #313438;
+  --phone-bezel: #050607;
+  --phone-glint: #b8bcc1;
+  --focus: var(--mint);
+  --reading-surface: color-mix(in srgb, var(--bg) 85%, transparent);
 }
 * {
   box-sizing: border-box;
@@ -16,6 +31,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
+  scrollbar-gutter: stable;
+  /* Touch gestures scroll the page; screenshot magnification has its own control. */
+  touch-action: pan-x pan-y;
 }
 body {
   margin: 0;
@@ -48,7 +66,7 @@ button:focus-visible,
 a:focus-visible,
 summary:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--mint);
+  outline: 2px solid var(--focus);
   outline-offset: 6px;
 }
 img {
@@ -113,7 +131,8 @@ em {
 }
 .nav {
   height: 92px;
-  position: absolute;
+  position: fixed;
+  background: #0b0e10ef;
   top: 0;
   left: 0;
   width: 100%;
@@ -187,17 +206,22 @@ em {
 }
 .nav__lang-other,
 .nav__lang-sep {
-  color: #647172;
+  color: var(--muted);
 }
 .nav-contact {
   display: flex;
-  gap: 25px;
+  align-items: center;
+  gap: 12px;
   font-size: 13px;
-  border-bottom: 1px solid #a4b2ab;
-  padding: 10px 0;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: var(--mint);
+  color: var(--dark);
+  white-space: nowrap;
 }
 .nav-contact:hover {
-  color: var(--mint);
+  background: var(--ink);
 }
 .menu-toggle {
   display: none;
@@ -1233,6 +1257,7 @@ h1 {
   color: #78968a;
 }
 .contact {
+  --focus: var(--dark);
   background: var(--mint);
   color: var(--dark);
   padding-top: 65px;
@@ -1250,7 +1275,7 @@ h1 {
   margin-bottom: 70px;
 }
 .contact-coordinate {
-  color: #5e826b;
+  color: var(--case-muted);
   font-size: 10px;
 }
 .contact h2 {
@@ -1661,21 +1686,32 @@ h1 {
     scroll-padding-top: 90px;
   }
   .nav {
-    padding: 0 5%;
-    gap: 12px;
+    padding: 0 4%;
+    gap: 8px;
   }
   .nav .brand {
     font-size: 17px;
     gap: 3px;
   }
   .brand img {
-    width: 188px;
+    width: clamp(112px, 36vw, 160px);
+  }
+  .nav .brand-tagline {
+    font-size: 8px;
+  }
+  .nav .language {
+    font-size: 10px;
+    gap: 3px;
   }
   .nav-contact {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .nav-contact > span:last-child {
     display: none;
   }
   .nav-actions {
-    gap: 15px;
+    gap: 8px;
   }
   .hero {
     height: auto;
@@ -2126,9 +2162,6 @@ h1 {
   .hero-network .network-caption {
     right: 9%;
   }
-  html[lang="en"] h1 {
-    font-size: clamp(48px, 12.2vw, 80px);
-  }
 }
 
 @media (max-width: 900px) {
@@ -2499,16 +2532,17 @@ h1 {
 }
 .team-people {
   display: grid;
+  align-items: start;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 40px 32px;
-  margin-top: 48px;
+  gap: 24px 20px;
+  margin-top: 32px;
 }
 .person {
   display: flex;
   flex-direction: column;
   grid-column: span 4;
   min-width: 0;
-  padding: 16px;
+  padding: 12px;
   border: 1px solid transparent;
   border-radius: 8px;
   transition:
@@ -2520,19 +2554,20 @@ h1 {
 }
 .person-photo {
   order: 1;
-  width: min(280px, 100%);
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid var(--line);
   margin: 0 auto;
+}
+.person-photo--patio {
+  background: url("/assets/team/patio-common.webp?v=20261022-patio-comun") 0 0 / 100% 100% no-repeat;
 }
 .person-photo img {
   width: 100%;
   height: auto;
-  transition: filter 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.team-motion .person-photo img {
-  filter: grayscale(1) brightness(0.8);
-}
-.team-motion .person.is-awake .person-photo img {
-  filter: none;
 }
 .person-content {
   display: contents;
@@ -2543,7 +2578,7 @@ h1 {
 .person-heading {
   order: 2;
   position: relative;
-  margin-top: 20px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2555,14 +2590,14 @@ h1 {
 }
 .person-body {
   order: 3;
-  margin-top: 16px;
+  margin-top: 10px;
   min-width: 0;
 }
 .person-meta {
   color: var(--mint);
   font-size: 13px;
   line-height: 1.5;
-  min-height: 3em;
+  min-height: 0;
 }
 .person-name {
   font-size: 28px;
@@ -2583,10 +2618,37 @@ h1 {
   max-width: 38ch;
 }
 .person-bio {
-  margin-top: 12px;
+  margin-top: 8px;
   font-size: 15px;
   color: #a5b4ab;
   max-width: 56ch;
+}
+.person-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  max-width: 100%;
+}
+.person-title .person-name { min-width: 0; }
+.person-linkedin {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  flex: 0 0 36px;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--mint);
+  border-radius: 50%;
+}
+.person-linkedin:hover,
+.person-linkedin:focus-visible {
+  background: color-mix(in srgb, var(--mint) 12%, transparent);
+}
+@media (max-width: 650px) {
+  .person-linkedin { width: 44px; height: 44px; flex-basis: 44px; }
 }
 @media (hover: hover) and (pointer: fine) {
   .person:hover {
@@ -2596,18 +2658,11 @@ h1 {
   .person:hover .person-name em {
     color: var(--mint);
   }
-  .person .person-photo img {
-    transition: filter 200ms ease;
-  }
-  .person:hover .person-photo img,
-  .team-motion .person:hover .person-photo img {
-    filter: brightness(1.05) saturate(1.06);
-  }
 }
 @media (max-width: 1100px) {
   .team-people {
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    column-gap: 24px;
+    column-gap: 16px;
   }
   .person {
     grid-column: span 2;
@@ -2622,7 +2677,7 @@ h1 {
     gap: 28px;
   }
   .team-people {
-    margin-top: 40px;
+    margin-top: 28px;
   }
   .person-name {
     font-size: 24px;
@@ -2634,37 +2689,54 @@ h1 {
   }
   .team-people {
     grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
+    gap: 24px;
   }
   .person,
   .person:nth-child(n + 4) {
     grid-column: auto;
   }
   .person-photo {
-    width: min(220px, 100%);
+    width: 88px;
+    height: 88px;
   }
   .person-heading {
-    margin-top: 18px;
+    margin-top: 12px;
+    gap: 4px;
+  }
+  .person-title {
+    display: block;
+    width: 100%;
   }
   .person-name {
-    font-size: 28px;
+    font-size: clamp(20px, 7vw, 24px);
+    white-space: nowrap;
+    overflow-wrap: normal;
+    text-wrap: nowrap;
+  }
+  .person-linkedin {
+    position: absolute;
+    left: 0;
+    bottom: 0;
   }
   .person-meta {
-    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    padding-inline: 44px;
   }
   .team-disclosures .team-people {
-    gap: 12px;
+    gap: 8px;
   }
   .team-disclosures .person {
     display: block;
+    background-color: var(--surface);
     border-color: var(--line);
   }
   .team-disclosures .person-heading {
     margin-top: 0;
-    padding-inline: 28px;
-  }
-  .team-disclosures .person-name {
-    font-size: 24px;
+    padding-inline: 0;
   }
   .team-disclosures .person-content {
     display: block;
@@ -2677,11 +2749,11 @@ h1 {
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
     width: 100%;
     min-height: 44px;
-    padding: 0;
+    padding: 0 12px 12px 0;
     background: transparent;
     color: var(--mint);
     border-radius: 2px;

@@ -1,0 +1,18 @@
+services:
+  landing-preview:
+    image: caddy:2-alpine@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f
+    container_name: tmf-landing-preview
+    restart: unless-stopped
+    read_only: true
+    volumes:
+      - ./site:/srv:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    tmpfs:
+      - /data
+      - /config
+    networks:
+      - tmf-prod-network
+
+networks:
+  tmf-prod-network:
+    external: true
