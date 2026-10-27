@@ -7,5 +7,7 @@ Allow: /
 Disallow: /docs/
 Disallow: /tests/
 Disallow: /CLAUDE.md
+Disallow: /PRODUCT.md
+Disallow: /preview/
 
 Sitemap: https://themindfactory.es/sitemap.xml
