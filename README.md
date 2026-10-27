@@ -1,6 +1,21 @@
-# TheMindFactory · Revisión y demo privada · 27 octubre 2026
+# TheMindFactory · Landing principal · 27 octubre 2026
 
 ## Estado actual
+
+Publicación principal autorizada expresamente por Juan el 27 de octubre, tras
+aprobar el resultado de la revisión. La nueva landing se publica en
+https://themindfactory.es/ mediante PR a `main` y el workflow existente
+[`Deploy landing`](https://github.com/themindfactoryagencyorg/landing/actions/workflows/deploy.yml).
+Los archivos públicos corresponden al snapshot aprobado `a7339737aed508e605216510c5df97219f291190`;
+los commits posteriores solo documentan la entrega. No se modifica el workflow.
+
+Antes de integrar se ha conservado y verificado una copia de la web anterior:
+`/home/tmf/backups/landing/20261027-before-new-landing/site-582e922.tar.gz`.
+Base anterior: `582e92299f7ee7070dfae9318413e89d672620f7`. Para revertir por el
+procedimiento habitual, revertir el merge mediante PR a `main`; la copia permite
+recuperar además los archivos exactos del servidor. El resultado de GitHub Actions
+y la comprobación HTTP y visual posterior identifican la versión efectivamente publicada.
+Evidencias locales: `artifacts/production-20261027/` (excluido de Git).
 
 Revisión en un worktree independiente, rama `codex/landing-review-20261026`.
 Parte de `b1780c8` e incluye los nueve archivos con cambios locales de
@@ -26,13 +41,13 @@ Parte de `b1780c8` e incluye los nueve archivos con cambios locales de
 Sin instalación ni build: `node --test tests/*.test.cjs` y un servidor HTTP
 desde la raíz. Inventario y límites de la revisión en `docs/test-cases.md`.
 Evidencia, copia inicial y registro del servidor en `artifacts/review-20261026/`
-(archivos locales excluidos de Git). La versión aprobada está publicada únicamente
-en la demo privada, como se detalla a continuación.
+(archivos locales excluidos de Git). La demo privada conserva la versión aprobada,
+como se detalla a continuación.
 
 El resto de este documento conserva el historial de las revisiones y despliegues
 anteriores; sus referencias de versión describen aquel momento.
 
-### Actualización privada · 27 octubre 2026
+### Historial: actualización privada · 27 octubre 2026
 
 Publicada, por petición de Juan, en https://demos.themindfactory.es/d/landing-preview/.
 Incluye la revisión aprobada, el nuevo visor y los nombres del equipo en una fila móvil.

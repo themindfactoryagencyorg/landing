@@ -1,5 +1,21 @@
 # Landing narrative · 21 octubre 2026
 
+## Publicación principal · 27 octubre 2026
+
+Run ID local: `production-20261027`. Fuente pública idéntica al snapshot aprobado
+`a7339737aed508e605216510c5df97219f291190`. Reejecutada la batería completa disponible:
+19 descubiertos, 19 ejecutados, 19 aprobados, 0 fallos, cancelados, skips o TODO;
+exit 0. Sintaxis de los nueve módulos JS y `git diff --check`, exit 0.
+Los cambios posteriores al snapshot son exclusivamente documentación.
+
+El repositorio tiene un único despliegue público (`main`) y una preview privada
+en Demos. No dispone de entornos ni harness separados DEV/PRELIVE: no se certifica
+una matriz remota inexistente. Se conserva la revisión responsive y funcional local
+documentada abajo, la equivalencia del snapshot privado y la aprobación expresa del
+usuario para publicar la versión principal. Tras integrar, se verifica el workflow,
+la igualdad de los archivos públicos con Git y los flujos visibles de la web real.
+Logs, manifiestos y capturas de esta entrega en `artifacts/production-20261027/`.
+
 ## Nombres del equipo en móvil · 27 octubre 2026
 
 Run ID: `team-names-20261027`. Cambio de CSS sobre el visor ya publicado.
