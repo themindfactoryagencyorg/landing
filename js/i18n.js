@@ -30,12 +30,12 @@ export function initI18n() {
       lang === "es" ? "Switch to English" : "Cambiar a español",
     );
     document.title = translate(
-      "TheMindFactory · Software a medida para tu negocio",
-      "TheMindFactory · Custom software for your business",
+      "Software a medida para pymes: pedidos, stock y partes de trabajo | TheMindFactory",
+      "Custom software for SMEs: orders, stock and work reports | TheMindFactory",
     );
     document.querySelector('meta[name="description"]').content = translate(
-      "Aplicaciones, integraciones y automatizaciones a medida. Descubre casos reales y agentes de IA conectados a tu negocio.",
-      "Custom applications, integrations and automation. Explore real projects and AI agents connected to your business.",
+      "Conectamos pedidos, stock, facturación y partes de trabajo en un sistema a medida para tu pyme. Automatizamos tareas manuales. Desde Madrid a toda España.",
+      "We connect orders, stock, invoicing and work reports in one custom system for your business. We automate manual tasks. From Madrid to all of Spain.",
     );
     document.dispatchEvent(
       new CustomEvent("tmf:language", { detail: { lang } }),

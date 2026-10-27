@@ -225,7 +225,8 @@ validado. WhatsApp pendiente de número y forma de atención.
 - `js/i18n.js`: idioma, metadatos y preferencia local `tmf-lang`.
 - `js/network.js`: diagrama de red proyectado en 3D sobre Canvas 2D.
 - `assets/brand/`: B1 vectorial, favicon SVG/ICO e icono Apple.
-- `assets/logo-white.png`: archivo del logo anterior, conservado pero no utilizado.
+- `assets/brand/og-tmf-1200x630.jpg`: imagen para compartir (Open Graph y Twitter).
+- `robots.txt` y `sitemap.xml`: rastreo e indexación. Al añadir una página indexable, incluirla en el sitemap.
 - `assets/vendor/`: GSAP 3.12.5 y ScrollTrigger 3.12.5, servidos localmente.
 
 Las fuentes DM Sans e IBM Plex Mono se sirven desde `assets/fonts/`, con fuentes
