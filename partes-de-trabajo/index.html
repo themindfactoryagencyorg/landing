@@ -30,7 +30,8 @@
     <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/fonts/fonts.css?v=20261014-legal" />
     <link rel="stylesheet" href="/styles.css?v=20261027-team-names" />
-    <link rel="stylesheet" href="/partes-de-trabajo/partes.css?v=20261027-partes-2" />
+    <link rel="stylesheet" href="/partes-de-trabajo/partes.css?v=20261027-partes-3" />
+    <script type="module" src="/partes-de-trabajo/partes.js?v=20261027-menu"></script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -161,11 +162,11 @@
         <img src="/assets/brand/tmf-b1-horizontal-menta.svg" width="905" height="151" alt="TheMindFactory" />
         <span class="brand-tagline" lang="en">Where AI meets humanity.</span>
       </a>
-      <nav class="nav-links" aria-label="Principal">
+      <nav class="nav-links" id="nav-links" aria-label="Principal">
         <a href="/#sistema">A medida</a><a href="/#casos">Casos reales</a><a href="/#agente">Agente de IA</a><a href="/#equipo">Equipo</a><a class="login-link" href="/acceso.html">Acceso <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" /></svg></a>
       </nav>
       <div class="nav-actions">
-        <a href="/#contacto" class="nav-contact pt-nav-contact"><span>Contactar</span><span aria-hidden="true"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" /></svg></span></a>
+        <a href="/#contacto" class="nav-contact pt-nav-contact"><span>Contactar</span><span aria-hidden="true"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" /></svg></span></a><button class="menu-toggle" hidden aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
       </div>
     </header>
 
@@ -186,7 +187,7 @@
           <figure class="pt-sample" aria-labelledby="pt-sample-cap">
             <p class="pt-tag">Ejemplo ilustrativo</p>
             <div class="pt-sample-card">
-              <p class="pt-sample-head"><span>Parte de trabajo</span><span class="pt-status">Firmado</span></p>
+              <p class="pt-sample-head"><span>Parte de trabajo</span><span class="pt-status">Enviado</span></p>
               <dl>
                 <div><dt>Trabajo</dt><dd>Revisión de equipo de climatización</dd></div>
                 <div><dt>Técnico</dt><dd>Técnico asignado</dd></div>
@@ -329,6 +330,7 @@
     <footer class="footer">
       <a href="/" class="footer-wordmark" aria-label="Volver al inicio"><img src="/assets/brand/tmf-b1-logotipo-menta.svg" width="789" height="143" alt="TheMindFactory" /><span aria-hidden="true"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" /></svg></span></a>
       <p class="brand-tagline footer-tagline" lang="en">Where AI meets humanity.</p>
+      <nav class="pt-footer-nav" aria-label="Secciones de la web"><a href="/#sistema">A medida</a><a href="/#casos">Casos reales</a><a href="/#agente">Agente de IA</a><a href="/#equipo">Equipo</a><a href="/#contacto">Contactar</a></nav>
       <nav class="footer-social" aria-label="Redes sociales"><a href="https://www.linkedin.com/company/themindfactory-solutions" target="_blank" rel="noopener">LinkedIn <span class="visually-hidden">(se abre en otra pestaña)</span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" /></svg></a><a href="https://www.instagram.com/themindfactory.solutions/" target="_blank" rel="noopener">Instagram <span class="visually-hidden">(se abre en otra pestaña)</span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" /></svg></a></nav>
       <div class="footer-bottom">
         <span>© 2026 TheMindFactory Solutions, S.L.</span><span>SOFTWARE A MEDIDA · INTELIGENCIA APLICADA</span><nav class="footer-links" aria-label="Legal"><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a><a href="/acceso.html">Acceso a tu sistema <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" /></svg></a></nav>

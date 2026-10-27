@@ -75,3 +75,13 @@
   .pt-button, .pt-faq-item summary::after { transition: none; }
 }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Enlaces de la web en el pie: así siguen alcanzables sin JS en móvil y tablet. */
+.pt-footer-nav { display: none; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; }
+.pt-footer-nav a { color: inherit; }
+@media (max-width: 900px) {
+  .pt-footer-nav { display: flex; }
+  .pt-nav.nav-open { position: fixed; inset: 0 0 auto; }
+}
+/* Sin JS el botón no hace nada: se oculta y quedan los enlaces del pie. */
+.pt-nav .menu-toggle[hidden] { display: none; }

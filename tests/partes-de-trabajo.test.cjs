@@ -69,7 +69,9 @@ test("PT-04 structure: one H1, brief H2s, CTA to /#contacto, absolute asset path
   for (const m of html.matchAll(/(?:href|src)="([^"#][^"]*)"/g)) {
     assert.ok(/^(\/|https:\/\/)/.test(m[1]), `absolute path: ${m[1]}`);
   }
-  assert.doesNotMatch(html, /<script(?! type="application\/ld\+json")/, "no runtime scripts");
+  const runtime = [...html.matchAll(/<script(?! type="application\/ld\+json")[^>]*>/g)].map((m) => m[0]);
+  assert.deepEqual(runtime, ['<script type="module" src="/partes-de-trabajo/partes.js?v=20261027-menu">'], "only the progressive menu script");
+  assert.match(html, /<nav class="pt-footer-nav"[^>]*>[\s\S]*href="\/#sistema"/, "no-JS fallback links in footer");
   assert.match(html, /MindHub/);
   assert.match(visible, /Ejemplo ilustrativo/);
 });
