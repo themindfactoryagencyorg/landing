@@ -61,10 +61,8 @@ void main(){
 const KEYS = {
   hero: { x: 0.42, y: -0.2, a: 0.8, w: 0.12, i: 0.85 },
   sistema: { x: 0.1, y: -0.4, a: -0.12, w: 0.13, i: 0.8 },
-  conexion: { x: 0.05, y: 0.0, a: 0.0, w: 0.16, i: 0.0 },
-  minds: { x: -0.62, y: 0.1, a: -1.0, w: 0.11, i: 0.6 },
   casos: { x: 0.0, y: 0.0, a: 0.0, w: 0.16, i: 0.0 },
-  metodo: { x: 0.55, y: 0.25, a: 0.3, w: 0.14, i: 0.8 },
+  agente: { x: 0.55, y: 0.25, a: 0.3, w: 0.14, i: 0.8 },
   equipo: { x: -0.35, y: -0.46, a: 0.1, w: 0.12, i: 0.75 },
   contacto: { x: 0.0, y: 0.0, a: 0.1, w: 0.18, i: 0.0 },
   footer: { x: 0.1, y: -0.3, a: 0.12, w: 0.17, i: 1.0 },
@@ -123,12 +121,17 @@ export function initFlow() {
   let last = performance.now();
   let running = !document.hidden;
   let anchors = [];
+  let frameId = 0;
+
+  function schedule() {
+    if (running && !frameId) frameId = requestAnimationFrame(frame);
+  }
 
   const measure = () => {
-    anchors = anchorsEls.map(([k, el]) => {
+    anchors = anchorsEls.filter(([, el]) => el.getClientRects().length).map(([k, el]) => {
       const r = el.getBoundingClientRect();
       return { k, y: r.top + scrollY + r.height / 2 };
-    });
+    }).sort((a, b) => a.y - b.y);
   };
   const target = () => {
     const mid = scrollY + innerHeight / 2;
@@ -162,15 +165,17 @@ export function initFlow() {
     canvas.height = Math.round(innerHeight * dpr * scale);
     gl.viewport(0, 0, canvas.width, canvas.height);
     measure();
+    schedule();
   };
   addEventListener("resize", resize);
   addEventListener("load", measure);
-  new ResizeObserver(measure).observe(document.body);
+  new ResizeObserver(() => { measure(); schedule(); }).observe(document.body);
   resize();
 
   addEventListener(
     "pointermove",
     (e) => {
+      if (reduced.matches) return;
       mouseTarget[0] = (e.clientX / innerWidth - 0.5) * 2;
       mouseTarget[1] = -(e.clientY / innerHeight - 0.5) * 2;
     },
@@ -178,23 +183,40 @@ export function initFlow() {
   );
   document.addEventListener("visibilitychange", () => {
     running = !document.hidden;
+    cancelAnimationFrame(frameId);
+    frameId = 0;
     if (running) {
       last = performance.now();
-      requestAnimationFrame(frame);
+      schedule();
     }
+  });
+  addEventListener("scroll", () => {
+    if (reduced.matches) schedule();
+  }, { passive: true });
+  reduced.addEventListener("change", () => {
+    cancelAnimationFrame(frameId);
+    frameId = 0;
+    last = performance.now();
+    schedule();
   });
 
   function frame(now) {
+    frameId = 0;
     if (!running) return;
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     if (!reduced.matches) time += dt;
     const tg = target();
-    const k = 1 - Math.pow(0.02, dt);
+    const k = reduced.matches ? 1 : 1 - Math.pow(0.02, dt);
     PROPS.forEach((p) => (cur[p] += (tg[p] - cur[p]) * k));
-    phase += ((scrollY / innerHeight) * 0.55 - phase) * k;
-    mouse[0] += (mouseTarget[0] - mouse[0]) * k * 0.5;
-    mouse[1] += (mouseTarget[1] - mouse[1]) * k * 0.5;
+    if (reduced.matches) {
+      phase = 0;
+      mouse[0] = mouse[1] = 0;
+    } else {
+      phase += ((scrollY / innerHeight) * 0.55 - phase) * k;
+      mouse[0] += (mouseTarget[0] - mouse[0]) * k * 0.5;
+      mouse[1] += (mouseTarget[1] - mouse[1]) * k * 0.5;
+    }
 
     gl.uniform2f(U.uRes, canvas.width, canvas.height);
     gl.uniform1f(U.uTime, time);
@@ -208,8 +230,8 @@ export function initFlow() {
     gl.uniform2f(U.uCenter, cur.x * (innerWidth / innerHeight) * 0.5, cur.y);
     gl.uniform2f(U.uMouse, mouse[0], mouse[1]);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
-    requestAnimationFrame(frame);
+    if (!reduced.matches) schedule();
   }
-  requestAnimationFrame(frame);
+  schedule();
 
 }

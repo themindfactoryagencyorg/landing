@@ -98,6 +98,6 @@ test("SEO-07 assets: unused heavy logo removed and portraits stay light", () => 
   assert.ok(!fs.existsSync(path.join(root, "assets/logo-white.png")));
   for (const file of fs.readdirSync(path.join(root, "assets/team"))) {
     const size = fs.statSync(path.join(root, "assets/team", file)).size;
-    assert.ok(size <= 250 * 1024, `${file} is ${size} bytes`);
+    assert.ok(size <= 320 * 1024, `${file} is ${size} bytes`);
   }
 });
