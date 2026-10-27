@@ -31,7 +31,9 @@ Abstract architecture before a clear business benefit; generic AI promises; inve
 - Keep one short process roadmap in the contact section. Training, launch,
   hosting and maintenance remain explicit. The internal MindHub/Minds explorer
   is omitted: offer, cases and the agent already explain the customer value.
-  Team LinkedIn links use accessible icons beside names.
+  Team LinkedIn links use accessible icons beside names on desktop. On mobile,
+  give the complete name its own line and place LinkedIn in the row below,
+  with the role and disclosure control. Keep collapsed cards equally compact.
 - Keep claims specific to the supplied examples. Avoid blanket promises such as
   “the system does the rest”. Explain the team's roles in concise, concrete bios.
 - Put the contact action and email before the roadmap. A visitor ready to talk

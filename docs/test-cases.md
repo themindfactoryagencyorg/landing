@@ -1,5 +1,30 @@
 # Landing narrative · 21 octubre 2026
 
+## Nombres del equipo en móvil · 27 octubre 2026
+
+Run ID: `team-names-20261027`. Cambio de CSS sobre el visor ya publicado.
+Los nombres mantienen su texto completo en una fila; LinkedIn pasa a la fila
+inferior, junto al cargo. El botón conserva toda la cabecera como zona pulsable,
+con LinkedIn independiente y una superficie de 44×44 px.
+
+- 19/19 pruebas existentes aprobadas, 0 fallos u omisiones; sintaxis de nueve JS y diff check correctos.
+- 84 comprobaciones de nombres: siete perfiles, ES/EN y seis anchos entre 320 px
+  y el límite móvil de 650 px. Una línea, sin recortes ni desbordamiento;
+  las siete tarjetas cerradas tienen la misma altura en cada combinación.
+  El extremo superior se solicitó a 649 px porque el motor redondea 650 solicitados
+  por encima de la media query; se verificó también el paso al diseño de escritorio.
+- Siete enlaces reciben foco y mantienen su zona de clic separada del desplegable.
+  Enter abre cada perfil y Espacio lo cierra. La comprobación de hit-testing espera
+  a que se asiente el desplazamiento tras plegar la tarjeta anterior.
+- Escritorio a 651, 900 y 1440 px: disposición horizontal del nombre/LinkedIn y
+  perfiles completos conservados, sin desbordamiento de la página.
+- Copia sin scripts a 320 px: siete nombres en una línea y biografías visibles.
+- Sin errores o avisos nuevos de consola; captura móvil inspeccionada.
+
+Evidencia local en `artifacts/team-names-20261027/`. LOCAL: batería disponible
+y comprobación de navegador completadas; DEV/PRELIVE/PROD principal no ejecutados.
+Se conserva el alcance de la demo privada y la copia de trabajo original.
+
 ## Gestos y visor de capturas · 27 octubre 2026
 
 Run ID: `capture-20261027`. Corrección sobre la revisión publicada `6d3f96f`.

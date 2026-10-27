@@ -2701,12 +2701,30 @@ h1 {
   }
   .person-heading {
     margin-top: 12px;
+    gap: 4px;
+  }
+  .person-title {
+    display: block;
+    width: 100%;
   }
   .person-name {
-    font-size: 28px;
+    font-size: clamp(20px, 7vw, 24px);
+    white-space: nowrap;
+    overflow-wrap: normal;
+    text-wrap: nowrap;
+  }
+  .person-linkedin {
+    position: absolute;
+    left: 0;
+    bottom: 0;
   }
   .person-meta {
-    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    padding-inline: 44px;
   }
   .team-disclosures .team-people {
     gap: 8px;
@@ -2718,10 +2736,7 @@ h1 {
   }
   .team-disclosures .person-heading {
     margin-top: 0;
-    padding-inline: 28px;
-  }
-  .team-disclosures .person-name {
-    font-size: 24px;
+    padding-inline: 0;
   }
   .team-disclosures .person-content {
     display: block;
@@ -2734,11 +2749,11 @@ h1 {
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
     width: 100%;
     min-height: 44px;
-    padding: 0;
+    padding: 0 12px 12px 0;
     background: transparent;
     color: var(--mint);
     border-radius: 2px;
