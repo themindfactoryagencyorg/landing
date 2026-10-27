@@ -1,0 +1,77 @@
+/* Página /partes-de-trabajo/. Se carga después de styles.css y reutiliza sus
+   variables, la nav y el pie. Sin JS: todo funciona sin scripts. */
+.pt-nav { position: absolute; }
+.pt-nav .nav-links a { display: inline-flex; gap: 6px; align-items: center; }
+@media (max-width: 650px) {
+  .pt-nav .pt-nav-contact { display: flex; gap: 10px; }
+  .pt-nav .brand img { width: 150px; }
+  .pt-nav .brand .brand-tagline { font-size: 8px; }
+}
+.pt-main { padding-top: 92px; }
+.pt-main a:not(.pt-button) { color: var(--mint); text-decoration: underline; text-underline-offset: 3px; }
+.pt-hero, .pt-section, .pt-final { padding: 64px 6%; max-width: 1280px; margin: 0 auto; }
+.pt-breadcrumb ol { list-style: none; display: flex; gap: 8px; padding: 0; margin: 0 0 40px; font: 11px var(--mono); color: var(--muted); }
+.pt-breadcrumb li + li::before { content: "/"; margin-right: 8px; color: #647172; }
+.pt-kicker, .pt-tag { font: 11px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mint); margin: 0 0 18px; }
+.pt-hero h1 { font-size: clamp(36px, 5.4vw, 72px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 500; margin: 0 0 40px; max-width: 18ch; }
+.pt-hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
+.pt-lead { font-size: 18px; line-height: 1.6; color: #c4d3ca; margin: 0 0 18px; max-width: 60ch; }
+.pt-ctas { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; margin-top: 30px; }
+.pt-button { display: inline-flex; align-items: center; gap: 14px; background: var(--mint); color: var(--dark); padding: 14px 22px; border-radius: 999px; font-weight: 500; font-size: 15px; transition: background 0.2s; }
+.pt-button:hover { background: #d4fbe8; }
+.pt-button .icon { width: 16px; height: 16px; }
+.pt-sample { margin: 0; }
+.pt-sample-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.pt-sample-head { display: flex; justify-content: space-between; align-items: center; margin: 0 0 16px; font-weight: 500; }
+.pt-status { font: 11px var(--mono); color: var(--dark); background: var(--mint); border-radius: 999px; padding: 4px 10px; }
+.pt-sample dl { margin: 0; }
+.pt-sample dl div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.pt-sample dt { font: 11px var(--mono); color: var(--muted); text-transform: uppercase; padding-top: 3px; }
+.pt-sample dd { margin: 0; color: var(--ink); }
+.pt-sample-flow { display: flex; gap: 10px; align-items: center; margin: 16px 0 0; font: 12px var(--mono); color: var(--mint); flex-wrap: wrap; }
+.pt-sample figcaption { font-size: 13px; color: var(--muted); margin-top: 12px; }
+.pt-section h2, .pt-final h2 { font-size: clamp(28px, 3.6vw, 46px); letter-spacing: -0.03em; line-height: 1.1; font-weight: 500; margin: 0 0 32px; }
+.pt-section h3 { font-size: 20px; font-weight: 500; margin: 0 0 10px; }
+.pt-section p { line-height: 1.6; color: #c4d3ca; margin: 0; }
+.pt-problems { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.pt-problems li { border: 1px solid var(--line); border-radius: 14px; padding: 20px; line-height: 1.5; color: #dfe6df; }
+.pt-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.pt-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+.pt-light { background: var(--paper); color: var(--dark); max-width: none; padding-left: max(6%, calc((100% - 1280px) / 2 + 6%)); padding-right: max(6%, calc((100% - 1280px) / 2 + 6%)); }
+.pt-light h2 { color: var(--dark); }
+.pt-compare { border-top: 1px solid #b7c8bd; }
+.pt-compare-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid #b7c8bd; color: #23362d; }
+.pt-compare-row [role="rowheader"] { font-weight: 500; color: var(--dark); }
+.pt-compare-head { font: 11px var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: #405e4e; }
+.pt-two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 28px; }
+.pt-note { font-size: 15px; }
+.pt-steps { list-style: none; counter-reset: s; padding: 0; margin: 0 0 28px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.pt-steps li { counter-increment: s; border-top: 1px solid var(--mint); padding-top: 18px; }
+.pt-steps li::before { content: "0" counter(s); font: 11px var(--mono); color: var(--mint); display: block; margin-bottom: 10px; }
+.pt-faq { border-top: 1px solid var(--line); }
+.pt-faq-item { border-bottom: 1px solid var(--line); }
+.pt-faq-item summary { cursor: pointer; padding: 20px 36px 20px 0; font-size: 18px; position: relative; list-style: none; }
+.pt-faq-item summary::-webkit-details-marker { display: none; }
+.pt-faq-item summary::after { content: "+"; position: absolute; right: 4px; top: 16px; font-size: 22px; color: var(--mint); transition: transform 0.2s; }
+.pt-faq-item[open] summary::after { transform: rotate(45deg); }
+.pt-faq-item p { padding: 0 0 22px; max-width: 70ch; }
+.pt-final { text-align: center; padding-bottom: 96px; }
+.pt-final p { color: #c4d3ca; margin: 0 0 28px; font-size: 17px; }
+@media (max-width: 900px) {
+  .pt-main { padding-top: 78px; }
+  .pt-hero-grid, .pt-two { grid-template-columns: 1fr; gap: 36px; }
+  .pt-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 650px) {
+  .pt-hero, .pt-section, .pt-final { padding: 44px 5%; }
+  .pt-cards, .pt-steps { grid-template-columns: 1fr; }
+  .pt-compare-row { grid-template-columns: 1fr 1fr; font-size: 14px; }
+  .pt-compare-row [role="rowheader"], .pt-compare-row [role="columnheader"]:first-child { grid-column: 1 / -1; }
+  .pt-compare-head [role="columnheader"]:first-child { display: none; }
+  .pt-sample dl div { grid-template-columns: 92px 1fr; }
+  .pt-button { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pt-button, .pt-faq-item summary::after { transition: none; }
+}
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
