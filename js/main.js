@@ -1,4 +1,4 @@
-import { initI18n, translate as tr } from "./i18n.js?v=20261026-review";
+import { initI18n, translate as tr } from "./i18n.js?v=20261027-seo";
 import { initNavigation } from "./navigation.js?v=20261026-review";
 import { initAgentDemo } from "./agent.js?v=20261021-historia-casos";
 import { initNetwork } from "./network.js?v=20260914-feedback";
