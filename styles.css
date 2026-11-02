@@ -2562,9 +2562,6 @@ h1 {
   border: 1px solid var(--line);
   margin: 0 auto;
 }
-.person-photo--patio {
-  background: url("/assets/team/patio-common.webp?v=20261022-patio-comun") 0 0 / 100% 100% no-repeat;
-}
 .person-photo img {
   width: 100%;
   height: auto;

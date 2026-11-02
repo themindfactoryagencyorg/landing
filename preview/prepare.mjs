@@ -33,7 +33,13 @@ for (const file of publicFiles.filter(file => file.endsWith('.html'))) {
     assert.ok(existsSync(path.join(destination, resource.slice(prefix.length))), `Missing resource: ${resource}`);
   }
 }
-assert.ok(readFileSync(path.join(destination, 'styles.css'), 'utf8').includes(`${prefix}/assets/team/patio-common.webp`));
+for (const file of publicFiles.filter(file => file.endsWith('.css'))) {
+  const css = readFileSync(path.join(destination, file), 'utf8');
+  for (const [, resource] of css.matchAll(/url\(\s*["']?(\/[^"'?#)\s]+)/g)) {
+    assert.ok(resource.startsWith(`${prefix}/`), `Ungated CSS resource: ${resource}`);
+    assert.ok(existsSync(path.join(destination, resource.slice(prefix.length))), `Missing CSS resource: ${resource}`);
+  }
+}
 for (const file of publicFiles.filter(file => file.endsWith('.js'))) {
   assert.deepEqual(readFileSync(path.join(destination, file)), readFileSync(path.join(root, file)), `JavaScript changed: ${file}`);
   execFileSync(process.execPath, ['--check', path.join(destination, file)]);
