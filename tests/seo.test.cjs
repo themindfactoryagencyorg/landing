@@ -28,9 +28,10 @@ test("SEO-02 sitemap.xml lists exactly the indexable pages", () => {
   const sitemap = read("sitemap.xml");
   assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>/);
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert.deepEqual(locs, [SITE, `${SITE}aviso-legal.html`, `${SITE}privacidad.html`, `${SITE}cookies.html`]);
+  assert.deepEqual(locs, [SITE, `${SITE}aviso-legal.html`, `${SITE}privacidad.html`, `${SITE}cookies.html`, `${SITE}partes-de-trabajo/`]);
   for (const loc of locs) {
-    const file = loc === SITE ? "index.html" : loc.slice(SITE.length);
+    const rel = loc === SITE ? "index.html" : loc.slice(SITE.length);
+    const file = rel.endsWith("/") ? `${rel}index.html` : rel;
     assert.ok(fs.existsSync(path.join(root, file)), `${file} exists`);
     assert.doesNotMatch(read(file), /name="robots" content="[^"]*noindex/);
   }
