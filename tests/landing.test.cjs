@@ -41,18 +41,20 @@ test("the story explains the offer before proof, retains the full team and label
   );
 });
 
-test("the three courtyard portraits use one shared background with fixed alignment", () => {
-  const portraits = [...html.matchAll(/<figure class="person-photo person-photo--patio">\s*<img src="([^"]+)"/g)];
-  assert.deepEqual(portraits.map((m) => m[1].split('?')[0]), [
-    '/assets/team/laura-pereda-cutout.webp',
-    '/assets/team/juan-cutout.webp',
-    '/assets/team/agustin-rosa-cutout.webp',
-  ]);
+test("courtyard portraits load as self-contained images without a separate background", () => {
+  for (const id of ['laura-pereda', 'juan-poblete', 'agustin-rosa']) {
+    const card = html.split(`id="${id}"`)[1].split('</article>')[0];
+    const photo = card.match(/<figure class="person-photo">\s*<img ([^>]+)>/);
+    assert.ok(photo, `${id}: one ordinary portrait image`);
+    assert.match(photo[1], /-patio\.webp\?/);
+    assert.match(photo[1], /width="1122" height="1122"/);
+    const src = photo[1].match(/src="([^"?]+)/)[1];
+    assert.ok(fs.statSync(path.join(root, src)).size > 0, `${id}: composed asset exists`);
+    assert.ok(!card.includes('-cutout.webp'));
+  }
   const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
-  const sharedRule = css.match(/\.person-photo--patio\s*\{([^}]+)\}/)[1];
-  assert.match(sharedRule, /patio-common\.webp/);
-  assert.match(sharedRule, /0 0\s*\/\s*100% 100% no-repeat/);
-  assert.ok(fs.existsSync(path.join(root, 'assets/team/patio-common.webp')));
+  assert.ok(!css.includes('patio-common.webp'), 'No independently loaded courtyard background');
+  assert.ok(!html.includes('person-photo--patio'));
 });
 
 test("secondary pages contain useful content and all local page links resolve", () => {

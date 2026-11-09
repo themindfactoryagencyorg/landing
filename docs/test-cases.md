@@ -1,5 +1,25 @@
 # Landing narrative · 21 octubre 2026
 
+## Retratos con fondo integrado · 2 noviembre 2026
+
+Laura, Juan y Agustín usan ahora una imagen opaca por retrato (`*-patio.webp`).
+Se exporta la composición existente, conservando las personas y el encuadre circular;
+el fondo deja de cargarse como un recurso CSS independiente. Los recortes y el fondo
+original se conservan como fuentes. Los archivos finales son cuadrados de 1122 × 1122.
+
+- `TEAM-BG01`: las tres fichas usan imágenes completas; no hay dependencia del fondo CSS.
+- `TEAM-BG02`: navegador en ES/EN a 320, 390, 768 y 1440 px; imágenes cargadas,
+  opacas y sin solicitudes de recortes o fondo separado, incluso bloqueando esas rutas.
+- `TEAM-BG03`: comparación de las tres fotos antes/después a 390 y 1440 px para
+  conservar el encuadre; capturas inspeccionadas y diferencias de compresión registradas.
+- `TEAM-BG04`: el preparador de la preview conserva las imágenes y comprueba todos
+  los recursos CSS bajo el prefijo protegido, sin exigir el antiguo fondo independiente.
+
+Evidencia de ejecución en `artifacts/landing-team-backgrounds-20261102/` del workspace,
+fuera de la raíz pública. La validación se realiza en Chrome con tamaños simulados;
+no sustituye una prueba en dispositivos físicos. La publicación sigue el workflow
+existente de `main`; este repositorio no tiene entornos DEV/PRELIVE separados.
+
 ## Publicación principal · 27 octubre 2026
 
 Run ID local: `production-20261027`. Fuente pública idéntica al snapshot aprobado
