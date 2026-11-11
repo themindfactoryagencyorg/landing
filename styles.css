@@ -2214,6 +2214,9 @@ h1 {
   flex-wrap: wrap;
   max-width: 600px;
 }
+.hero-actions > .button-light {
+  border-radius: 999px;
+}
 .hero-contact-link {
   font-size: 15px;
   color: var(--mint);
