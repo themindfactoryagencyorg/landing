@@ -1,0 +1,13 @@
+# robots.txt de themindfactory.es
+# /acceso.html no se bloquea aquí a propósito: lleva <meta name="robots" content="noindex, nofollow">
+# y los buscadores tienen que poder rastrearla para leer esa etiqueta.
+
+User-agent: *
+Allow: /
+Disallow: /docs/
+Disallow: /tests/
+Disallow: /CLAUDE.md
+Disallow: /PRODUCT.md
+Disallow: /preview/
+
+Sitemap: https://themindfactory.es/sitemap.xml
